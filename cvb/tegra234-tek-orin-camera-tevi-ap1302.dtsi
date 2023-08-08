@@ -1,0 +1,86 @@
+/*
+ * Copyright (c) 2022, NVIDIA CORPORATION.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "tegra234-camera-tevi-ap1302.dtsi"
+
+//Define GPIO number for tca9555_a21
+#define CSI0_PWDN	0
+#define CSI0_PDB	1
+#define CSI0_RST_N	2
+#define INFO0_TRIG_IN	3
+#define CSI1_PWDN	4
+#define CSI1_PDB	5
+#define CSI1_RST_N	6
+#define INFO1_TRIG_IN	7
+
+#define CAMERA_I2C_MUX_BUS(x) (0x14 + x)
+/ {
+	i2c@3180000 { /* cam_i2c */
+		tca9548@70 {
+			clock-frequency = <100000>;
+			compatible = "nxp,pca9548";
+			reg = <0x70>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reset-gpios = <&tegra_aon_gpio TEGRA234_AON_GPIO(CC, 3) GPIO_ACTIVE_LOW>;
+			skip_mux_detect = "yes";
+			vcc-supply = <&p3768_vdd_1v8>;
+			vcc_lp = "vcc";
+			force_bus_start = <CAMERA_I2C_MUX_BUS(0)>;
+
+			i2c@0 {
+				reg = <0>;
+				i2c-mux,deselect-on-exit;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				
+				tevi_ap1302_a@3d {
+					reset-gpios = <&tca9555_a21 CSI0_RST_N GPIO_ACTIVE_HIGH>;
+					power-gpios = <&tca9555_a21 CSI0_PWDN GPIO_ACTIVE_HIGH>;
+					nvmem = <&tevi_ap1302_otp_0>;
+					nvmem-names = "calib-data";
+					data-lanes = <2>;
+				};
+
+				tevi_ap1302_otp_0: tevi_ap1302_otp@54 {
+					compatible = "atmel,24c1024";
+					pagesize = <128>;
+					reg = <0x54>;
+				};
+			};
+			i2c@1 {
+				reg = <1>;
+				i2c-mux,deselect-on-exit;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				tevi_ap1302_b@3d {
+					reset-gpios = <&tca9555_a21 CSI1_RST_N GPIO_ACTIVE_HIGH>;
+					power-gpios = <&tca9555_a21 CSI1_PWDN GPIO_ACTIVE_HIGH>;
+					nvmem = <&tevi_ap1302_otp_1>;
+					nvmem-names = "calib-data";
+					data-lanes = <2>;
+				};
+
+				tevi_ap1302_otp_1: tevi_ap1302_otp@54 {
+					compatible = "atmel,24c1024";
+					pagesize = <128>;
+					reg = <0x54>;
+				};
+			};
+		};
+	};
+};

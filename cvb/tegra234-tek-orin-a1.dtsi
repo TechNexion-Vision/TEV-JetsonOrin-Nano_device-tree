@@ -18,6 +18,7 @@
 #include "tegra234-p3768-audio.dtsi"
 //#include "tegra234-p3768-camera-rbpcv3-imx477.dtsi"
 //#include "tegra234-p3768-camera-rbpcv2-imx219.dtsi"
+#include "tegra234-tek-orin-camera-tevi-ap1302.dtsi"
 
 / {
 	gpio-keys {
@@ -143,8 +144,51 @@
 		nvidia,xusb-padctl = <&xusb_padctl>;
 	};
 
+	i2c@3160000 {
+		tca9555_a21: tca9555@21 {
+			compatible = "nxp,pca9555";
+			reg = <0x21>;
+
+//			interrupt-parent = <&tegra_aon_gpio>;
+//			interrupts = <TEGRA234_AON_GPIO(CC, 2) IRQ_TYPE_LEVEL_LOW>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			status = "okay";
+			gpio-line-names = "CSI0_PWDN", "CSI0_PDB", "CSI0_RST_N", "INFO0_TRIG_IN",
+						"CSI1_PWDN", "CSI1_PDB", "CSI1_RST_N", "INFO1_TRIG_IN",
+						"", "", "", "",
+						"", "", "", "";
+		};
+	};
+
 	i2c@c240000{
 		status = "okay";
+
+		pca9555_a23: pca9555@23 {
+			compatible = "nxp,pca9555";
+			reg = <0x23>;
+
+			interrupt-parent = <&tegra_aon_gpio>;
+			interrupts = <TEGRA234_AON_GPIO(CC, 0) IRQ_TYPE_LEVEL_LOW>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			status = "okay";
+			gpio-line-names = "M2_DISABLE_N", "M2_RST_N", "LTE_WAKE", "W_DISABLE1_CTRL",
+						"BT_M2_EN", "GPIO_LED1", "GPIO_LED2", "GPIO_LED3",
+						"BTBC_GPIO_P20", "BTBC_GPIO_P21", "BTBC_GPIO_P22", "BTBC_GPIO_P23",
+						"BTBC_GPIO_P24", "BTBP_GPIO_P18", "BTBP_GPIO_P19", "BTBP_GPIO_P20";
+		};
+
 		fusb301@25 {
 			compatible = "onsemi,fusb301";
 			reg = <0x25>;
@@ -162,6 +206,34 @@
 			};
 		};
 	};
+
+	gpio-leds1 {
+		compatible = "gpio-leds";
+		status = "okay";
+		led1 {
+			gpios = <&pca9555_a23 5 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+	};
+
+	gpio-leds2 {
+		compatible = "gpio-leds";
+		status = "okay";
+		led2 {
+			gpios = <&pca9555_a23 6 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+	};
+
+	gpio-leds3 {
+		compatible = "gpio-leds";
+		status = "okay";
+		led3 {
+			gpios = <&pca9555_a23 7 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+	};
+
 	spi@3210000{ /* SPI1 in 40 pin conn */
 		status = "okay";
 		spi@0 { /* chip select 0 */
@@ -277,58 +349,6 @@
 				ports {
 					port@0 {
 						endpoint@0 {
-							port-index = <1>;
-						};
-					};
-				};
-			};
-		};
-	};
-
-	cam_i2cmux{
-		i2c@0 {
-			rbpcv2_imx219_a@10 {
-				mode0 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				mode1 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				mode2 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				mode3 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				mode4 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				ports {
-					port@0 {
-						endpoint {
-							port-index = <1>;
-						};
-					};
-				};
-			};
-
-			rbpcv3_imx477_a@1a {
-				mode0 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				mode1 {
-					tegra_sinterface = "serial_b";
-					lane_polarity = "6";
-				};
-				ports {
-					port@0 {
-						endpoint {
 							port-index = <1>;
 						};
 					};
