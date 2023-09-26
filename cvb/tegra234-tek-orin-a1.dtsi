@@ -330,6 +330,28 @@
 		status = "disabled";
 	};
 
+	pwm@32e0000 {/* PWM7 40 pin header, pin 32 */
+		status = "okay";
+	};
+
+	pinmux@2430000 {
+		pwm-pinmux {
+			hdr40-pwm5 {
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,function = "gp";
+				nvidia,pins = "soc_gpio21_ph0";
+			};
+
+			hdr40-pwm7 {
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,function = "gp";
+				nvidia,pins = "soc_gpio19_pg6";
+			};
+		};
+	};
+
 	bluedroid_pm {
 		status = "disabled";
 	};
