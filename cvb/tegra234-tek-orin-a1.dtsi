@@ -287,6 +287,10 @@
 		status = "okay";
 	};
 
+	serial@3110000 {
+		status = "okay";
+	};
+
 	mttcan@c310000 {
 		status = "okay";
 	};
