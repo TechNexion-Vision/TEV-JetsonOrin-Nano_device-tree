@@ -174,8 +174,8 @@
 			compatible = "nxp,pca9555";
 			reg = <0x23>;
 
-			interrupt-parent = <&tegra_aon_gpio>;
-			interrupts = <TEGRA234_AON_GPIO(CC, 0) IRQ_TYPE_LEVEL_LOW>;
+//			interrupt-parent = <&tegra_aon_gpio>;
+//			interrupts = <TEGRA234_AON_GPIO(CC, 0) IRQ_TYPE_LEVEL_LOW>;
 
 			interrupt-controller;
 			#interrupt-cells = <2>;
