@@ -47,6 +47,7 @@ dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-tek-orin-a1.dtb
 dtb-$(BUILD_ENABLE) += tegra234-p3767-0004-tek-orin-a1.dtb
 dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-tevs.dtb
 dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-vl316.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-vl316-vls.dtb
 
 ifneq ($(dtb-y),)
 dtb-y := $(addprefix $(makefile-path)/,$(dtb-y))
