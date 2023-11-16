@@ -185,7 +185,7 @@
 
 			status = "okay";
 			gpio-line-names = "M2_DISABLE_N", "M2_RST_N", "LTE_WAKE", "W_DISABLE1_CTRL",
-						"BT_M2_EN", "GPIO_LED1", "GPIO_LED2", "GPIO_LED3",
+						"BT_M2_EN", "GPIO_LED1", "GPIO_LED4", "GPIO_LED3",
 						"BTBC_GPIO_P20", "BTBC_GPIO_P21", "BTBC_GPIO_P22", "BTBC_GPIO_P23",
 						"BTBC_GPIO_P24", "BTBP_GPIO_P18", "BTBP_GPIO_P19", "BTBP_GPIO_P20";
 		};
@@ -221,7 +221,7 @@
 		compatible = "gpio-leds";
 		status = "okay";
 		led2 {
-			gpios = <&pca9555_a23 6 GPIO_ACTIVE_HIGH>;
+			gpios = <&tegra_aon_gpio TEGRA234_AON_GPIO(CC, 1) GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
 	};
@@ -231,6 +231,15 @@
 		status = "okay";
 		led3 {
 			gpios = <&pca9555_a23 7 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+	};
+
+	gpio-leds4 {
+		compatible = "gpio-leds";
+		status = "okay";
+		led4 {
+			gpios = <&pca9555_a23 6 GPIO_ACTIVE_HIGH>;
 			default-state = "off";
 		};
 	};
