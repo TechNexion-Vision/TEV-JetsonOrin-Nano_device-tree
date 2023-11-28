@@ -14,7 +14,7 @@
  */
 
 /dts-v1/;
-#include "tegra234-dcb-p3767-0000-dp.dtsi"
+#include "tegra234-dcb-p3767-0000-hdmi.dtsi"
 #include <tegra234-soc/mods-simple-bus.dtsi>
 #include <t234-common-cvm/tegra234-thermal.dtsi>
 #include <t234-common-cvm/tegra234-cpuidle.dtsi>
