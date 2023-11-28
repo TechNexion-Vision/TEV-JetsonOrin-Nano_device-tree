@@ -32,10 +32,10 @@
 
 / {
 	i2c@3180000 { /* cam_i2c */
-		tca9548@70 {
+		pca9849@71 {
 			clock-frequency = <400000>;
-			compatible = "nxp,pca9548";
-			reg = <0x70>;
+			compatible = "nxp,pca9849";
+			reg = <0x71>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 			reset-gpios = <&tegra_aon_gpio CAM_I2C_MUX GPIO_ACTIVE_LOW>;

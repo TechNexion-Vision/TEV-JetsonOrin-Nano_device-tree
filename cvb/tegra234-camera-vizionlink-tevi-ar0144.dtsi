@@ -317,7 +317,7 @@
 	};
 
 	i2c@3180000 { /* cam_i2c */
-		tca9548@70 {
+		pca9849@71 {
 			i2c@0 {
 #ifdef VLI_TEVI_AR0144_CSI0_CAM0
 				ar0144_cam0: rpi22_ar0144_a@3c {
