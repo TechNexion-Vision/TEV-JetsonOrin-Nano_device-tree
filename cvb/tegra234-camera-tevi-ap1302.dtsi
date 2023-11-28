@@ -92,7 +92,7 @@
 	};
 
 	i2c@3180000 { /* cam_i2c */
-		tca9548@70 {
+		pca9849@71 {
 			i2c@0 {
 				tevi_ap1302_cam0: tevi_ap1302_a@3d {
 					compatible = "tn,tevi-ap1302";

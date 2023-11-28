@@ -30,10 +30,10 @@
 #define CAMERA_I2C_MUX_BUS(x) (0x14 + x)
 / {
 	i2c@3180000 { /* cam_i2c */
-		tca9548@70 {
+		pca9849@71 {
 			clock-frequency = <100000>;
-			compatible = "nxp,pca9548";
-			reg = <0x70>;
+			compatible = "nxp,pca9849";
+			reg = <0x71>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 			reset-gpios = <&tegra_aon_gpio TEGRA234_AON_GPIO(CC, 3) GPIO_ACTIVE_LOW>;
