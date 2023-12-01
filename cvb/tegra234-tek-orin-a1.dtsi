@@ -188,6 +188,12 @@
 						"BT_M2_EN", "GPIO_LED1", "GPIO_LED4", "GPIO_LED3",
 						"BTBC_GPIO_P20", "BTBC_GPIO_P21", "BTBC_GPIO_P22", "BTBC_GPIO_P23",
 						"BTBC_GPIO_P24", "BTBP_GPIO_P18", "BTBP_GPIO_P19", "BTBP_GPIO_P20";
+
+			KEY-B-enable {
+				gpio-hog;
+				gpios = <0 GPIO_ACTIVE_HIGH>;
+				output-low;
+			};
 		};
 
 		fusb301@25 {
