@@ -22,6 +22,17 @@
 #include "tegra234-tek-orin-camera-vizionlink-tevi-ar0144.dtsi"
 
 / {
+	reg_can0_stby: regulator-can0-stby {
+		compatible = "regulator-fixed";
+		regulator-name = "can1-stby";
+		pinctrl-names = "default";
+		regulator-min-microvolt = <0>;
+		regulator-max-microvolt = <0>;
+		gpio = <&tegra_main_gpio TEGRA234_MAIN_GPIO(Z, 6) GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		status = "okay";
+	};
+
 	gpio-keys {
 		compatible = "gpio-keys";
 		gpio-keys,name = "gpio-keys";
