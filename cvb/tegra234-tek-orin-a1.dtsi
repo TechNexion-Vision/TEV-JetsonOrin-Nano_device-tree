@@ -212,6 +212,23 @@
 				};
 			};
 		};
+
+		pca9554abs: pca9554abs@3b {
+			compatible = "nxp,pca9554";
+			reg = <0x3b>;
+//			interrupt-parent = <&pca9555_a23>;
+//			interrupts = <&pca9555_a23 8 IRQ_TYPE_LEVEL_LOW>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			status = "okay";
+			gpio-line-names = "P_GPIO01", "P_GPIO02", "P_GPIO03", "P_GPIO04",
+						"P_GPIO05", "P_GPIO06", "P_GPIO07", "P_GPIO08";
+		};
 	};
 
 	gpio-leds1 {
