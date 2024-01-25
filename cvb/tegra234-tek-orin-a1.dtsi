@@ -19,7 +19,7 @@
 //#include "tegra234-p3768-camera-rbpcv3-imx477.dtsi"
 //#include "tegra234-p3768-camera-rbpcv2-imx219.dtsi"
 // #include "tegra234-tek-orin-camera-tevi-ap1302.dtsi"
-#include "tegra234-tek-orin-camera-vizionlink-tevi-ar0144.dtsi"
+#include "tegra234-tek-orin-camera-vls3.dtsi"
 
 / {
 	reg_can0_stby: regulator-can0-stby {
