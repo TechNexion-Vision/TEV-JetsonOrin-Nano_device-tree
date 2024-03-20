@@ -581,7 +581,7 @@
 					line_length = "3840";
 					inherent_gain = "1";
 					mclk_multiplier = "9.33";
-					pix_clk_hz = "100000000";
+					pix_clk_hz = "200000000";
 
 					gain_factor = "16";
 					framerate_factor = "1000000";
