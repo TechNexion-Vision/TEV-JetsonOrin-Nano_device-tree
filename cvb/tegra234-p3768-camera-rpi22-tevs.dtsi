@@ -46,7 +46,6 @@
 			};
 
 			rpi22_tevs_a@48 {
-				// power-gpios = <&tegra_main_gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 				reset-gpios = <&tegra_main_gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_a27_a 6 GPIO_ACTIVE_HIGH>;
 				data-lanes = <2>;
@@ -72,7 +71,6 @@
 
 			rpi22_tevs_c@48 {
 				reset-gpios = <&tegra_main_gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
-				// power-gpios = <&pca9554_a27_c 6 GPIO_ACTIVE_LOW>;
 				standby-gpios = <&pca9554_a27_c 6 GPIO_ACTIVE_HIGH>;
 				data-lanes = <4>;
 				status = "okay";
