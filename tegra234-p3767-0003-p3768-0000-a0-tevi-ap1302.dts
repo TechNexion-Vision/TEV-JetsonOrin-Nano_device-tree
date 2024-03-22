@@ -22,7 +22,7 @@
 #include <t234-common-cvm/tegra234-thermal-cooling.dtsi>
 #include <t234-common-cvm/tegra234-thermal-userspace-alert.dtsi>
 #include "cvm/tegra234-p3767-0000.dtsi"
-#include "cvb/tegra234-p3768-0000-a0-tevi.dtsi"
+#include "cvb/tegra234-p3768-0000-a0-tevi-ap1302.dtsi"
 
 #include <t234-common-cvm/tegra234-cpufreq-pair-cooling.dtsi>
 #include <t234-common-cvm/tegra234-p3767-pcie-max-speed-gen3.dtsi>
