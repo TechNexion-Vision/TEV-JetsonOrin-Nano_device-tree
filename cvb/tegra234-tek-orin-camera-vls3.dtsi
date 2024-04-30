@@ -75,6 +75,8 @@
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
 
+					aeq_floor_val = <0>;
+
 					status = "okay";
 
 					i2c_dev_list {
@@ -128,6 +130,8 @@
 
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
+
+					aeq_floor_val = <0>;
 
 					status = "okay";
 
@@ -183,6 +187,8 @@
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
 
+					aeq_floor_val = <0>;
+
 					status = "okay";
 
 					i2c_dev_list {
@@ -236,6 +242,8 @@
 
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
+
+					aeq_floor_val = <0>;
 
 					status = "okay";
 
@@ -298,6 +306,8 @@
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
 
+					aeq_floor_val = <0>;
+
 					status = "okay";
 
 					i2c_dev_list {
@@ -352,6 +362,8 @@
 
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
+
+					aeq_floor_val = <0>;
 
 					status = "okay";
 
@@ -408,6 +420,8 @@
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
 
+					aeq_floor_val = <0>;
+
 					status = "okay";
 
 					i2c_dev_list {
@@ -462,6 +476,8 @@
 
 					//1: Enable 0: Disable continuous clock. default 0
 					ser_csi_continuous_clock = <0>;
+
+					aeq_floor_val = <0>;
 
 					status = "okay";
 
