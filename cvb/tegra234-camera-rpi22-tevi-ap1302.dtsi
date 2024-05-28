@@ -564,7 +564,7 @@
 				*/
 				mode0 {
 					mclk_khz = "24000";
-					num_lanes = "2";
+					num_lanes = "4";
 					tegra_sinterface = "serial_c";
 					phy_mode = "DPHY";
 					discontinuous_clk = "yes";
