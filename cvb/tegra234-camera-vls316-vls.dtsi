@@ -321,10 +321,10 @@
 	cam_i2cmux {
 		i2c_0:i2c@0 {
 #ifdef VLS_ARCAM_CSI0_CAM0
-			tevs_cam0: rpi22_tevs_a@3c {
+			tevs_cam0: rpi22_tevs_a@48 {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3c>;
+				reg = <0x48>;
 
 				/* V4L2 device node location */
 				devnode = "video0";
@@ -634,49 +634,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 {  IMX219_MODE_1280x720_120FPS
-					* mclk_khz = "24000";
-					* num_lanes = "2";
-					* tegra_sinterface = "serial_a";
-					* phy_mode = "DPHY";
-					* discontinuous_clk = "yes";
-					* dpcm_enable = "false";
-					* cil_settletime = "0";
-					* lane_polarity = "6";
 
-					* active_w = "1280";
-					* active_h = "720";
-					* mode_type = "yuv";
-					* pixel_phase = "uyvy";
-					* csi_pixel_bit_depth = "10";
-					* readout_orientation = "90";
-					* line_length = "3560";
-					* inherent_gain = "1";
-					* mclk_multiplier = "9.33";
-					* pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "6";
 
-					* gain_factor = "16";
-					* framerate_factor = "1000000";
-					* exposure_factor = "1000000";
-					* min_gain_val = "16"; // 1.00x
-					* max_gain_val = "170"; // 10.66x
-					* step_gain_val = "1";
-					* default_gain = "16"; // 1.00x
-					* min_hdr_ratio = "1";
-					* max_hdr_ratio = "1";
-					* min_framerate = "2000000"; // 2.0 fps
-					* max_framerate = "120000000"; // 120.0 fps
-					* step_framerate = "1";
-					* default_framerate = "120000000"; // 120.0 fps
-					* min_exp_time = "13"; // us
-					* max_exp_time = "683709"; // us
-					* step_exp_time = "1";
-					* default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-					* embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -694,10 +693,10 @@
 			};
 #endif
 #ifdef VLS_ARCAM_CSI0_CAM1
-			tevs_cam1: rpi22_tevs_b@3d {
+			tevs_cam1: rpi22_tevs_b@49 {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3d>;
+				reg = <0x49>;
 
 				/* V4L2 device node location */
 				devnode = "video1";
@@ -1010,49 +1009,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 {  IMX219_MODE_1280x720_120FPS
-					* mclk_khz = "24000";
-					* num_lanes = "2";
-					* tegra_sinterface = "serial_a";
-					* phy_mode = "DPHY";
-					* discontinuous_clk = "yes";
-					* dpcm_enable = "false";
-					* cil_settletime = "0";
-					* lane_polarity = "6";
 
-					* active_w = "1280";
-					* active_h = "720";
-					* mode_type = "yuv";
-					* pixel_phase = "uyvy";
-					* csi_pixel_bit_depth = "10";
-					* readout_orientation = "90";
-					* line_length = "3560";
-					* inherent_gain = "1";
-					* mclk_multiplier = "9.33";
-					* pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "6";
 
-					* gain_factor = "16";
-					* framerate_factor = "1000000";
-					* exposure_factor = "1000000";
-					* min_gain_val = "16"; // 1.00x
-					* max_gain_val = "170"; // 10.66x
-					* step_gain_val = "1";
-					* default_gain = "16"; // 1.00x
-					* min_hdr_ratio = "1";
-					* max_hdr_ratio = "1";
-					* min_framerate = "2000000"; // 2.0 fps
-					* max_framerate = "120000000"; // 120.0 fps
-					* step_framerate = "1";
-					* default_framerate = "120000000"; // 120.0 fps
-					* min_exp_time = "13"; // us
-					* max_exp_time = "683709"; // us
-					* step_exp_time = "1";
-					* default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-					* embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -1069,10 +1067,10 @@
 			};
 #endif
 #ifdef VLS_ARCAM_CSI0_CAM2
-			tevs_cam2: rpi22_tevs_c@3e {
+			tevs_cam2: rpi22_tevs_c@4a {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3e>;
+				reg = <0x4a>;
 
 				/* V4L2 device node location */
 				devnode = "video2";
@@ -1380,49 +1378,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 {  IMX219_MODE_1280x720_120FPS
-					* mclk_khz = "24000";
-					* num_lanes = "2";
-					* tegra_sinterface = "serial_a";
-					* phy_mode = "DPHY";
-					* discontinuous_clk = "yes";
-					* dpcm_enable = "false";
-					* cil_settletime = "0";
-					* lane_polarity = "6";
 
-					* active_w = "1280";
-					* active_h = "720";
-					* mode_type = "yuv";
-					* pixel_phase = "uyvy";
-					* csi_pixel_bit_depth = "10";
-					* readout_orientation = "90";
-					* line_length = "3560";
-					* inherent_gain = "1";
-					* mclk_multiplier = "9.33";
-					* pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "6";
 
-					* gain_factor = "16";
-					* framerate_factor = "1000000";
-					* exposure_factor = "1000000";
-					* min_gain_val = "16"; // 1.00x
-					* max_gain_val = "170"; // 10.66x
-					* step_gain_val = "1";
-					* default_gain = "16"; // 1.00x
-					* min_hdr_ratio = "1";
-					* max_hdr_ratio = "1";
-					* min_framerate = "2000000"; // 2.0 fps
-					* max_framerate = "120000000"; // 120.0 fps
-					* step_framerate = "1";
-					* default_framerate = "120000000"; // 120.0 fps
-					* min_exp_time = "13"; // us
-					* max_exp_time = "683709"; // us
-					* step_exp_time = "1";
-					* default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-					* embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -1439,10 +1436,10 @@
 			};
 #endif
 #ifdef VLS_ARCAM_CSI0_CAM3
-			tevs_cam3: rpi22_tevs_d@3f {
+			tevs_cam3: rpi22_tevs_d@4b {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3f>;
+				reg = <0x4b>;
 
 				/* V4L2 device node location */
 				devnode = "video3";
@@ -1750,49 +1747,47 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 {  IMX219_MODE_1280x720_120FPS
-					* mclk_khz = "24000";
-					* num_lanes = "2";
-					* tegra_sinterface = "serial_a";
-					* phy_mode = "DPHY";
-					* discontinuous_clk = "yes";
-					* dpcm_enable = "false";
-					* cil_settletime = "0";
-					* lane_polarity = "6";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_d";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "6";
 
-					* active_w = "1280";
-					* active_h = "720";
-					* mode_type = "yuv";
-					* pixel_phase = "uyvy";
-					* csi_pixel_bit_depth = "10";
-					* readout_orientation = "90";
-					* line_length = "3560";
-					* inherent_gain = "1";
-					* mclk_multiplier = "9.33";
-					* pix_clk_hz = "169600000";
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-					* gain_factor = "16";
-					* framerate_factor = "1000000";
-					* exposure_factor = "1000000";
-					* min_gain_val = "16"; // 1.00x
-					* max_gain_val = "170"; // 10.66x
-					* step_gain_val = "1";
-					* default_gain = "16"; // 1.00x
-					* min_hdr_ratio = "1";
-					* max_hdr_ratio = "1";
-					* min_framerate = "2000000"; // 2.0 fps
-					* max_framerate = "120000000"; // 120.0 fps
-					* step_framerate = "1";
-					* default_framerate = "120000000"; // 120.0 fps
-					* min_exp_time = "13"; // us
-					* max_exp_time = "683709"; // us
-					* step_exp_time = "1";
-					* default_exp_time = "2495"; // us
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
 
-					* embedded_metadata_height = "0";
-				*};
-				*/
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -1811,10 +1806,10 @@
 		};
 		i2c_1: i2c@1 {
 #ifdef VLS_ARCAM_CSI1_CAM0
-			tevs_cam4: rpi22_tevs_e@3c {
+			tevs_cam4: rpi22_tevs_e@48 {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3c>;
+				reg = <0x48>;
 
 				/* V4L2 device node location */
 				devnode = "video4";
@@ -2113,49 +2108,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 { // IMX219_MODE_1280x720_120FPS
-				*	mclk_khz = "24000";
-				*	num_lanes = "2";
-				*	tegra_sinterface = "serial_c";
-				*	phy_mode = "DPHY";
-				*	discontinuous_clk = "yes";
-				*	dpcm_enable = "false";
-				*	cil_settletime = "0";
-				*	lane_polarity = "0";
 
-				*	active_w = "1280";
-				*	active_h = "720";
-				*	mode_type = "yuv";
-				*	pixel_phase = "uyvy";
-				*	csi_pixel_bit_depth = "10";
-				*	readout_orientation = "90";
-				*	line_length = "3560";
-				*	inherent_gain = "1";
-				*	mclk_multiplier = "9.33";
-				*	pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_c";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "0";
 
-				*	gain_factor = "16";
-				*	framerate_factor = "1000000";
-				*	exposure_factor = "1000000";
-				*	min_gain_val = "16"; // 1.00x
-				*	max_gain_val = "170"; // 10.66x
-				*	step_gain_val = "1";
-				*	default_gain = "16"; // 1.00x
-				*	min_hdr_ratio = "1";
-				*	max_hdr_ratio = "1";
-				*	min_framerate = "2000000"; // 2.0 fps
-				*	max_framerate = "120000000"; // 120.0 fps
-				*	step_framerate = "1";
-				*	default_framerate = "120000000"; // 120.0 fps
-				*	min_exp_time = "13"; // us
-				*	max_exp_time = "683709"; // us
-				*	step_exp_time = "1";
-				*	default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-				*	embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -2173,10 +2167,10 @@
 			};
 #endif
 #ifdef VLS_ARCAM_CSI1_CAM1
-			tevs_cam5: rpi22_tevs_f@3d {
+			tevs_cam5: rpi22_tevs_f@49 {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3d>;
+				reg = <0x49>;
 
 				/* V4L2 device node location */
 				devnode = "video5";
@@ -2475,49 +2469,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 { // IMX219_MODE_1280x720_120FPS
-				*	mclk_khz = "24000";
-				*	num_lanes = "2";
-				*	tegra_sinterface = "serial_c";
-				*	phy_mode = "DPHY";
-				*	discontinuous_clk = "yes";
-				*	dpcm_enable = "false";
-				*	cil_settletime = "0";
-				*	lane_polarity = "0";
 
-				*	active_w = "1280";
-				*	active_h = "720";
-				*	mode_type = "yuv";
-				*	pixel_phase = "uyvy";
-				*	csi_pixel_bit_depth = "10";
-				*	readout_orientation = "90";
-				*	line_length = "3560";
-				*	inherent_gain = "1";
-				*	mclk_multiplier = "9.33";
-				*	pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "0";
 
-				*	gain_factor = "16";
-				*	framerate_factor = "1000000";
-				*	exposure_factor = "1000000";
-				*	min_gain_val = "16"; // 1.00x
-				*	max_gain_val = "170"; // 10.66x
-				*	step_gain_val = "1";
-				*	default_gain = "16"; // 1.00x
-				*	min_hdr_ratio = "1";
-				*	max_hdr_ratio = "1";
-				*	min_framerate = "2000000"; // 2.0 fps
-				*	max_framerate = "120000000"; // 120.0 fps
-				*	step_framerate = "1";
-				*	default_framerate = "120000000"; // 120.0 fps
-				*	min_exp_time = "13"; // us
-				*	max_exp_time = "683709"; // us
-				*	step_exp_time = "1";
-				*	default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-				*	embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -2535,10 +2528,10 @@
 			};
 #endif
 #ifdef VLS_ARCAM_CSI1_CAM2
-			tevs_cam6: rpi22_tevs_g@3e {
+			tevs_cam6: rpi22_tevs_g@4a {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3e>;
+				reg = <0x4a>;
 
 				/* V4L2 device node location */
 				devnode = "video6";
@@ -2837,49 +2830,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 { // IMX219_MODE_1280x720_120FPS
-				*	mclk_khz = "24000";
-				*	num_lanes = "2";
-				*	tegra_sinterface = "serial_c";
-				*	phy_mode = "DPHY";
-				*	discontinuous_clk = "yes";
-				*	dpcm_enable = "false";
-				*	cil_settletime = "0";
-				*	lane_polarity = "0";
 
-				*	active_w = "1280";
-				*	active_h = "720";
-				*	mode_type = "yuv";
-				*	pixel_phase = "uyvy";
-				*	csi_pixel_bit_depth = "10";
-				*	readout_orientation = "90";
-				*	line_length = "3560";
-				*	inherent_gain = "1";
-				*	mclk_multiplier = "9.33";
-				*	pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "0";
 
-				*	gain_factor = "16";
-				*	framerate_factor = "1000000";
-				*	exposure_factor = "1000000";
-				*	min_gain_val = "16"; // 1.00x
-				*	max_gain_val = "170"; // 10.66x
-				*	step_gain_val = "1";
-				*	default_gain = "16"; // 1.00x
-				*	min_hdr_ratio = "1";
-				*	max_hdr_ratio = "1";
-				*	min_framerate = "2000000"; // 2.0 fps
-				*	max_framerate = "120000000"; // 120.0 fps
-				*	step_framerate = "1";
-				*	default_framerate = "120000000"; // 120.0 fps
-				*	min_exp_time = "13"; // us
-				*	max_exp_time = "683709"; // us
-				*	step_exp_time = "1";
-				*	default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-				*	embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -2897,10 +2889,10 @@
 			};
 #endif
 #ifdef VLS_ARCAM_CSI1_CAM3
-			tevs_cam7: rpi22_tevs_h@3f {
+			tevs_cam7: rpi22_tevs_h@4b {
 				compatible = "tn,tevs";
 				/* I2C device address */
-				reg = <0x3f>;
+				reg = <0x4b>;
 
 				/* V4L2 device node location */
 				devnode = "video7";
@@ -3199,49 +3191,48 @@
 
 					embedded_metadata_height = "0";
 				};
-				/*
-				*mode5 { // IMX219_MODE_1280x720_120FPS
-				*	mclk_khz = "24000";
-				*	num_lanes = "2";
-				*	tegra_sinterface = "serial_c";
-				*	phy_mode = "DPHY";
-				*	discontinuous_clk = "yes";
-				*	dpcm_enable = "false";
-				*	cil_settletime = "0";
-				*	lane_polarity = "0";
 
-				*	active_w = "1280";
-				*	active_h = "720";
-				*	mode_type = "yuv";
-				*	pixel_phase = "uyvy";
-				*	csi_pixel_bit_depth = "10";
-				*	readout_orientation = "90";
-				*	line_length = "3560";
-				*	inherent_gain = "1";
-				*	mclk_multiplier = "9.33";
-				*	pix_clk_hz = "169600000";
+				mode5 {
+					mclk_khz = "24000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "yes";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					lane_polarity = "0";
 
-				*	gain_factor = "16";
-				*	framerate_factor = "1000000";
-				*	exposure_factor = "1000000";
-				*	min_gain_val = "16"; // 1.00x
-				*	max_gain_val = "170"; // 10.66x
-				*	step_gain_val = "1";
-				*	default_gain = "16"; // 1.00x
-				*	min_hdr_ratio = "1";
-				*	max_hdr_ratio = "1";
-				*	min_framerate = "2000000"; // 2.0 fps
-				*	max_framerate = "120000000"; // 120.0 fps
-				*	step_framerate = "1";
-				*	default_framerate = "120000000"; // 120.0 fps
-				*	min_exp_time = "13"; // us
-				*	max_exp_time = "683709"; // us
-				*	step_exp_time = "1";
-				*	default_exp_time = "2495"; // us
+					active_w = "640";
+					active_h = "480";
+					mode_type = "yuv";
+					pixel_phase = "uyvy";
+					csi_pixel_bit_depth = "16";
+					readout_orientation = "90";
+					line_length = "3448";
+					inherent_gain = "1";
+					mclk_multiplier = "9.33";
+					pix_clk_hz = "182400000";
 
-				*	embedded_metadata_height = "0";
-				*};
-				*/
+					gain_factor = "16";
+					framerate_factor = "1000000";
+					exposure_factor = "1000000";
+					min_gain_val = "16"; /* 1.00x */
+					max_gain_val = "170"; /* 10.66x */
+					step_gain_val = "1";
+					default_gain = "16"; /* 1.00x */
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					min_framerate = "2000000"; /* 2.0 fps */
+					max_framerate = "60000000"; /* 60.0 fps */
+					step_framerate = "1";
+					default_framerate = "60000000"; /* 60.0 fps */
+					min_exp_time = "13"; /* us */
+					max_exp_time = "683709"; /* us */
+					step_exp_time = "1";
+					default_exp_time = "2495"; /* us */
+
+					embedded_metadata_height = "0";
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -3323,8 +3314,8 @@
 				orientation = "1";
 				cam_module0_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 9-003c";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_a@3c";
+					devname = "tevs 9-0048";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_a@48";
 				};
 				cam_module0_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3337,8 +3328,8 @@
 				orientation = "1";
 				cam_module1_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 9-003d";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_b@3d";
+					devname = "tevs 9-0049";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_b@49";
 				};
 				cam_module1_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3351,8 +3342,8 @@
 				orientation = "1";
 				cam_module2_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 9-003e";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_c@3e";
+					devname = "tevs 9-004a";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_c@4a";
 				};
 				cam_module2_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3365,8 +3356,8 @@
 				orientation = "1";
 				cam_module3_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 9-003f";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_d@3f";
+					devname = "tevs 9-004b";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/rpi22_tevs_d@4b";
 				};
 				cam_module3_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3379,8 +3370,8 @@
 				orientation = "1";
 				cam_module4_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 10-003c";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_e@3c";
+					devname = "tevs 10-0048";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_e@48";
 				};
 				cam_module4_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3393,8 +3384,8 @@
 				orientation = "1";
 				cam_module5_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 10-003d";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_f@3d";
+					devname = "tevs 10-0049";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_f@49";
 				};
 				cam_module5_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3407,8 +3398,8 @@
 				orientation = "1";
 				cam_module6_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 10-003e";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_f@3e";
+					devname = "tevs 10-004a";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_f@4a";
 				};
 				cam_module6_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
@@ -3421,8 +3412,8 @@
 				orientation = "1";
 				cam_module7_drivernode0: drivernode0 {
 					pcl_id = "v4l2_sensor";
-					devname = "tevs 10-003f";
-					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_f@3f";
+					devname = "tevs 10-004b";
+					proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/rpi22_tevs_f@4b";
 				};
 				cam_module7_drivernode1: drivernode1 {
 					pcl_id = "v4l2_lens";
