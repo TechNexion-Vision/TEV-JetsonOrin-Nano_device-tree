@@ -44,7 +44,7 @@
 				ser_alias_id = <0x40>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x25 0x3c>;
+				i2c_addr_alias_map_local = <0x25 0x48>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -78,14 +78,14 @@
 					};
 				};
 			};
-			rpi22_tevs_a@3c {
+			rpi22_tevs_a@48 {
 				reset-gpios = <&pca9554_csi0_a25 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi0_a25 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi0_des0>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <0>;
 			};
@@ -100,7 +100,7 @@
 				ser_alias_id = <0x41>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x26 0x3d>;
+				i2c_addr_alias_map_local = <0x26 0x49>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -134,14 +134,14 @@
 					};
 				};
 			};
-			rpi22_tevs_b@3d {
+			rpi22_tevs_b@49 {
 				reset-gpios = <&pca9554_csi0_a26 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi0_a26 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi0_des1>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <1>;
 			};
@@ -156,7 +156,7 @@
 				ser_alias_id = <0x42>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x27 0x3e>;
+				i2c_addr_alias_map_local = <0x27 0x4a>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -190,14 +190,14 @@
 					};
 				};
 			};
-			rpi22_tevs_c@3e {
+			rpi22_tevs_c@4a {
 				reset-gpios = <&pca9554_csi0_a27 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi0_a27 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi0_des2>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <2>;
 			};
@@ -212,7 +212,7 @@
 				ser_alias_id = <0x43>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x28 0x3f>;
+				i2c_addr_alias_map_local = <0x28 0x4b>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -246,14 +246,14 @@
 					};
 				};
 			};
-			rpi22_tevs_d@3f {
+			rpi22_tevs_d@4b {
 				reset-gpios = <&pca9554_csi0_a28 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi0_a28 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi0_des3>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <3>;
 			};
@@ -274,7 +274,7 @@
 				ser_alias_id = <0x40>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x25 0x3c>;
+				i2c_addr_alias_map_local = <0x25 0x48>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -309,14 +309,14 @@
 				};
 			};
 
-			rpi22_tevs_e@3c {
+			rpi22_tevs_e@48 {
 				reset-gpios = <&pca9554_csi1_a25 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi1_a25 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi1_des0>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <0>;
 			};
@@ -331,7 +331,7 @@
 				ser_alias_id = <0x41>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x26 0x3d>;
+				i2c_addr_alias_map_local = <0x26 0x49>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -366,14 +366,14 @@
 				};
 			};
 
-			rpi22_tevs_f@3d {
+			rpi22_tevs_f@49 {
 				reset-gpios = <&pca9554_csi1_a26 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi1_a26 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi1_des1>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <1>;
 			};
@@ -388,7 +388,7 @@
 				ser_alias_id = <0x42>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x27 0x3e>;
+				i2c_addr_alias_map_local = <0x27 0x4a>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -423,14 +423,14 @@
 				};
 			};
 
-			rpi22_tevs_g@3e {
+			rpi22_tevs_g@4a {
 				reset-gpios = <&pca9554_csi1_a27 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi1_a27 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi1_des2>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <2>;
 			};
@@ -445,7 +445,7 @@
 				ser_alias_id = <0x43>;
 
 				//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-				i2c_addr_alias_map_local = <0x28 0x3f>;
+				i2c_addr_alias_map_local = <0x28 0x4b>;
 				i2c_addr_alias_map_remote = <0x25 0x48>;
 
 				//deserializer output csi lanes 1~4. default 4
@@ -480,14 +480,14 @@
 				};
 			};
 
-			rpi22_tevs_h@3f {
+			rpi22_tevs_h@4b {
 				reset-gpios = <&pca9554_csi1_a28 4 GPIO_ACTIVE_HIGH>;
 				standby-gpios = <&pca9554_csi1_a28 2 GPIO_ACTIVE_HIGH>;
 
 				nvidia,fpdlink-dser-device = <&fpdlink_csi1_des3>;
 				data-lanes = <2>;
 				data-frequency = <248>;
-				trigger-mode;
+				// trigger-mode;
 				// hw-reset;
 				vc_port = <3>;
 			};
