@@ -57,7 +57,6 @@
 #endif
 #ifdef VLS_ARCAM_CSI0_CAM2
 			vi_port2: port@2 {
-				// status = "disabled";
 				reg = <2>;
 				rpi22_tevs_vi_in2: endpoint {
 					vc-id = <2>;
@@ -69,7 +68,6 @@
 #endif
 #ifdef VLS_ARCAM_CSI0_CAM3
 			vi_port3: port@3 {
-				// status = "disabled";
 				reg = <3>;
 				rpi22_tevs_vi_in3: endpoint {
 					vc-id = <3>;
@@ -427,7 +425,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_a";
@@ -468,7 +466,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_a";
@@ -509,7 +507,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_a";
@@ -551,7 +549,7 @@
 					embedded_metadata_height = "0";
 				};
 
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_a";
@@ -593,7 +591,7 @@
 					embedded_metadata_height = "0";
 				};
 
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_a";
@@ -683,7 +681,6 @@
 					port@0 {
 						reg = <0>;
 						rpi22_tevs_out0: endpoint {
-							// vc-id = <0>;
 							port-index = <1>;
 							bus-width = <2>;
 							remote-endpoint = <&rpi22_tevs_csi_in0>;
@@ -799,11 +796,10 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
-					// vc_id = "1";
 					phy_mode = "DPHY";
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
@@ -841,11 +837,10 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
-					// vc_id = "1";
 					phy_mode = "DPHY";
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
@@ -883,11 +878,10 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
-					// vc_id = "1";
 					phy_mode = "DPHY";
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
@@ -925,11 +919,10 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
-					// vc_id = "1";
 					phy_mode = "DPHY";
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
@@ -967,11 +960,10 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
-					// vc_id = "1";
 					phy_mode = "DPHY";
 					discontinuous_clk = "yes";
 					dpcm_enable = "false";
@@ -1173,7 +1165,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1214,7 +1206,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1255,7 +1247,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1296,7 +1288,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1337,7 +1329,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1542,7 +1534,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1583,7 +1575,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1624,7 +1616,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1665,7 +1657,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1706,7 +1698,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_d";
@@ -1903,7 +1895,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -1944,7 +1936,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -1985,7 +1977,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2026,7 +2018,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2067,7 +2059,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2157,7 +2149,6 @@
 					port@0 {
 						reg = <0>;
 						rpi22_tevs_out4: endpoint {
-							// vc-id = <0>;
 							port-index = <2>;
 							bus-width = <2>;
 							remote-endpoint = <&rpi22_tevs_csi_in4>;
@@ -2264,7 +2255,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2305,7 +2296,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2346,7 +2337,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2387,7 +2378,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2428,7 +2419,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2518,7 +2509,6 @@
 					port@0 {
 						reg = <0>;
 						rpi22_tevs_out5: endpoint {
-							// vc-id = <0>;
 							port-index = <2>;
 							bus-width = <2>;
 							remote-endpoint = <&rpi22_tevs_csi_in5>;
@@ -2625,7 +2615,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2666,7 +2656,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2707,7 +2697,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2748,7 +2738,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2789,7 +2779,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -2879,7 +2869,6 @@
 					port@0 {
 						reg = <0>;
 						rpi22_tevs_out6: endpoint {
-							// vc-id = <0>;
 							port-index = <2>;
 							bus-width = <2>;
 							remote-endpoint = <&rpi22_tevs_csi_in6>;
@@ -2986,7 +2975,7 @@
 				* Sensor embedded metadata height in units of rows.
 				* If sensor does not support embedded metadata value should be 0.
 				*/
-				mode0 { /* IMX219_MODE_3280x2464_21FPS */
+				mode0 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -3027,7 +3016,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode1 { /* IMX219_MODE_3280x1848_28FPS */
+				mode1 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -3068,7 +3057,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode2 { /* IMX219_MODE_1920x1080_30FPS */
+				mode2 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -3109,7 +3098,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode3 { /* IMX219_MODE_1640x1232_30FPS */
+				mode3 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -3150,7 +3139,7 @@
 
 					embedded_metadata_height = "0";
 				};
-				mode4 { /* IMX219_MODE_1280x720_60FPS */
+				mode4 {
 					mclk_khz = "24000";
 					num_lanes = "2";
 					tegra_sinterface = "serial_c";
@@ -3240,7 +3229,6 @@
 					port@0 {
 						reg = <0>;
 						rpi22_tevs_out7: endpoint {
-							// vc-id = <0>;
 							port-index = <2>;
 							bus-width = <2>;
 							remote-endpoint = <&rpi22_tevs_csi_in7>;
