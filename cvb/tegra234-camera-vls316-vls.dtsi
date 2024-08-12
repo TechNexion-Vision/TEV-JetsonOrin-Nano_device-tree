@@ -38,7 +38,7 @@
 				reg = <0>;
 				rpi22_tevs_vi_in0: endpoint {
 					vc-id = <0>;
-					port-index = <0>;
+					port-index = <1>;
 					bus-width = <2>;
 					remote-endpoint = <&rpi22_tevs_csi_out0>;
 				};
