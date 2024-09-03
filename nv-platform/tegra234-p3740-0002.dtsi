@@ -6,6 +6,10 @@
 / {
 	bus@0 {
 		i2c@31c0000 {
+			audio-codec@1c {
+				#sound-dai-cells = <1>;
+			};
+
 			typec: stusb1600@28 {
 				status = "okay";
 				compatible = "st,stusb1600";
