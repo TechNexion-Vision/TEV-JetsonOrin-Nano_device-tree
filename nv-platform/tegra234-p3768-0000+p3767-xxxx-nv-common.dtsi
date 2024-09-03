@@ -103,18 +103,6 @@
 			};
 		};
 
-		serial@3100000 {
-			compatible = "nvidia,tegra194-hsuart";
-			reset-names = "serial";
-			status = "okay";
-		};
-
-		serial@3140000 {
-			compatible = "nvidia,tegra194-hsuart";
-			reset-names = "serial";
-			status = "okay";
-		};
-
 		i2c@3180000 {
 			status = "okay";
 		};
