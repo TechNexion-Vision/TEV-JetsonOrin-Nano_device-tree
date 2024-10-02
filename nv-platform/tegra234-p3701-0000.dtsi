@@ -4,16 +4,6 @@
 #include "tegra234-p3701-0000-prod-overlay.dtsi"
 
 / {
-	bus@0 {
-		spi@3270000 {
-			flash@0 {
-				spi-max-frequency = <51000000>;
-				spi-tx-bus-width = <1>;
-				spi-rx-bus-width = <1>;
-			};
-		};
-	};
-
 	bpmp {
 		i2c {
 			vrs@3c {
