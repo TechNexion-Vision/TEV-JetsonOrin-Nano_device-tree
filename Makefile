@@ -42,6 +42,15 @@ dtbo-$(BUILD_ENABLE) += tegra234-p3767-camera-p3768-imx477-dual-4lane.dtbo
 dtbo-$(BUILD_ENABLE) += tegra234-p3767-overlay.dtbo
 dtbo-$(BUILD_ENABLE) += tegra234-p3768-overlay.dtbo
 
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0000-tek-orin-a1.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0001-tek-orin-a1.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-tek-orin-a1.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0004-tek-orin-a1.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-tevi-ov5640.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-tevi-ap1302.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-tevs.dtb
+dtb-$(BUILD_ENABLE) += tegra234-p3767-0003-p3768-0000-a0-vl316-vls.dtb
+
 ifneq ($(dtb-y),)
 dtb-y := $(addprefix $(makefile-path)/,$(dtb-y))
 endif
