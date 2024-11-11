@@ -261,6 +261,12 @@
 			};
 		};
 
+		pcie@14100000 {
+			nvidia,pex-wake-gpios = <&gpio
+							TEGRA234_MAIN_GPIO(Z, 2)
+							GPIO_ACTIVE_LOW>;
+		};
+
 		gpu@17000000 {
 			status = "okay";
 		};
