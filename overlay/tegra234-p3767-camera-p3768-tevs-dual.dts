@@ -1,0 +1,89 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// SPDX-FileCopyrightText: Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+/dts-v1/;
+/plugin/;
+
+#define CAM0_RST        TEGRA234_MAIN_GPIO(H, 3)
+#define CAM0_PWDN	TEGRA234_MAIN_GPIO(H, 6)
+#define CAM1_PWDN	TEGRA234_MAIN_GPIO(AC, 0)
+#define CAM_I2C_MUX 	TEGRA234_AON_GPIO(CC, 3)
+
+#include <dt-bindings/tegra234-p3767-0000-common.h>
+#include "tegra234-camera-rpi22-tevs.dtsi"
+
+/ {
+	overlay-name = "TechNexion Camera TEVS Dual";
+	jetson-header-name = "Jetson 24pin CSI Connector";
+	compatible = JETSON_COMPATIBLE_P3768;
+
+	fragment-camera-tevs@0 {
+		target-path = "/";
+		__overlay__ {
+			bus@0 {
+				cam_i2cmux{
+					status = "okay";
+					compatible = "i2c-mux-gpio";
+					#address-cells = <1>;
+					#size-cells = <0>;
+					i2c-parent = <&cam_i2c>;
+					mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
+					i2c@0 {
+						status = "okay";
+						reg = <0>;
+						#address-cells = <1>;
+						#size-cells = <0>;
+
+						pca9554_a27_a: pca9554_a@27 {
+							compatible = "nxp,pca9554";
+							reg = <0x27>;
+							gpio-controller;
+							#gpio-cells = <2>;
+							vcc-supply = <&vdd_1v8_hs>;
+							vcc_lp = "vcc";
+							status = "okay";
+						};
+
+						rpi22_tevs_a@48 {
+							reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
+							standby-gpios = <&pca9554_a27_a 6 GPIO_ACTIVE_HIGH>;
+							data-lanes = <2>;
+							status = "okay";
+						};
+					};
+					i2c@1 {
+						status = "okay";
+						reg = <1>;
+						#address-cells = <1>;
+						#size-cells = <0>;
+
+						pca9554_a27_c: pca9554_c@27 {
+							compatible = "nxp,pca9554";
+							reg = <0x27>;
+							gpio-controller;
+							#gpio-cells = <2>;
+							vcc-supply = <&vdd_1v8_sys>;
+							vcc_lp = "vcc";
+							status = "okay";
+						};
+
+						rpi22_tevs_c@48 {
+							reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
+							standby-gpios = <&pca9554_a27_c 6 GPIO_ACTIVE_HIGH>;
+							data-lanes = <4>;
+							status = "okay";
+						};
+					};
+				};
+				gpio@2200000 {
+					camera-control-output-low {
+						gpio-hog;
+						output-low;
+						gpios = <CAM0_RST 0>;
+						label = "cam0-rst";
+					};
+				};
+			};
+		};
+	};
+};
