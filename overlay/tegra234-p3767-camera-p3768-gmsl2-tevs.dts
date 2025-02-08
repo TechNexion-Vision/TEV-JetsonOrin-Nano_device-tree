@@ -684,8 +684,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -725,8 +724,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -766,8 +764,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -807,8 +804,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -848,8 +844,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -889,8 +884,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -966,8 +960,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1007,8 +1000,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1048,8 +1040,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1089,8 +1080,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1130,8 +1120,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1171,8 +1160,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1248,8 +1236,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1289,8 +1276,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1330,8 +1316,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1371,8 +1356,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1412,8 +1396,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1453,8 +1436,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1530,8 +1512,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1571,8 +1552,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1612,8 +1592,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1653,8 +1632,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1694,8 +1672,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1735,8 +1712,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1940,8 +1916,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1980,8 +1955,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2020,8 +1994,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2060,8 +2033,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2100,8 +2072,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2140,8 +2111,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2216,8 +2186,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2256,8 +2225,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2296,8 +2264,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2336,8 +2303,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2376,8 +2342,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2416,8 +2381,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2492,8 +2456,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2532,8 +2495,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2572,8 +2534,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2612,8 +2573,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2652,8 +2612,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2692,8 +2651,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2768,8 +2726,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2808,8 +2765,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2848,8 +2804,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2888,8 +2843,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2928,8 +2882,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2968,8 +2921,7 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "100000000";
-			serdes_pix_clk_hz = "187500000";
+			pix_clk_hz = "182400000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
