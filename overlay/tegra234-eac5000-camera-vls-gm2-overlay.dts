@@ -555,13 +555,31 @@
 		reg = <0x4a>;
 		phy-reg = <0x48>;
 
-		// reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
-		reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
 		i2c-addr-alias-map-local = <0x41 0x42>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <0 1>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&des_0 0 0 12>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&des_0_pinmux_default>;
+
+		// fsync-mode = "external";
+
+		des_0_pinmux_default: pinmux {
+			mfp6_fsync {
+				pins = "mfp6";
+				function = "gpio";
+				maxim,gmsl-tx = <1>;
+				maxim,gmsl-tx-id = <0>;
+				input-enable;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -635,13 +653,31 @@
 		reg = <0x4a>;
 		phy-reg = <0x48>;
 
-		// reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
-		reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
 		i2c-addr-alias-map-local = <0x41 0x42>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <0 1>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&des_1 0 0 12>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&des_1_pinmux_default>;
+
+		// fsync-mode = "external";
+
+		des_1_pinmux_default: pinmux {
+			mfp6_fsync {
+				pins = "mfp6";
+				function = "gpio";
+				maxim,gmsl-tx = <1>;
+				maxim,gmsl-tx-id = <0>;
+				input-enable;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -715,13 +751,31 @@
 		reg = <0x68>;
 		phy-reg = <0x48>;
 
-		// reset-gpios = <&gpio CAM0_RST_L GPIO_ACTIVE_HIGH>;
-		reset-gpios = <&gpio CAM0_RST_L GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpio CAM0_RST_L GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
 		i2c-addr-alias-map-local = <0x43 0x44>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <2 3>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&des_2 0 0 12>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&des_2_pinmux_default>;
+
+		// fsync-mode = "external";
+
+		des_2_pinmux_default: pinmux {
+			mfp6_fsync {
+				pins = "mfp6";
+				function = "gpio";
+				maxim,gmsl-tx = <1>;
+				maxim,gmsl-tx-id = <0>;
+				input-enable;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -795,13 +849,31 @@
 		reg = <0x68>;
 		phy-reg = <0x48>;
 
-		// reset-gpios = <&gpio CAM1_RST_L GPIO_ACTIVE_HIGH>;
-		reset-gpios = <&gpio CAM1_RST_L GPIO_ACTIVE_LOW>;
+		reset-gpios = <&gpio CAM1_RST_L GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
 		i2c-addr-alias-map-local = <0x43 0x44>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <2 3>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&des_3 0 0 12>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&des_3_pinmux_default>;
+
+		// fsync-mode = "external";
+
+		des_3_pinmux_default: pinmux {
+			mfp6_fsync {
+				pins = "mfp6";
+				function = "gpio";
+				maxim,gmsl-tx = <1>;
+				maxim,gmsl-tx-id = <0>;
+				input-enable;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -881,6 +953,20 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_0 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_0_pinmux_default>;
+
+		ser_0_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -1227,6 +1313,20 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_1 0 0 11>;
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_1_pinmux_default>;
+
+		ser_1_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -1571,6 +1671,20 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_2 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_2_pinmux_default>;
+
+		ser_2_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -1917,6 +2031,20 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_3 0 0 11>;
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_3_pinmux_default>;
+
+		ser_3_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -2261,6 +2389,20 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_4 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_4_pinmux_default>;
+
+		ser_4_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -2607,6 +2749,20 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_5 0 0 11>;
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_5_pinmux_default>;
+
+		ser_5_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -2952,6 +3108,20 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_6 0 0 11>;
 
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_6_pinmux_default>;
+
+		ser_6_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -3296,6 +3466,20 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_7 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_7_pinmux_default>;
+
+		ser_7_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
