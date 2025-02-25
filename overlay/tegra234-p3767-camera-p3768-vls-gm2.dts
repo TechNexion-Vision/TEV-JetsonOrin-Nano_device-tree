@@ -612,7 +612,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 
 		channel@2 {
@@ -624,7 +624,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 
 		channel@1 {
@@ -636,7 +636,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 
 		channel@0 {
@@ -648,7 +648,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 	};
 
@@ -661,7 +661,7 @@
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -937,7 +937,7 @@
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -1213,7 +1213,7 @@
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -1489,7 +1489,7 @@
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -1853,7 +1853,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 
 		channel@2 {
@@ -1865,7 +1865,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 
 		channel@1 {
@@ -1877,7 +1877,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 
 		channel@0 {
@@ -1889,7 +1889,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <750000000>;
+			link-frequencies = /bits/ 64 <625000000>;
 		};
 	};
 
@@ -1902,7 +1902,7 @@
 		reset-gpios = <&pca9554_cam_7 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -2172,7 +2172,7 @@
 		reset-gpios = <&pca9554_cam_6 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -2442,7 +2442,7 @@
 		reset-gpios = <&pca9554_cam_5 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -2712,7 +2712,7 @@
 		reset-gpios = <&pca9554_cam_4 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <248>;
+		data-frequency = <256>;
 		// trigger-mode;
 		// hw-reset;
 
