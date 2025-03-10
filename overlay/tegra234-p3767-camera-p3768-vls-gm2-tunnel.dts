@@ -1779,7 +1779,7 @@
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&des_1 0 0 12>;
+		gpio-ranges = <&des_1 0 0 8>;
 
 		// fsync-mode = "external";
 
