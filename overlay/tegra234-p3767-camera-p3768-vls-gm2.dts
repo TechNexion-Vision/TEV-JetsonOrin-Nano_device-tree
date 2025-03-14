@@ -612,7 +612,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
 		channel@2 {
@@ -624,7 +624,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
 		channel@1 {
@@ -636,7 +636,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
 		channel@0 {
@@ -648,7 +648,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
 
@@ -661,7 +661,7 @@
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -692,7 +692,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -732,7 +733,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -772,7 +774,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -812,7 +815,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -852,7 +856,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -892,7 +897,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -937,7 +943,7 @@
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -968,7 +974,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1008,7 +1015,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1048,7 +1056,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1088,7 +1097,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1128,7 +1138,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1168,7 +1179,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1213,7 +1225,7 @@
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -1244,7 +1256,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1284,7 +1297,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1324,7 +1338,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1364,7 +1379,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1404,7 +1420,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1444,7 +1461,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1489,7 +1507,7 @@
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -1520,7 +1538,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1560,7 +1579,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1600,7 +1620,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1640,7 +1661,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1680,7 +1702,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1720,7 +1743,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1853,7 +1877,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
 		channel@2 {
@@ -1865,7 +1889,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
 		channel@1 {
@@ -1877,7 +1901,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
 		channel@0 {
@@ -1889,7 +1913,7 @@
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <625000000>;
+			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
 
@@ -1902,7 +1926,7 @@
 		reset-gpios = <&pca9554_cam_7 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -1932,7 +1956,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1971,7 +1996,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2010,7 +2036,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2049,7 +2076,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2088,7 +2116,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2127,7 +2156,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2172,7 +2202,7 @@
 		reset-gpios = <&pca9554_cam_6 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -2202,7 +2232,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2241,7 +2272,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2280,7 +2312,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2319,7 +2352,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2358,7 +2392,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2397,7 +2432,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2442,7 +2478,7 @@
 		reset-gpios = <&pca9554_cam_5 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -2472,7 +2508,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2511,7 +2548,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2550,7 +2588,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2589,7 +2628,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2628,7 +2668,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2667,7 +2708,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2712,7 +2754,7 @@
 		reset-gpios = <&pca9554_cam_4 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <2>;
-		data-frequency = <256>;
+		data-frequency = <560>;
 		// trigger-mode;
 		// hw-reset;
 
@@ -2742,7 +2784,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2781,7 +2824,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2820,7 +2864,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2859,7 +2904,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2898,7 +2944,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2937,7 +2984,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "182400000";
+			pix_clk_hz = "70000000";
+			serdes_pix_clk_hz = "312500000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
