@@ -15,6 +15,26 @@
 		i2c@3160000 {
 			status = "okay";
 
+			tca9555_a21: tca9555@21 {
+				compatible = "nxp,pca9555";
+				reg = <0x21>;
+
+//				interrupt-parent = <&tegra_aon_gpio>;
+//				interrupts = <TEGRA234_AON_GPIO(CC, 2) IRQ_TYPE_LEVEL_LOW>;
+
+				interrupt-controller;
+				#interrupt-cells = <2>;
+
+				gpio-controller;
+				#gpio-cells = <2>;
+
+				status = "okay";
+				gpio-line-names = "CSI0_PWDN", "CSI0_PDB", "CSI0_RST_N", "INFO0_TRIG_IN",
+							"CSI1_PWDN", "CSI1_PDB", "CSI1_RST_N", "INFO1_TRIG_IN",
+							"", "", "", "",
+							"", "", "", "";
+			};
+
 			eeprom@57 {
 				compatible = "atmel,24c02";
 				reg = <0x57>;
@@ -25,6 +45,57 @@
 				pagesize = <8>;
 				size = <256>;
 				read-only;
+			};
+		};
+
+		i2c@c240000{
+			status = "okay";
+
+			pca9555_a23: pca9555@23 {
+				compatible = "nxp,pca9555";
+				reg = <0x23>;
+
+				interrupt-parent = <&tegra_aon_gpio>;
+				interrupts = <TEGRA234_AON_GPIO(CC, 0) IRQ_TYPE_LEVEL_LOW>;
+
+				interrupt-controller;
+				#interrupt-cells = <2>;
+
+				gpio-controller;
+				#gpio-cells = <2>;
+
+				status = "okay";
+				gpio-line-names = "M2_DISABLE_N", "M2_RST_N", "LTE_WAKE", "W_DISABLE1_CTRL",
+							"BT_M2_EN", "GPIO_LED1", "GPIO_LED2", "GPIO_LED3",
+							"BTBC_GPIO_P20", "BTBC_GPIO_P21", "BTBC_GPIO_P22", "BTBC_GPIO_P23",
+							"BTBC_GPIO_P24", "BTBP_GPIO_P18", "BTBP_GPIO_P19", "BTBP_GPIO_P20";
+			};
+		};
+
+		gpio-leds1 {
+			compatible = "gpio-leds";
+			status = "okay";
+			led1 {
+				gpios = <&pca9555_a23 5 GPIO_ACTIVE_HIGH>;
+				default-state = "off";
+			};
+		};
+
+		gpio-leds2 {
+			compatible = "gpio-leds";
+			status = "okay";
+			led2 {
+				gpios = <&pca9555_a23 6 GPIO_ACTIVE_HIGH>;
+				default-state = "off";
+			};
+		};
+
+		gpio-leds3 {
+			compatible = "gpio-leds";
+			status = "okay";
+			led3 {
+				gpios = <&pca9555_a23 7 GPIO_ACTIVE_HIGH>;
+				default-state = "off";
 			};
 		};
 
