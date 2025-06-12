@@ -99,6 +99,10 @@
 			};
 		};
 
+		serial@3110000 {
+			status = "okay";
+		};
+
 		serial@31d0000 {
 			current-speed = <115200>;
 			status = "okay";
