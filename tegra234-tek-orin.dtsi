@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
+#include <dt-bindings/pinctrl/pinctrl-tegra.h>
 
 / {
 	compatible = "nvidia,p3768-0000";
@@ -112,6 +113,28 @@
 			assigned-clocks = <&bpmp TEGRA234_CLK_PWM3>;
 			assigned-clock-parents = <&bpmp TEGRA234_CLK_PLLP_OUT0>;
 			status = "okay";
+		};
+
+		pwm@32e0000 {/* PWM7 40 pin header, pin 32 */
+			status = "okay";
+		};
+
+		pinmux@2430000 {
+			pwm-pinmux {
+				hdr40-pwm5 {
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,function = "gp";
+					nvidia,pins = "soc_gpio21_ph0";
+				};
+
+				hdr40-pwm7 {
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,function = "gp";
+					nvidia,pins = "soc_gpio19_pg6";
+				};
+			};
 		};
 
 		padctl@3520000 {
