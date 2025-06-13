@@ -87,7 +87,7 @@
 			status = "okay";
 			led2 {
 				gpios = <&gpio_aon TEGRA234_AON_GPIO(CC, 1)  GPIO_ACTIVE_HIGH>;
-				default-state = "off";
+				default-state = "on";
 			};
 		};
 
