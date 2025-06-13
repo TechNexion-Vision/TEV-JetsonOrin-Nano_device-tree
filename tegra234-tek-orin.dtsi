@@ -342,6 +342,17 @@
 		#cooling-cells = <2>;
 	};
 
+	reg_can0_stby: regulator-can0-stby {
+		compatible = "regulator-fixed";
+		regulator-name = "can1-stby";
+		pinctrl-names = "default";
+		regulator-min-microvolt = <0>;
+		regulator-max-microvolt = <0>;
+		gpio = <&gpio TEGRA234_MAIN_GPIO(Z, 6) GPIO_ACTIVE_HIGH>;
+		enable-active-high;
+		status = "okay";
+	};
+
 	vdd_1v8_sys: regulator-vdd-1v8-sys {
 		compatible = "regulator-fixed";
 		regulator-name = "VDD_1V8_SYS";
