@@ -488,18 +488,6 @@
 					i2c-parent = <&cam_i2c>;
 					mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-					cam_i2c_0: i2c@0 {
-						#address-cells = <1>;
-						#size-cells = <0>;
-
-						reg = <0>;
-						status = "okay";
-
-						rbpcv2_imx219_a@10 {
-							status = "disabled";
-						};
-					};
-
 					cam_i2c_1: i2c@1 {
 						#address-cells = <1>;
 						#size-cells = <0>;
@@ -508,6 +496,18 @@
 						status = "okay";
 
 						rbpcv2_imx219_c@10 {
+							status = "disabled";
+						};
+					};
+
+					cam_i2c_0: i2c@0 {
+						#address-cells = <1>;
+						#size-cells = <0>;
+
+						reg = <0>;
+						status = "okay";
+
+						rbpcv2_imx219_a@10 {
 							status = "disabled";
 						};
 					};
