@@ -35,26 +35,26 @@
 						vcc-supply = <&vdd_1v8_sys>;
 						vcc_lp = "vcc";
 
-						i2c@0 {
+						i2c@0 {  // i2c-9
 								status = "okay";
 								reg = <0>;
 								i2c-mux,deselect-on-exit;
 								#address-cells = <1>;
 								#size-cells = <0>;
 
-								vls3_csi0_port0: vls3@30 {
+								vls3_csi0_port3: vls3@33 {
 									compatible = "tn,vls3";
-									reg = <0x30>;
+									reg = <0x33>;
 									phy-reg = <0x30>;
-									port = <0>;
+									port = <3>;
 									pdb-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
-									ser_alias_id = <0x40>;
+									ser_alias_id = <0x43>;
 
 									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-									i2c_addr_alias_map_local = <0x25 0x48>;
+									i2c_addr_alias_map_local = <0x28 0x4b>;
 									i2c_addr_alias_map_remote = <0x25 0x48>;
 
-									//deserializer output csi lanes 1~4. default 4
+									//deserializer output csi laneds 1~4. default 4
 									des_csi_lanes = <4>;
 
 									//1: Enable 0: Disable continuous clock. default 0
@@ -74,9 +74,9 @@
 										#address-cells = <1>;
 										#size-cells = <0>;
 
-										pca9554_csi0_a25: pca9554@25 {
+										pca9554_csi0_a28: pca9554@28 {
 											compatible = "nxp,pca9554";
-											reg = <0x25>;
+											reg = <0x28>;
 											gpio-controller;
 											#gpio-cells = <2>;
 											vcc-supply = <&vdd_1v8_hs>;
@@ -85,62 +85,9 @@
 										};
 									};
 								};
-								rpi22_tevs_a@48 {
-									reset-gpios = <&pca9554_csi0_a25 4 GPIO_ACTIVE_HIGH>;
-									standby-gpios = <&pca9554_csi0_a25 2 GPIO_ACTIVE_HIGH>;
-									data-lanes = <2>;
-									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
-									status = "okay";
-								};
-
-								vls3_csi0_port1: vls3@31 {
-									compatible = "tn,vls3";
-									reg = <0x31>;
-									phy-reg = <0x30>;
-									port = <1>;
-									pdb-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
-									ser_alias_id = <0x41>;
-
-									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-									i2c_addr_alias_map_local = <0x26 0x49>;
-									i2c_addr_alias_map_remote = <0x25 0x48>;
-
-									//deserializer output csi lanes 1~4. default 4
-									des_csi_lanes = <4>;
-
-									//1: Enable 0: Disable continuous clock. default 0
-									des_csi_continuous_clock = <0>;
-
-									//serializer input csi lanes 1~4. default 4
-									ser_csi_lanes = <2>;
-
-									//1: Enable 0: Disable continuous clock. default 0
-									ser_csi_continuous_clock = <0>;
-
-									aeq_floor_val = <0>;
-
-									status = "okay";
-
-									i2c_dev_list {
-										#address-cells = <1>;
-										#size-cells = <0>;
-
-										pca9554_csi0_a26: pca9554@26 {
-											compatible = "nxp,pca9554";
-											reg = <0x26>;
-											gpio-controller;
-											#gpio-cells = <2>;
-											vcc-supply = <&vdd_1v8_hs>;
-											vcc_lp = "vcc";
-											status = "okay";
-										};
-									};
-								};
-								rpi22_tevs_b@49 {
-									reset-gpios = <&pca9554_csi0_a26 4 GPIO_ACTIVE_HIGH>;
-									standby-gpios = <&pca9554_csi0_a26 2 GPIO_ACTIVE_HIGH>;
+								rpi22_tevs_d@4b {
+									reset-gpios = <&pca9554_csi0_a28 4 GPIO_ACTIVE_HIGH>;
+									standby-gpios = <&pca9554_csi0_a28 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
 									// trigger-mode;
@@ -201,125 +148,12 @@
 									status = "okay";
 								};
 
-								vls3_csi0_port3: vls3@33 {
-									compatible = "tn,vls3";
-									reg = <0x33>;
-									phy-reg = <0x30>;
-									port = <3>;
-									pdb-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
-									ser_alias_id = <0x43>;
-
-									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-									i2c_addr_alias_map_local = <0x28 0x4b>;
-									i2c_addr_alias_map_remote = <0x25 0x48>;
-
-									//deserializer output csi laneds 1~4. default 4
-									des_csi_lanes = <4>;
-
-									//1: Enable 0: Disable continuous clock. default 0
-									des_csi_continuous_clock = <0>;
-
-									//serializer input csi lanes 1~4. default 4
-									ser_csi_lanes = <2>;
-
-									//1: Enable 0: Disable continuous clock. default 0
-									ser_csi_continuous_clock = <0>;
-
-									aeq_floor_val = <0>;
-
-									status = "okay";
-
-									i2c_dev_list {
-										#address-cells = <1>;
-										#size-cells = <0>;
-
-										pca9554_csi0_a28: pca9554@28 {
-											compatible = "nxp,pca9554";
-											reg = <0x28>;
-											gpio-controller;
-											#gpio-cells = <2>;
-											vcc-supply = <&vdd_1v8_hs>;
-											vcc_lp = "vcc";
-											status = "okay";
-										};
-									};
-								};
-								rpi22_tevs_d@4b {
-									reset-gpios = <&pca9554_csi0_a28 4 GPIO_ACTIVE_HIGH>;
-									standby-gpios = <&pca9554_csi0_a28 2 GPIO_ACTIVE_HIGH>;
-									data-lanes = <2>;
-									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
-									status = "okay";
-								};
-						};
-						i2c@1 {
-								status = "okay";
-								reg = <1>;
-								i2c-mux,deselect-on-exit;
-								#address-cells = <1>;
-								#size-cells = <0>;
-
-								vls3_csi1_port0: vls3@30 {
-									compatible = "tn,vls3";
-									reg = <0x30>;
-									phy-reg = <0x30>;
-									port = <0>;
-									pdb-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
-									ser_alias_id = <0x40>;
-
-									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-									i2c_addr_alias_map_local = <0x25 0x48>;
-									i2c_addr_alias_map_remote = <0x25 0x48>;
-
-									//deserializer output csi lanes 1~4. default 4
-									des_csi_lanes = <4>;
-
-									//1: Enable 0: Disable continuous clock. default 0
-									des_csi_continuous_clock = <0>;
-
-									//serializer input csi lanes 1~4. default 4
-									ser_csi_lanes = <2>;
-
-									//1: Enable 0: Disable continuous clock. default 0
-									ser_csi_continuous_clock = <0>;
-
-									aeq_floor_val = <0>;
-
-									status = "okay";
-
-									i2c_dev_list {
-										#address-cells = <1>;
-										#size-cells = <0>;
-
-										pca9554_csi1_a25: pca9554@25 {
-											compatible = "nxp,pca9554";
-											reg = <0x25>;
-											gpio-controller;
-											#gpio-cells = <2>;
-											vcc-supply = <&vdd_1v8_sys>;
-											vcc_lp = "vcc";
-											status = "okay";
-										};
-									};
-								};
-								rpi22_tevs_e@48 {
-									reset-gpios = <&pca9554_csi1_a25 4 GPIO_ACTIVE_HIGH>;
-									standby-gpios = <&pca9554_csi1_a25 2 GPIO_ACTIVE_HIGH>;
-									data-lanes = <2>;
-									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
-									status = "okay";
-								};
-
-								vls3_csi1_port1: vls3@31 {
+								vls3_csi0_port1: vls3@31 {
 									compatible = "tn,vls3";
 									reg = <0x31>;
 									phy-reg = <0x30>;
 									port = <1>;
-									pdb-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
+									pdb-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 									ser_alias_id = <0x41>;
 
 									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
@@ -346,9 +180,123 @@
 										#address-cells = <1>;
 										#size-cells = <0>;
 
-										pca9554_csi1_a26: pca9554@26 {
+										pca9554_csi0_a26: pca9554@26 {
 											compatible = "nxp,pca9554";
 											reg = <0x26>;
+											gpio-controller;
+											#gpio-cells = <2>;
+											vcc-supply = <&vdd_1v8_hs>;
+											vcc_lp = "vcc";
+											status = "okay";
+										};
+									};
+								};
+								rpi22_tevs_b@49 {
+									reset-gpios = <&pca9554_csi0_a26 4 GPIO_ACTIVE_HIGH>;
+									standby-gpios = <&pca9554_csi0_a26 2 GPIO_ACTIVE_HIGH>;
+									data-lanes = <2>;
+									data-frequency = <248>;
+									// trigger-mode;
+									// hw-reset;
+									status = "okay";
+								};
+
+								vls3_csi0_port0: vls3@30 {
+									compatible = "tn,vls3";
+									reg = <0x30>;
+									phy-reg = <0x30>;
+									port = <0>;
+									pdb-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
+									ser_alias_id = <0x40>;
+
+									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
+									i2c_addr_alias_map_local = <0x25 0x48>;
+									i2c_addr_alias_map_remote = <0x25 0x48>;
+
+									//deserializer output csi lanes 1~4. default 4
+									des_csi_lanes = <4>;
+
+									//1: Enable 0: Disable continuous clock. default 0
+									des_csi_continuous_clock = <0>;
+
+									//serializer input csi lanes 1~4. default 4
+									ser_csi_lanes = <2>;
+
+									//1: Enable 0: Disable continuous clock. default 0
+									ser_csi_continuous_clock = <0>;
+
+									aeq_floor_val = <0>;
+
+									status = "okay";
+
+									i2c_dev_list {
+										#address-cells = <1>;
+										#size-cells = <0>;
+
+										pca9554_csi0_a25: pca9554@25 {
+											compatible = "nxp,pca9554";
+											reg = <0x25>;
+											gpio-controller;
+											#gpio-cells = <2>;
+											vcc-supply = <&vdd_1v8_hs>;
+											vcc_lp = "vcc";
+											status = "okay";
+										};
+									};
+								};
+								rpi22_tevs_a@48 {
+									reset-gpios = <&pca9554_csi0_a25 4 GPIO_ACTIVE_HIGH>;
+									standby-gpios = <&pca9554_csi0_a25 2 GPIO_ACTIVE_HIGH>;
+									data-lanes = <2>;
+									data-frequency = <248>;
+									// trigger-mode;
+									// hw-reset;
+									status = "okay";
+								};
+						};
+						i2c@1 {   // i2c-10
+								status = "okay";
+								reg = <1>;
+								i2c-mux,deselect-on-exit;
+								#address-cells = <1>;
+								#size-cells = <0>;
+
+
+								vls3_csi1_port3: vls3@33 {
+									compatible = "tn,vls3";
+									reg = <0x33>;
+									phy-reg = <0x30>;
+									port = <3>;
+									pdb-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
+									ser_alias_id = <0x43>;
+
+									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
+									i2c_addr_alias_map_local = <0x28 0x4b>;
+									i2c_addr_alias_map_remote = <0x25 0x48>;
+
+									//deserializer output csi lanes 1~4. default 4
+									des_csi_lanes = <4>;
+
+									//1: Enable 0: Disable continuous clock. default 0
+									des_csi_continuous_clock = <0>;
+
+									//serializer input csi lanes 1~4. default 4
+									ser_csi_lanes = <2>;
+
+									//1: Enable 0: Disable continuous clock. default 0
+									ser_csi_continuous_clock = <0>;
+
+									aeq_floor_val = <0>;
+
+									status = "okay";
+
+									i2c_dev_list {
+										#address-cells = <1>;
+										#size-cells = <0>;
+
+										pca9554_csi1_a28: pca9554@28 {
+											compatible = "nxp,pca9554";
+											reg = <0x28>;
 											gpio-controller;
 											#gpio-cells = <2>;
 											vcc-supply = <&vdd_1v8_sys>;
@@ -357,9 +305,9 @@
 										};
 									};
 								};
-								rpi22_tevs_f@49 {
-									reset-gpios = <&pca9554_csi1_a26 4 GPIO_ACTIVE_HIGH>;
-									standby-gpios = <&pca9554_csi1_a26 2 GPIO_ACTIVE_HIGH>;
+								rpi22_tevs_h@4b {
+									reset-gpios = <&pca9554_csi1_a28 4 GPIO_ACTIVE_HIGH>;
+									standby-gpios = <&pca9554_csi1_a28 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
 									// trigger-mode;
@@ -420,16 +368,16 @@
 									status = "okay";
 								};
 
-								vls3_csi1_port3: vls3@33 {
+								vls3_csi1_port1: vls3@31 {
 									compatible = "tn,vls3";
-									reg = <0x33>;
+									reg = <0x31>;
 									phy-reg = <0x30>;
-									port = <3>;
+									port = <1>;
 									pdb-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
-									ser_alias_id = <0x43>;
+									ser_alias_id = <0x41>;
 
 									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
-									i2c_addr_alias_map_local = <0x28 0x4b>;
+									i2c_addr_alias_map_local = <0x26 0x49>;
 									i2c_addr_alias_map_remote = <0x25 0x48>;
 
 									//deserializer output csi lanes 1~4. default 4
@@ -452,9 +400,9 @@
 										#address-cells = <1>;
 										#size-cells = <0>;
 
-										pca9554_csi1_a28: pca9554@28 {
+										pca9554_csi1_a26: pca9554@26 {
 											compatible = "nxp,pca9554";
-											reg = <0x28>;
+											reg = <0x26>;
 											gpio-controller;
 											#gpio-cells = <2>;
 											vcc-supply = <&vdd_1v8_sys>;
@@ -463,9 +411,62 @@
 										};
 									};
 								};
-								rpi22_tevs_h@4b {
-									reset-gpios = <&pca9554_csi1_a28 4 GPIO_ACTIVE_HIGH>;
-									standby-gpios = <&pca9554_csi1_a28 2 GPIO_ACTIVE_HIGH>;
+								rpi22_tevs_f@49 {
+									reset-gpios = <&pca9554_csi1_a26 4 GPIO_ACTIVE_HIGH>;
+									standby-gpios = <&pca9554_csi1_a26 2 GPIO_ACTIVE_HIGH>;
+									data-lanes = <2>;
+									data-frequency = <248>;
+									// trigger-mode;
+									// hw-reset;
+									status = "okay";
+								};
+
+								vls3_csi1_port0: vls3@30 {
+									compatible = "tn,vls3";
+									reg = <0x30>;
+									phy-reg = <0x30>;
+									port = <0>;
+									pdb-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
+									ser_alias_id = <0x40>;
+
+									//i2c addr alias map "gpio extender, eeprom addr1, eeprom addr2, sensor"
+									i2c_addr_alias_map_local = <0x25 0x48>;
+									i2c_addr_alias_map_remote = <0x25 0x48>;
+
+									//deserializer output csi lanes 1~4. default 4
+									des_csi_lanes = <4>;
+
+									//1: Enable 0: Disable continuous clock. default 0
+									des_csi_continuous_clock = <0>;
+
+									//serializer input csi lanes 1~4. default 4
+									ser_csi_lanes = <2>;
+
+									//1: Enable 0: Disable continuous clock. default 0
+									ser_csi_continuous_clock = <0>;
+
+									aeq_floor_val = <0>;
+
+									status = "okay";
+
+									i2c_dev_list {
+										#address-cells = <1>;
+										#size-cells = <0>;
+
+										pca9554_csi1_a25: pca9554@25 {
+											compatible = "nxp,pca9554";
+											reg = <0x25>;
+											gpio-controller;
+											#gpio-cells = <2>;
+											vcc-supply = <&vdd_1v8_sys>;
+											vcc_lp = "vcc";
+											status = "okay";
+										};
+									};
+								};
+								rpi22_tevs_e@48 {
+									reset-gpios = <&pca9554_csi1_a25 4 GPIO_ACTIVE_HIGH>;
+									standby-gpios = <&pca9554_csi1_a25 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
 									// trigger-mode;
