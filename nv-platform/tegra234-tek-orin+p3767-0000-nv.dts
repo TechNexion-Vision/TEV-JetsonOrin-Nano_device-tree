@@ -5,3 +5,7 @@
 
 #include "tegra234-tek-orin+p3767-0000.dts"
 #include "tegra234-p3768-0000+p3767-xxxx-nv-common.dtsi"
+
+/ {
+	nvidia,dtsfilename = __FILE__;
+};
