@@ -31,6 +31,7 @@ dtb-y += tegra234-p3768-0000+p3767-0005-nv-super.dtb
 
 # TN device tree
 dtb-y += tegra234-tek-orin+p3767-0000-nv.dtb
+dtb-y += tegra234-tek-orin+p3767-0003-nv.dtb
 
 ifneq ($(dtb-y),)
 dtb-y := $(addprefix $(makefile-path)/,$(dtb-y))
