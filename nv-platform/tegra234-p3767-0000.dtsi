@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include <dt-bindings/gpio/tegra234-gpio.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
@@ -11,6 +11,18 @@
 
 / {
 	bus@0 {
+		spi@3270000 {
+			prod-settings {
+				#prod-cells = <4>;
+				prod {
+					board {
+						prod = <
+							0 0x00000004 0x000000ff 0x00000004>;            //SPI_COMMAND2_0
+					};
+				};
+			};
+		};
+
 		mmc@3400000 {
 			no-sdio;
 			no-mmc;
