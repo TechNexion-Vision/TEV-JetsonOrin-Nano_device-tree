@@ -8,7 +8,18 @@
 
 / {
 	nvidia,dtsfilename = __FILE__;
+
+	aliases {
+		serial3 = &uartb;
+	};
+
 	bus@0 {
+		uartb: serial@3110000 {
+			compatible = "nvidia,tegra194-hsuart";
+			reset-names = "serial";
+			status = "okay";
+		};
+
 		host1x@13e00000 {
 			nvdla0@15880000 {
 				status = "disabled";
