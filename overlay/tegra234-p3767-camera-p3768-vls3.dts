@@ -13,7 +13,7 @@
 #include "tegra234-camera-rpi22-vls3.dtsi"
 
 / {
-	overlay-name = "TechNexion Camera TEVS Dual";
+	overlay-name = "TechNexion VLS3 Camera";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
