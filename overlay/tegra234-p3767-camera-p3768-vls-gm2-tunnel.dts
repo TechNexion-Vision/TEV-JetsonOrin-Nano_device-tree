@@ -4,24 +4,78 @@
 /dts-v1/;
 /plugin/;
 
-#define CAM0_RST		TEGRA234_MAIN_GPIO(H, 3)
-#define CAM0_PWDN		TEGRA234_MAIN_GPIO(H, 6)
-#define CAM1_PWDN		TEGRA234_MAIN_GPIO(AC, 0)
+#include <dt-bindings/tegra234-p3767-0000-common.h>
+#include <dt-bindings/pinctrl/pinctrl-tegra.h>
+
+#define CAM0_PWDN		TEGRA234_MAIN_GPIO(AC, 6)
+#define CAM1_PWDN		TEGRA234_MAIN_GPIO(Y, 0)
+
+#define CAM_EXT_SYNC_IN	TEGRA234_MAIN_GPIO(N, 1)
 
 #define CAM_I2C_MUX 	TEGRA234_AON_GPIO(CC, 3)
 
-#define CAM_LANES 2
-#define CAM_LANES_STRING "2"
+#define CAM1_LANES 2
+#define CAM1_LANES_STRING "2"
+#define CAM2_LANES 4
+#define CAM2_LANES_STRING "4"
 #define GMSL_ARCAM_NUM 8
 
-#include <dt-bindings/tegra234-p3767-0000-common.h>
-
 / {
-	overlay-name = "TechNexion Camera TEVS with GMSL2";
+	overlay-name = "TechNexion VLS-GM2 Camera with Tunnel Mode";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
-	fragment-camera-tevs@0 {
+	fragment@0 {
+		target = <&pinmux>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&jetson_io_pinmux>;
+			jetson_io_pinmux: exp-header-pinmux {
+				hdr40-pin7 {
+					nvidia,pins = "soc_gpio59_pac6";
+					nvidia,function = "rsvd2";
+					nvidia,pin-label = "cam_pdb1";
+					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
+				hdr40-pin11 {
+					nvidia,pins = "uart1_rts_pr4";
+					nvidia,function = "rsvd1";
+					nvidia,pin-group = "cam_intb2";
+					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				};
+				hdr40-pin12 {
+					nvidia,pins = "soc_gpio41_ph7";
+					nvidia,function = "rsvd2";
+					nvidia,pin-label = "cam_intb1";
+					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+				};
+				hdr40-pin13 {
+					nvidia,pins = "spi3_sck_py0";
+					nvidia,function = "rsvd1";
+					nvidia,pin-label = "cam_pdb2";
+					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
+				hdr40-pin15 {
+					nvidia,pins = "soc_gpio39_pn1";
+					nvidia,function = "gp";
+					nvidia,pin-group = "pwm1";
+					nvidia,pin-label = "cam_ext_sync_in";
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
+			};
+		};
+	};
+
+	fragment-camera-tevs@1 {
 		target-path = "/";
 		__overlay__ {
 			tegra-capture-vi  {
@@ -36,7 +90,7 @@
 						vi_in0: endpoint {
 							vc-id = <0>;
 							port-index = <1>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM1_LANES>;
 							remote-endpoint = <&csi_0_out>;
 						};
 					};
@@ -47,7 +101,7 @@
 						vi_in1: endpoint {
 							vc-id = <1>;
 							port-index = <1>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM1_LANES>;
 							remote-endpoint = <&csi_1_out>;
 						};
 					};
@@ -58,7 +112,7 @@
 						vi_in2: endpoint {
 							vc-id = <2>;
 							port-index = <1>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM1_LANES>;
 							remote-endpoint = <&csi_2_out>;
 						};
 					};
@@ -69,7 +123,7 @@
 						vi_in3: endpoint {
 							vc-id = <3>;
 							port-index = <1>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM1_LANES>;
 							remote-endpoint = <&csi_3_out>;
 						};
 					};
@@ -80,7 +134,7 @@
 						vi_in4: endpoint {
 							vc-id = <0>;
 							port-index = <2>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM2_LANES>;
 							remote-endpoint = <&csi_4_out>;
 						};
 					};
@@ -91,7 +145,7 @@
 						vi_in5: endpoint {
 							vc-id = <1>;
 							port-index = <2>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM2_LANES>;
 							remote-endpoint = <&csi_5_out>;
 						};
 					};
@@ -102,7 +156,7 @@
 						vi_in6: endpoint {
 							vc-id = <2>;
 							port-index = <2>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM2_LANES>;
 							remote-endpoint = <&csi_6_out>;
 						};
 					};
@@ -113,7 +167,7 @@
 						vi_in7: endpoint {
 							vc-id = <3>;
 							port-index = <2>;
-							bus-width = <CAM_LANES>;
+							bus-width = <CAM2_LANES>;
 							remote-endpoint = <&csi_7_out>;
 						};
 					};
@@ -268,7 +322,7 @@
 
 									csi_0_in: endpoint@0 {
 										port-index = <1>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM1_LANES>;
 										remote-endpoint = <&rpi22_tevs_0_out>;
 									};
 								};
@@ -294,7 +348,7 @@
 
 									csi_1_in: endpoint@2 {
 										port-index = <1>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM1_LANES>;
 										remote-endpoint = <&rpi22_tevs_1_out>;
 									};
 								};
@@ -320,7 +374,7 @@
 
 									csi_2_in: endpoint@4 {
 										port-index = <1>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM1_LANES>;
 										remote-endpoint = <&rpi22_tevs_2_out>;
 									};
 								};
@@ -346,7 +400,7 @@
 
 									csi_3_in: endpoint@6 {
 										port-index = <1>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM1_LANES>;
 										remote-endpoint = <&rpi22_tevs_3_out>;
 									};
 								};
@@ -372,7 +426,7 @@
 
 									csi_4_in: endpoint@8 {
 										port-index = <2>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM2_LANES>;
 										remote-endpoint = <&rpi22_tevs_4_out>;
 									};
 								};
@@ -398,7 +452,7 @@
 
 									csi_5_in: endpoint@10 {
 										port-index = <2>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM2_LANES>;
 										remote-endpoint = <&rpi22_tevs_5_out>;
 									};
 								};
@@ -424,7 +478,7 @@
 
 									csi_6_in: endpoint@12 {
 										port-index = <2>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM2_LANES>;
 										remote-endpoint = <&rpi22_tevs_6_out>;
 									};
 								};
@@ -450,7 +504,7 @@
 
 									csi_7_in: endpoint@14 {
 										port-index = <2>;
-										bus-width = <CAM_LANES>;
+										bus-width = <CAM2_LANES>;
 										remote-endpoint = <&rpi22_tevs_7_out>;
 									};
 								};
@@ -472,10 +526,10 @@
 						status = "disabled";
 						gpio-hog;
 						output-low;
-						gpios = <CAM0_RST 0
-							CAM0_PWDN 0 CAM1_PWDN 0>;
-						label = "cam0-rst",
-							"cam0-pwdn", "cam1-pwdn";
+						// gpios = <CAM0_RST 0
+						// 	CAM0_PWDN 0 CAM1_PWDN 0>;
+						// label = "cam0-rst",
+						// 	"cam0-pwdn", "cam1-pwdn";
 					};
 				};
 
@@ -660,7 +714,7 @@
 
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <3>;
 		// trigger-mode;
@@ -676,7 +730,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -717,7 +771,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -758,7 +812,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -799,7 +853,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -840,7 +894,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -881,7 +935,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -928,7 +982,7 @@
 
 				rpi22_tevs_3_out: endpoint {
 					port-index = <1>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_3_in>;
 				};
 			};
@@ -943,7 +997,7 @@
 
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <2>;
 		// trigger-mode;
@@ -959,7 +1013,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1000,7 +1054,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1041,7 +1095,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1082,7 +1136,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1123,7 +1177,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1164,7 +1218,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1211,7 +1265,7 @@
 
 				rpi22_tevs_2_out: endpoint {
 					port-index = <1>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_2_in>;
 				};
 			};
@@ -1226,7 +1280,7 @@
 
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <1>;
 		// trigger-mode;
@@ -1242,7 +1296,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1283,7 +1337,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1324,7 +1378,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1365,7 +1419,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1406,7 +1460,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1447,7 +1501,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1494,7 +1548,7 @@
 
 				rpi22_tevs_1_out: endpoint {
 					port-index = <1>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_1_in>;
 				};
 			};
@@ -1509,7 +1563,7 @@
 
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <0>;
 		// trigger-mode;
@@ -1525,7 +1579,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1566,7 +1620,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1607,7 +1661,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1648,7 +1702,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1689,7 +1743,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1730,7 +1784,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM1_LANES_STRING;
 			tegra_sinterface = "serial_b";
 			lane_polarity = "6";
 			phy_mode = "DPHY";
@@ -1777,7 +1831,7 @@
 
 				rpi22_tevs_0_out: endpoint {
 					port-index = <1>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_0_in>;
 				};
 			};
@@ -1805,7 +1859,7 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&des_1 0 0 8>;
 
-		// fsync-mode = "external";
+		// fsync-mode = "internal";
 
 		i2c-mux {
 			#address-cells = <1>;
@@ -1879,8 +1933,8 @@
 			maxim,phy-id = <1>;
 			maxim,tunnel-mode;
 
-			clock-lanes = <5>;
-			data-lanes = <1 2>;
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -1891,8 +1945,8 @@
 			maxim,phy-id = <1>;
 			maxim,tunnel-mode;
 
-			clock-lanes = <5>;
-			data-lanes = <1 2>;
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -1903,8 +1957,8 @@
 			maxim,phy-id = <1>;
 			maxim,tunnel-mode;
 
-			clock-lanes = <5>;
-			data-lanes = <1 2>;
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -1915,8 +1969,8 @@
 			maxim,phy-id = <1>;
 			maxim,tunnel-mode;
 
-			clock-lanes = <5>;
-			data-lanes = <1 2>;
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
@@ -1929,7 +1983,7 @@
 
 		reset-gpios = <&pca9554_cam_7 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <3>;
 		// trigger-mode;
@@ -1945,7 +1999,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -1961,8 +2015,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -1985,7 +2039,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2001,8 +2055,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2025,7 +2079,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2041,8 +2095,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2065,7 +2119,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2081,8 +2135,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2105,7 +2159,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2121,8 +2175,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2145,7 +2199,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2161,8 +2215,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2191,7 +2245,7 @@
 
 				rpi22_tevs_7_out: endpoint {
 					port-index = <2>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_7_in>;
 				};
 			};
@@ -2206,7 +2260,7 @@
 
 		reset-gpios = <&pca9554_cam_6 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <2>;
 		// trigger-mode;
@@ -2222,7 +2276,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2238,8 +2292,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2262,7 +2316,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2278,8 +2332,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2302,7 +2356,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2318,8 +2372,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2342,7 +2396,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2358,8 +2412,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2382,7 +2436,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2398,8 +2452,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2422,7 +2476,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2438,8 +2492,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2468,7 +2522,7 @@
 
 				rpi22_tevs_6_out: endpoint {
 					port-index = <2>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_6_in>;
 				};
 			};
@@ -2483,7 +2537,7 @@
 
 		reset-gpios = <&pca9554_cam_5 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <1>;
 		// trigger-mode;
@@ -2499,7 +2553,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2515,8 +2569,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2539,7 +2593,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2555,8 +2609,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2579,7 +2633,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2595,8 +2649,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2619,7 +2673,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2635,8 +2689,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2659,7 +2713,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2675,8 +2729,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2699,7 +2753,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2715,8 +2769,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2745,7 +2799,7 @@
 
 				rpi22_tevs_5_out: endpoint {
 					port-index = <2>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_5_in>;
 				};
 			};
@@ -2760,7 +2814,7 @@
 
 		reset-gpios = <&pca9554_cam_4 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <2>;
+		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <0>;
 		// trigger-mode;
@@ -2776,7 +2830,7 @@
 
 		mode0 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2792,8 +2846,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2816,7 +2870,7 @@
 		};
 		mode1 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2832,8 +2886,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2856,7 +2910,7 @@
 		};
 		mode2 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2872,8 +2926,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2896,7 +2950,7 @@
 		};
 		mode3 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2912,8 +2966,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2936,7 +2990,7 @@
 		};
 		mode4 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2952,8 +3006,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -2976,7 +3030,7 @@
 		};
 		mode5 {
 			mclk_khz = "24000";
-			num_lanes = CAM_LANES_STRING;
+			num_lanes = CAM2_LANES_STRING;
 			tegra_sinterface = "serial_c";
 			phy_mode = "DPHY";
 			discontinuous_clk = "yes";
@@ -2992,8 +3046,8 @@
 			line_length = "3448";
 			inherent_gain = "1";
 			mclk_multiplier = "9.33";
-			pix_clk_hz = "70000000";
-			serdes_pix_clk_hz = "312500000";
+			pix_clk_hz = "140000000";
+			serdes_pix_clk_hz = "625000000";
 
 			gain_factor = "16";
 			framerate_factor = "1000000";
@@ -3022,7 +3076,7 @@
 
 				rpi22_tevs_4_out: endpoint {
 					port-index = <2>;
-					bus-width = <CAM_LANES>;
+					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_4_in>;
 				};
 			};
@@ -3042,11 +3096,10 @@
 		i2c-addr-alias-map-local = <0x39 0x21>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_0 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_0_pinmux_default>;
@@ -3127,11 +3180,10 @@
 		i2c-addr-alias-map-local = <0x3a 0x22>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_1 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_1_pinmux_default>;
@@ -3212,11 +3264,10 @@
 		i2c-addr-alias-map-local = <0x3b 0x23>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_2 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_2_pinmux_default>;
@@ -3297,11 +3348,10 @@
 		i2c-addr-alias-map-local = <0x3c 0x24>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_3 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_3_pinmux_default>;
@@ -3382,11 +3432,10 @@
 		i2c-addr-alias-map-local = <0x49 0x29>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_4 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_4_pinmux_default>;
@@ -3429,7 +3478,7 @@
 			label = "ser_4_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			clock-noncontinuous;
 		};
 	};
@@ -3467,11 +3516,10 @@
 		i2c-addr-alias-map-local = <0x4a 0x2a>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_5 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_5_pinmux_default>;
@@ -3514,7 +3562,7 @@
 			label = "ser_5_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			clock-noncontinuous;
 		};
 	};
@@ -3552,11 +3600,10 @@
 		i2c-addr-alias-map-local = <0x4b 0x2b>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_6 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_6_pinmux_default>;
@@ -3599,7 +3646,7 @@
 			label = "ser_6_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			clock-noncontinuous;
 		};
 	};
@@ -3637,11 +3684,10 @@
 		i2c-addr-alias-map-local = <0x4c 0x2c>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
-		maxim,tunnel-mode;
-
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_7 0 0 11>;
+		maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_7_pinmux_default>;
@@ -3684,7 +3730,7 @@
 			label = "ser_7_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			clock-noncontinuous;
 		};
 	};
