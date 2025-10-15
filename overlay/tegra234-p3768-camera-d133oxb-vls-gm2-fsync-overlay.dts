@@ -17,7 +17,7 @@
 #include <dt-bindings/tegra234-p3767-0000-common.h>
 
 / {
-	overlay-name = "TechNexion Camera VLS-GM2";
+	overlay-name = "TechNexion VLS-GM2 Camera with FSYNC Pixel Mode";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 
 	fragment-camera-tevs@0 {
@@ -596,7 +596,6 @@
 			label = "des_0_ch_3";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -608,7 +607,6 @@
 			label = "des_0_ch_2";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -620,7 +618,6 @@
 			label = "des_0_ch_1";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -632,7 +629,6 @@
 			label = "des_0_ch_0";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1862,7 +1858,6 @@
 			label = "des_1_ch_3";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1874,7 +1869,6 @@
 			label = "des_1_ch_2";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1886,7 +1880,6 @@
 			label = "des_1_ch_1";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1898,7 +1891,6 @@
 			label = "des_1_ch_0";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -3026,7 +3018,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_0 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_0_pinmux_default>;
@@ -3110,7 +3101,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_1 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_1_pinmux_default>;
@@ -3194,7 +3184,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_2 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_2_pinmux_default>;
@@ -3278,7 +3267,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_3 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_3_pinmux_default>;
@@ -3362,7 +3350,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_4 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_4_pinmux_default>;
@@ -3446,7 +3433,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_5 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_5_pinmux_default>;
@@ -3530,7 +3516,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_6 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_6_pinmux_default>;
@@ -3614,7 +3599,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_7 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_7_pinmux_default>;
