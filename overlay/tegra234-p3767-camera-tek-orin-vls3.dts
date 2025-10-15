@@ -14,7 +14,7 @@
 #include "tegra234-camera-tek-orin-vls3.dtsi"
 
 / {
-	overlay-name = "TechNexion Camera TEVS Dual";
+	overlay-name = "TechNexion Dual TEVS Camera";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
@@ -90,8 +90,6 @@
 									standby-gpios = <&pca9554_csi0_a28 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 
@@ -143,8 +141,6 @@
 									standby-gpios = <&pca9554_csi0_a27 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 
@@ -196,8 +192,6 @@
 									standby-gpios = <&pca9554_csi0_a26 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 
@@ -249,8 +243,6 @@
 									standby-gpios = <&pca9554_csi0_a25 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 						};
@@ -310,8 +302,6 @@
 									standby-gpios = <&pca9554_csi1_a28 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 
@@ -363,8 +353,6 @@
 									standby-gpios = <&pca9554_csi1_a27 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 
@@ -416,8 +404,6 @@
 									standby-gpios = <&pca9554_csi1_a26 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 
@@ -469,8 +455,6 @@
 									standby-gpios = <&pca9554_csi1_a25 2 GPIO_ACTIVE_HIGH>;
 									data-lanes = <2>;
 									data-frequency = <248>;
-									// trigger-mode;
-									// hw-reset;
 									status = "okay";
 								};
 						};
