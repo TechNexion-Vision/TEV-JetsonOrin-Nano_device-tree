@@ -20,7 +20,7 @@
 #define GMSL_ARCAM_NUM 8
 
 / {
-	overlay-name = "TechNexion TEVS Camera Device Tree Overlay";
+	overlay-name = "TechNexion VLS-GM2 Camera with FSYNC Pixel Mode";
 	jetson-header-name = "Jetson AGX CSI Connector";
 	compatible = JETSON_COMPATIBLE;
 
@@ -569,7 +569,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&des_0_pinmux_default>;
 
-		// fsync-mode = "external";
+		fsync-mode = "external";
 
 		des_0_pinmux_default: pinmux {
 			mfp6_fsync {
@@ -667,7 +667,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&des_1_pinmux_default>;
 
-		// fsync-mode = "external";
+		fsync-mode = "external";
 
 		des_1_pinmux_default: pinmux {
 			mfp6_fsync {
@@ -765,7 +765,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&des_2_pinmux_default>;
 
-		// fsync-mode = "external";
+		fsync-mode = "external";
 
 		des_2_pinmux_default: pinmux {
 			mfp6_fsync {
@@ -863,7 +863,7 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&des_3_pinmux_default>;
 
-		// fsync-mode = "external";
+		fsync-mode = "external";
 
 		des_3_pinmux_default: pinmux {
 			mfp6_fsync {
@@ -1030,7 +1030,7 @@
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -1389,7 +1389,7 @@
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -1748,7 +1748,7 @@
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -2107,7 +2107,7 @@
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -2466,7 +2466,7 @@
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -2825,7 +2825,7 @@
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -3184,7 +3184,7 @@
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
@@ -3543,7 +3543,7 @@
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM_LANES>;
 		data-frequency = <800>;
-		// trigger-mode;
+		trigger-mode = <2>;
 		// hw-reset;
 
 		/* V4L2 device node location */
