@@ -25,7 +25,7 @@
 #define GMSL_ARCAM_NUM 8
 
 / {
-	overlay-name = "TechNexion VLS-GM2 Camera for frame sync";
+	overlay-name = "TechNexion VLS-GM2 Camera with FSYNC Pixel Mode";
 	jetson-header-name = "Jetson AGX CSI Connector";
 	compatible = JETSON_COMPATIBLE;
 
