@@ -17,7 +17,7 @@
 #include <dt-bindings/tegra234-p3767-0000-common.h>
 
 / {
-	overlay-name = "TechNexion Camera VLS-GM2";
+	overlay-name = "TechNexion VLS-GM2 Camera with Tunnel Mode";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 
 	fragment-camera-tevs@0 {
@@ -650,8 +650,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <3>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video3";
@@ -933,8 +931,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <2>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video2";
@@ -1216,8 +1212,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <1>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video1";
@@ -1499,8 +1493,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <0>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video0";
@@ -1919,8 +1911,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <3>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video7";
@@ -2196,8 +2186,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <2>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video6";
@@ -2473,8 +2461,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <1>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video5";
@@ -2750,8 +2736,6 @@
 		data-lanes = <CAM_LANES>;
 		data-frequency = <600>;
 		vc-id = <0>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video4";
