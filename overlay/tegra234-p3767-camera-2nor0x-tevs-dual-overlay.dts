@@ -16,7 +16,7 @@
 #include <dt-bindings/tegra234-p3767-0000-common.h>
 
 / {
-	overlay-name = "TechNexion Camera TEVS Dual";
+	overlay-name = "TechNexion Dual TEVS Camera";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 
 	fragment-camera-tevs@0 {
