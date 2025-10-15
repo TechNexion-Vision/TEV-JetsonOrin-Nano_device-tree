@@ -717,8 +717,6 @@
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <3>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video3";
@@ -1000,8 +998,6 @@
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <2>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video2";
@@ -1283,8 +1279,6 @@
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <1>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video1";
@@ -1566,8 +1560,6 @@
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
 		vc-id = <0>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video0";
@@ -1986,8 +1978,6 @@
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <3>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video7";
@@ -2263,8 +2253,6 @@
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <2>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video6";
@@ -2540,8 +2528,6 @@
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <1>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video5";
@@ -2817,8 +2803,6 @@
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
 		vc-id = <0>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video4";
