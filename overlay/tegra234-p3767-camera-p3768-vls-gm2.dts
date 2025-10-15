@@ -716,8 +716,6 @@
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video3";
@@ -998,8 +996,6 @@
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video2";
@@ -1280,8 +1276,6 @@
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video1";
@@ -1562,8 +1556,6 @@
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM1_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video0";
@@ -1981,8 +1973,6 @@
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video7";
@@ -2257,8 +2247,6 @@
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video6";
@@ -2533,8 +2521,6 @@
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video5";
@@ -2809,8 +2795,6 @@
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
 		data-lanes = <CAM2_LANES>;
 		data-frequency = <560>;
-		// trigger-mode;
-		// hw-reset;
 
 		/* V4L2 device node location */
 		devnode = "video4";
