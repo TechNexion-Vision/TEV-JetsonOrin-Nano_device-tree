@@ -590,8 +590,6 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&des_0 0 0 8>;
 
-		// fsync-mode = "internal-output";
-
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -1850,8 +1848,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&des_1 0 0 8>;
-
-		// fsync-mode = "internal";
 
 		i2c-mux {
 			#address-cells = <1>;
