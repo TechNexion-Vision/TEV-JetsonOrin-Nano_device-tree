@@ -158,7 +158,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@0/gmsl-deserializer@4a/i2c@0/gmsl-serializer@41/i2c@0/rpi22_tevs_a@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@0/rpi22_tevs_a@3d";
 						};
 					};
 
@@ -168,7 +168,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@0/gmsl-deserializer@4a/i2c@1/gmsl-serializer@42/i2c@0/rpi22_tevs_b@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@0/rpi22_tevs_b@3e";
 						};
 					};
 
@@ -178,7 +178,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@1/gmsl-deserializer@4a/i2c@0/gmsl-serializer@41/i2c@0/rpi22_tevs_c@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@1/rpi22_tevs_c@3d";
 						};
 					};
 
@@ -188,7 +188,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@1/gmsl-deserializer@4a/i2c@1/gmsl-serializer@42/i2c@0/rpi22_tevs_d@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@1/rpi22_tevs_d@3e";
 						};
 					};
 
@@ -198,7 +198,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@2/gmsl-deserializer@68/i2c@0/gmsl-serializer@41/i2c@0/rpi22_tevs_e@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@2/rpi22_tevs_e@3d";
 						};
 					};
 
@@ -208,7 +208,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@2/gmsl-deserializer@68/i2c@1/gmsl-serializer@42/i2c@0/rpi22_tevs_f@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@2/rpi22_tevs_f@3e";
 						};
 					};
 
@@ -218,7 +218,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@3/gmsl-deserializer@6c/i2c@0/gmsl-serializer@41/i2c@0/rpi22_tevs_g@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@3/rpi22_tevs_g@3d";
 						};
 					};
 
@@ -228,7 +228,7 @@
 						orientation = "1";
 						drivernode0 {
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@3/gmsl-deserializer@6c/i2c@1/gmsl-serializer@42/i2c@0/rpi22_tevs_h@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@77/i2c@3/rpi22_tevs_h@3e";
 						};
 					};
 				};
