@@ -80,8 +80,6 @@
 						rpi22_tevs_a@48 {
 							reset-gpios = <&pca9554_csi0_a25 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi0_a25 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -133,8 +131,6 @@
 						rpi22_tevs_b@49 {
 							reset-gpios = <&pca9554_csi0_a26 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi0_a26 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -186,8 +182,6 @@
 						rpi22_tevs_c@4a {
 							reset-gpios = <&pca9554_csi0_a27 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi0_a27 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -239,8 +233,6 @@
 						rpi22_tevs_d@4b {
 							reset-gpios = <&pca9554_csi0_a28 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi0_a28 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -298,8 +290,6 @@
 						rpi22_tevs_e@48 {
 							reset-gpios = <&pca9554_csi1_a25 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi1_a25 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -351,8 +341,6 @@
 						rpi22_tevs_f@49 {
 							reset-gpios = <&pca9554_csi1_a26 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi1_a26 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -404,8 +392,6 @@
 						rpi22_tevs_g@4a {
 							reset-gpios = <&pca9554_csi1_a27 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi1_a27 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";
@@ -457,8 +443,6 @@
 						rpi22_tevs_h@4b {
 							reset-gpios = <&pca9554_csi1_a28 4 GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_csi1_a28 2 GPIO_ACTIVE_HIGH>;
-							data-lanes = <2>;
-							data-frequency = <248>;
 							// trigger-mode;
 							// hw-reset;
 							status = "okay";

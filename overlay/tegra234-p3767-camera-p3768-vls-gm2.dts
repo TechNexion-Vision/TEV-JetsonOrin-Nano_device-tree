@@ -662,7 +662,6 @@
 			label = "des_0_ch_3";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
@@ -674,7 +673,6 @@
 			label = "des_0_ch_2";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
@@ -686,7 +684,6 @@
 			label = "des_0_ch_1";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
@@ -698,7 +695,6 @@
 			label = "des_0_ch_0";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <5>;
 			data-lanes = <1 2>;
@@ -714,8 +710,6 @@
 
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video3";
@@ -981,6 +975,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_3_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -994,8 +990,6 @@
 
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video2";
@@ -1261,6 +1255,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_2_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -1274,8 +1270,6 @@
 
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video1";
@@ -1541,6 +1535,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_1_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -1554,8 +1550,6 @@
 
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video0";
@@ -1821,6 +1815,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_0_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -1919,7 +1915,6 @@
 			label = "des_1_ch_3";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1931,7 +1926,6 @@
 			label = "des_1_ch_2";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1943,7 +1937,6 @@
 			label = "des_1_ch_1";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1955,7 +1948,6 @@
 			label = "des_1_ch_0";
 
 			maxim,phy-id = <1>;
-			// maxim,tunnel-mode;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
@@ -1971,8 +1963,6 @@
 
 		reset-gpios = <&pca9554_cam_7 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video7";
@@ -2232,6 +2222,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_7_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -2245,8 +2237,6 @@
 
 		reset-gpios = <&pca9554_cam_6 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video6";
@@ -2506,6 +2496,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_6_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -2519,8 +2511,6 @@
 
 		reset-gpios = <&pca9554_cam_5 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video5";
@@ -2780,6 +2770,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_5_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -2793,8 +2785,6 @@
 
 		reset-gpios = <&pca9554_cam_4 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 
 		/* V4L2 device node location */
 		devnode = "video4";
@@ -3054,6 +3044,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_4_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -3075,7 +3067,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_0 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_0_pinmux_default>;
@@ -3159,7 +3150,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_1 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_1_pinmux_default>;
@@ -3243,7 +3233,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_2 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_2_pinmux_default>;
@@ -3327,7 +3316,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_3 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_3_pinmux_default>;
@@ -3411,7 +3399,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_4 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_4_pinmux_default>;
@@ -3495,7 +3482,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_5 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_5_pinmux_default>;
@@ -3579,7 +3565,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_6 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_6_pinmux_default>;
@@ -3663,7 +3648,6 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_7 0 0 11>;
-		// maxim,tunnel-mode;
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&ser_7_pinmux_default>;
