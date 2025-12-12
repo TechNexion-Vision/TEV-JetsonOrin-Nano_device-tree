@@ -609,6 +609,8 @@
 											port-index = <0>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in3>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -944,6 +946,8 @@
 											port-index = <0>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in2>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -1279,6 +1283,8 @@
 											port-index = <0>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in1>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -1614,6 +1620,8 @@
 											port-index = <0>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in0>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -1943,6 +1951,8 @@
 											port-index = <2>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in7>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -2270,6 +2280,8 @@
 											port-index = <2>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in6>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -2597,6 +2609,8 @@
 											port-index = <2>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in5>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};
@@ -2924,6 +2938,8 @@
 											port-index = <2>;
 											bus-width = <4>;
 											remote-endpoint = <&rpi22_tevs_csi_in4>;
+											clock-noncontinuous;
+											link-frequencies = /bits/ 64 <124000000>;
 										};
 									};
 								};

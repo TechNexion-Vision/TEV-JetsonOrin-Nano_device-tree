@@ -712,8 +712,6 @@
 
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 		vc-id = <3>;
 
 		/* V4L2 device node location */
@@ -980,6 +978,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_3_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -993,8 +993,6 @@
 
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 		vc-id = <2>;
 
 		/* V4L2 device node location */
@@ -1261,6 +1259,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_2_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -1274,8 +1274,6 @@
 
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 		vc-id = <1>;
 
 		/* V4L2 device node location */
@@ -1542,6 +1540,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_1_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -1555,8 +1555,6 @@
 
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM1_LANES>;
-		data-frequency = <560>;
 		vc-id = <0>;
 
 		/* V4L2 device node location */
@@ -1823,6 +1821,8 @@
 					port-index = <1>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_0_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -1971,8 +1971,6 @@
 
 		reset-gpios = <&pca9554_cam_7 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 		vc-id = <3>;
 
 		/* V4L2 device node location */
@@ -2233,6 +2231,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_7_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -2246,8 +2246,6 @@
 
 		reset-gpios = <&pca9554_cam_6 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 		vc-id = <2>;
 
 		/* V4L2 device node location */
@@ -2508,6 +2506,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_6_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -2521,8 +2521,6 @@
 
 		reset-gpios = <&pca9554_cam_5 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 		vc-id = <1>;
 
 		/* V4L2 device node location */
@@ -2783,6 +2781,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_5_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
@@ -2796,8 +2796,6 @@
 
 		reset-gpios = <&pca9554_cam_4 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM2_LANES>;
-		data-frequency = <560>;
 		vc-id = <0>;
 
 		/* V4L2 device node location */
@@ -3058,6 +3056,8 @@
 					port-index = <2>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_4_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <280000000>;
 				};
 			};
 		};
