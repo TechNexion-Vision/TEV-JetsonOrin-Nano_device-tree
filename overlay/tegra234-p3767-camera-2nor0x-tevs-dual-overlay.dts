@@ -219,8 +219,6 @@
 
 							reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_a27_c 6 GPIO_ACTIVE_HIGH>;
-							data-lanes = <CAM_LANES>;
-							data-frequency = <800>;
 
 							/* V4L2 device node location */
 							devnode = "video1";
@@ -479,6 +477,8 @@
 										port-index = <2>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_csi_in1>;
+										clock-noncontinuous;
+										link-frequencies = /bits/ 64 <400000000>;
 									};
 								};
 							};
@@ -513,8 +513,6 @@
 
 							reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 							standby-gpios = <&pca9554_a27_a 6 GPIO_ACTIVE_HIGH>;
-							data-lanes = <CAM_LANES>;
-							data-frequency = <800>;
 
 							/* V4L2 device node location */
 							devnode = "video0";
@@ -773,6 +771,8 @@
 										port-index = <0>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_csi_in0>;
+										clock-noncontinuous;
+										link-frequencies = /bits/ 64 <400000000>;
 									};
 								};
 							};
