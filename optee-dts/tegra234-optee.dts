@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: BSD-2-Clause
  *
- * SPDX-FileCopyrightText: Copyright (c) 2021-2024, NVIDIA CORPORATION. All rights reserved.
+ * SPDX-FileCopyrightText: Copyright (c) 2021-2026, NVIDIA CORPORATION. All rights reserved.
  */
 
 /dts-v1/;
@@ -121,6 +121,13 @@
 			compatible = "jetson-ekb-blob";
 			reg = <0 0 0 0>;
 		};
+
+		/* MB2 will fill the boot mode */
+		boot-mode@0 {
+			compatible = "nvidia,jetson-boot-mode";
+			boot-mode= <0x00000000>;
+		};
+
 
 		/* MB2 will fill the address and size. */
 		tpm-event-log@0 {
