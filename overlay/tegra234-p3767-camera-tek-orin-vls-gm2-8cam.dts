@@ -8,17 +8,32 @@
 // #define CAM0_PWDN	TEGRA234_MAIN_GPIO(H, 6)
 // #define CAM1_PWDN	TEGRA234_MAIN_GPIO(AC, 0)
 #define CAM_I2C_MUX 	TEGRA234_AON_GPIO(CC, 3)
-// #define CAMERA_I2C_MUX_BUS(x) (0x14 + x)
 
-#define CAM_LANES 4
-#define CAM_LANES_STRING "4"
+#define CAM_LANES 2
+#define CAM_LANES_STRING "2"
 #define GMSL_ARCAM_NUM 8
 
+#define CAM0_PORT 0
+#define CAM0_LANE_POLARITY "6"
+#define CAM1_PORT 0
+#define CAM1_LANE_POLARITY "6"
+#define CAM2_PORT 2
+#define CAM2_LANE_POLARITY "0"
+#define CAM3_PORT 2
+#define CAM3_LANE_POLARITY "0"
+#define CAM4_PORT 1
+#define CAM4_LANE_POLARITY "6"
+#define CAM5_PORT 1
+#define CAM5_LANE_POLARITY "6"
+#define CAM6_PORT 3
+#define CAM6_LANE_POLARITY "0"
+#define CAM7_PORT 3
+#define CAM7_LANE_POLARITY "0"
+
 #include <dt-bindings/tegra234-p3767-0000-common.h>
-// #include "tegra234-camera-tek-orin-vls3.dtsi"
 
 / {
-	overlay-name = "TechNexion Dual TEVS Camera";
+	overlay-name = "TechNexion VLS-GM2 8 Cameras with Pixel Mode";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
@@ -38,7 +53,7 @@
 						vi_in0: endpoint {
 							status = "okay";
 							vc-id = <0>;
-							port-index = <0>;
+							port-index = <CAM0_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_0_out>;
 						};
@@ -51,7 +66,7 @@
 						vi_in1: endpoint {
 							status = "okay";
 							vc-id = <1>;
-							port-index = <0>;
+							port-index = <CAM1_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_1_out>;
 						};
@@ -64,7 +79,7 @@
 						vi_in2: endpoint {
 							status = "okay";
 							vc-id = <0>;
-							port-index = <2>;
+							port-index = <CAM2_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_2_out>;
 						};
@@ -77,7 +92,7 @@
 						vi_in3: endpoint {
 							status = "okay";
 							vc-id = <1>;
-							port-index = <2>;
+							port-index = <CAM3_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_3_out>;
 						};
@@ -90,7 +105,7 @@
 						vi_in4: endpoint {
 							status = "okay";
 							vc-id = <0>;
-							port-index = <4>;
+							port-index = <CAM4_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_4_out>;
 						};
@@ -103,7 +118,7 @@
 						vi_in5: endpoint {
 							status = "okay";
 							vc-id = <1>;
-							port-index = <4>;
+							port-index = <CAM5_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_5_out>;
 						};
@@ -116,7 +131,7 @@
 						vi_in6: endpoint {
 							status = "okay";
 							vc-id = <0>;
-							port-index = <5>;
+							port-index = <CAM6_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_6_out>;
 						};
@@ -129,7 +144,7 @@
 						vi_in7: endpoint {
 							status = "okay";
 							vc-id = <1>;
-							port-index = <5>;
+							port-index = <CAM7_PORT>;
 							bus-width = <CAM_LANES>;
 							remote-endpoint = <&csi_7_out>;
 						};
@@ -140,7 +155,7 @@
 			tegra-camera-platform {
 				compatible = "nvidia, tegra-camera-platform";
 
-				num_csi_lanes = <16>;
+				num_csi_lanes = <8>;
 				max_lane_speed = <2500000>;
 				min_bits_per_pixel = <16>;
 				vi_peak_byte_per_pixel = <2>;
@@ -156,7 +171,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@0/rpi22_tevs_a@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@1/rpi22_tevs_a@3d";
 						};
 					};
 
@@ -168,7 +183,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@0/rpi22_tevs_b@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@1/rpi22_tevs_b@3e";
 						};
 					};
 
@@ -180,7 +195,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@1/rpi22_tevs_c@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@0/rpi22_tevs_c@3d";
 						};
 					};
 
@@ -192,7 +207,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@1/rpi22_tevs_d@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@0/rpi22_tevs_d@3e";
 						};
 					};
 
@@ -204,7 +219,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@2/rpi22_tevs_e@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@3/rpi22_tevs_e@3d";
 						};
 					};
 
@@ -216,7 +231,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@2/rpi22_tevs_f@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@3/rpi22_tevs_f@3e";
 						};
 					};
 
@@ -228,7 +243,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@3/rpi22_tevs_g@3d";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@2/rpi22_tevs_g@3d";
 						};
 					};
 
@@ -240,7 +255,7 @@
 						drivernode0 {
 							status = "okay";
 							pcl_id = "v4l2_sensor";
-							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/tca9548@72/i2c@3/rpi22_tevs_h@3e";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/i2c@3180000/pca9849@71/i2c@2/rpi22_tevs_h@3e";
 						};
 					};
 				};
@@ -267,7 +282,7 @@
 									reg = <0>;
 									csi_0_in: endpoint@0 {
 										status = "okay";
-										port-index = <0>;
+										port-index = <CAM0_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_0_out>;
 									};
@@ -297,7 +312,7 @@
 									reg = <0>;
 									csi_1_in: endpoint@2 {
 										status = "okay";
-										port-index = <0>;
+										port-index = <CAM1_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_1_out>;
 									};
@@ -327,7 +342,7 @@
 									reg = <0>;
 									csi_2_in: endpoint@4 {
 										status = "okay";
-										port-index = <2>;
+										port-index = <CAM2_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_2_out>;
 									};
@@ -357,7 +372,7 @@
 									reg = <0>;
 									csi_3_in: endpoint@6 {
 										status = "okay";
-										port-index = <2>;
+										port-index = <CAM3_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_3_out>;
 									};
@@ -387,7 +402,7 @@
 									reg = <0>;
 									csi_4_in: endpoint@8 {
 										status = "okay";
-										port-index = <4>;
+										port-index = <CAM4_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_4_out>;
 									};
@@ -417,7 +432,7 @@
 									reg = <0>;
 									csi_5_in: endpoint@10 {
 									status = "okay";
-										port-index = <4>;
+										port-index = <CAM5_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_5_out>;
 									};
@@ -447,7 +462,7 @@
 									reg = <0>;
 									csi_6_in: endpoint@12 {
 										status = "okay";
-										port-index = <6>;
+										port-index = <CAM6_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_6_out>;
 									};
@@ -477,7 +492,7 @@
 									reg = <0>;
 									csi_7_in: endpoint@14 {
 										status = "okay";
-										port-index = <6>;
+										port-index = <CAM7_PORT>;
 										bus-width = <CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_7_out>;
 									};
@@ -525,30 +540,94 @@
 							i2c-mux,deselect-on-exit;
 							#address-cells = <1>;
 							#size-cells = <0>;
+
+							vls3@33 {
+								status = "disabled";
+							};
+
+							vls3@32 {
+								status = "disabled";
+							};
+
+							vls3@31 {
+								status = "disabled";
+							};
+
+							vls3@30 {
+								status = "disabled";
+							};
+
+							rpi22_tevs_d@4b {
+								status = "disabled";
+							};
+
+							rpi22_tevs_c@4a {
+								status = "disabled";
+							};
+
+							rpi22_tevs_b@49 {
+								status = "disabled";
+							};
+
+							rpi22_tevs_a@48 {
+								status = "disabled";
+							};
 						};
+
 						cam_i2c_1:i2c@1 {   // i2c-10
-								status = "okay";
-								reg = <1>;
-								i2c-mux,deselect-on-exit;
-								#address-cells = <1>;
-								#size-cells = <0>;
+							status = "okay";
+							reg = <1>;
+							i2c-mux,deselect-on-exit;
+							#address-cells = <1>;
+							#size-cells = <0>;
 
+							vls3@33 {
+								status = "disabled";
+							};
+
+							vls3@32 {
+								status = "disabled";
+							};
+
+							vls3@31 {
+								status = "disabled";
+							};
+
+							vls3@30 {
+								status = "disabled";
+							};
+
+							rpi22_tevs_h@4b {
+								status = "disabled";
+							};
+
+							rpi22_tevs_g@4a {
+								status = "disabled";
+							};
+
+							rpi22_tevs_f@49 {
+								status = "disabled";
+							};
+
+							rpi22_tevs_e@48 {
+								status = "disabled";
+							};
 						};
+
 						cam_i2c_2:i2c@2 {   // i2c-11
-								status = "okay";
-								reg = <2>;
-								i2c-mux,deselect-on-exit;
-								#address-cells = <1>;
-								#size-cells = <0>;
-
+							status = "okay";
+							reg = <2>;
+							i2c-mux,deselect-on-exit;
+							#address-cells = <1>;
+							#size-cells = <0>;
 						};
-						cam_i2c_3:i2c@3 {   // i2c-12
-								status = "okay";
-								reg = <3>;
-								i2c-mux,deselect-on-exit;
-								#address-cells = <1>;
-								#size-cells = <0>;
 
+						cam_i2c_3:i2c@3 {   // i2c-12
+							status = "okay";
+							reg = <3>;
+							i2c-mux,deselect-on-exit;
+							#address-cells = <1>;
+							#size-cells = <0>;
 						};
 					};
 				};
@@ -622,7 +701,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -633,7 +712,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
@@ -646,8 +725,6 @@
 
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video1";
@@ -665,7 +742,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM1_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -706,7 +783,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM1_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -747,7 +824,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM1_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -788,7 +865,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM1_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -829,7 +906,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM1_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -870,7 +947,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM1_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -910,9 +987,11 @@
 				reg = <0>;
 
 				rpi22_tevs_1_out: endpoint {
-					port-index = <0>;
+					port-index = <CAM1_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_1_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
@@ -926,8 +1005,6 @@
 
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video0";
@@ -945,7 +1022,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM0_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -986,7 +1063,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM0_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -1027,6 +1104,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM0_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -1067,7 +1145,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM0_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -1108,7 +1186,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
-			lane_polarity = "6";
+			lane_polarity = CAM0_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -1149,6 +1227,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM0_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -1188,9 +1267,11 @@
 				reg = <0>;
 
 				rpi22_tevs_0_out: endpoint {
-					port-index = <0>;
+					port-index = <CAM0_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_0_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
@@ -1254,7 +1335,7 @@
 			label = "ser_0_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
@@ -1337,7 +1418,7 @@
 			label = "ser_1_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
@@ -1428,7 +1509,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -1439,7 +1520,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
@@ -1452,8 +1533,6 @@
 
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video3";
@@ -1471,6 +1550,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM3_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -1511,6 +1591,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM3_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -1551,6 +1632,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM3_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -1591,6 +1673,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM3_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -1631,6 +1714,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM3_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -1671,6 +1755,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM3_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -1710,9 +1795,11 @@
 				reg = <0>;
 
 				rpi22_tevs_3_out: endpoint {
-					port-index = <2>;
+					port-index = <CAM3_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_3_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
@@ -1726,8 +1813,6 @@
 
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video2";
@@ -1745,6 +1830,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM2_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -1785,6 +1871,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM2_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -1825,6 +1912,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM2_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -1865,6 +1953,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM2_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -1905,6 +1994,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM2_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -1945,6 +2035,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM2_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -1984,9 +2075,11 @@
 				reg = <0>;
 
 				rpi22_tevs_2_out: endpoint {
-					port-index = <2>;
+					port-index = <CAM2_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_2_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
@@ -2002,7 +2095,7 @@
 		reg = <0x41>;
 
 		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3d 0x28>;
+		i2c-addr-alias-map-local = <0x3d 0x26>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
 		gpio-controller;
@@ -2050,16 +2143,16 @@
 			label = "ser_2_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
 };
 
 &ser_2_i2c_0 {
-	pca9554_cam_2: pca9554@28 {
+	pca9554_cam_2: pca9554@26 {
 		compatible = "nxp,pca9554";
-		reg = <0x28>;
+		reg = <0x26>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
@@ -2085,7 +2178,7 @@
 		reg = <0x42>;
 
 		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3e 0x29>;
+		i2c-addr-alias-map-local = <0x3e 0x27>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
 		gpio-controller;
@@ -2133,16 +2226,16 @@
 			label = "ser_3_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
 };
 
 &ser_3_i2c_0 {
-	pca9554_cam_3: pca9554@29 {
+	pca9554_cam_3: pca9554@27 {
 		compatible = "nxp,pca9554";
-		reg = <0x29>;
+		reg = <0x27>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
@@ -2224,7 +2317,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -2235,7 +2328,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
@@ -2248,8 +2341,6 @@
 
 		reset-gpios = <&pca9554_cam_5 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_5 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video5";
@@ -2267,6 +2358,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM5_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -2307,6 +2399,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM5_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -2347,6 +2440,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM5_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -2387,6 +2481,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM5_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -2427,6 +2522,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM5_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -2467,6 +2563,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM5_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -2506,9 +2603,11 @@
 				reg = <0>;
 
 				rpi22_tevs_5_out: endpoint {
-					port-index = <4>;
+					port-index = <CAM5_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_5_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
@@ -2522,8 +2621,6 @@
 
 		reset-gpios = <&pca9554_cam_4 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_4 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video4";
@@ -2541,6 +2638,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM4_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -2581,6 +2679,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM4_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -2621,6 +2720,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM4_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -2661,6 +2761,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM4_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -2701,6 +2802,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM4_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -2741,6 +2843,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM4_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -2780,17 +2883,19 @@
 				reg = <0>;
 
 				rpi22_tevs_4_out: endpoint {
-					port-index = <4>;
+					port-index = <CAM4_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_4_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
 	};
 };
 
-&des_2_i2c_0 {
-	ser_4: gmsl-serializer@41 {
+&des_3_i2c_0 {
+	ser_6: gmsl-serializer@41 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -2803,12 +2908,12 @@
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_4 0 0 11>;
+		gpio-ranges = <&ser_6 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_4_pinmux_default>;
+		pinctrl-0 = <&ser_6_pinmux_default>;
 
-		ser_4_pinmux_default: pinmux {
+		ser_6_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -2827,7 +2932,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_4_i2c_0: i2c@0 {
+			ser_6_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -2843,17 +2948,17 @@
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_4_ch_0";
+			label = "ser_6_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
 };
 
-&ser_4_i2c_0 {
-	pca9554_cam_4: pca9554@26 {
+&ser_6_i2c_0 {
+	pca9554_cam_6: pca9554@26 {
 		compatible = "nxp,pca9554";
 		reg = <0x26>;
 		gpio-controller;
@@ -2872,8 +2977,8 @@
 	};
 };
 
-&des_2_i2c_1 {
-	ser_5: gmsl-serializer@42 {
+&des_3_i2c_1 {
+	ser_7: gmsl-serializer@42 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -2886,12 +2991,12 @@
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_5 0 0 11>;
+		gpio-ranges = <&ser_7 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_5_pinmux_default>;
+		pinctrl-0 = <&ser_7_pinmux_default>;
 
-		ser_5_pinmux_default: pinmux {
+		ser_7_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -2910,7 +3015,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_5_i2c_0: i2c@0 {
+			ser_7_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -2926,17 +3031,17 @@
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_5_ch_0";
+			label = "ser_7_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
 };
 
-&ser_5_i2c_0 {
-	pca9554_cam_5: pca9554@27 {
+&ser_7_i2c_0 {
+	pca9554_cam_7: pca9554@27 {
 		compatible = "nxp,pca9554";
 		reg = <0x27>;
 		gpio-controller;
@@ -3020,7 +3125,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
@@ -3031,7 +3136,7 @@
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 	};
@@ -3044,8 +3149,6 @@
 
 		reset-gpios = <&pca9554_cam_7 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_7 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video7";
@@ -3063,6 +3166,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM7_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -3103,6 +3207,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM7_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -3143,6 +3248,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM7_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -3183,6 +3289,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM7_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -3223,6 +3330,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM7_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -3263,6 +3371,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM7_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -3302,9 +3411,11 @@
 				reg = <0>;
 
 				rpi22_tevs_7_out: endpoint {
-					port-index = <6>;
+					port-index = <CAM7_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_7_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
@@ -3318,8 +3429,6 @@
 
 		reset-gpios = <&pca9554_cam_6 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_6 2 GPIO_ACTIVE_HIGH>;
-		data-lanes = <CAM_LANES>;
-		data-frequency = <800>;
 
 		/* V4L2 device node location */
 		devnode = "video6";
@@ -3337,6 +3446,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM6_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "2464";
@@ -3377,6 +3487,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM6_LANE_POLARITY;
 
 			active_w = "3280";
 			active_h = "1848";
@@ -3417,6 +3528,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM6_LANE_POLARITY;
 
 			active_w = "1920";
 			active_h = "1080";
@@ -3457,6 +3569,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM6_LANE_POLARITY;
 
 			active_w = "1640";
 			active_h = "1232";
@@ -3497,6 +3610,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM6_LANE_POLARITY;
 
 			active_w = "1280";
 			active_h = "720";
@@ -3537,6 +3651,7 @@
 			discontinuous_clk = "yes";
 			dpcm_enable = "false";
 			cil_settletime = "0";
+			lane_polarity = CAM6_LANE_POLARITY;
 
 			active_w = "640";
 			active_h = "480";
@@ -3576,17 +3691,19 @@
 				reg = <0>;
 
 				rpi22_tevs_6_out: endpoint {
-					port-index = <6>;
+					port-index = <CAM6_PORT>;
 					bus-width = <CAM_LANES>;
 					remote-endpoint = <&csi_6_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <400000000>;
 				};
 			};
 		};
 	};
 };
 
-&des_3_i2c_0 {
-	ser_6: gmsl-serializer@41 {
+&des_2_i2c_0 {
+	ser_4: gmsl-serializer@41 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -3599,12 +3716,12 @@
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_6 0 0 11>;
+		gpio-ranges = <&ser_4 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_6_pinmux_default>;
+		pinctrl-0 = <&ser_4_pinmux_default>;
 
-		ser_6_pinmux_default: pinmux {
+		ser_4_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -3623,7 +3740,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_6_i2c_0: i2c@0 {
+			ser_4_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -3639,17 +3756,17 @@
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_6_ch_0";
+			label = "ser_4_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
 };
 
-&ser_6_i2c_0 {
-	pca9554_cam_6: pca9554@26 {
+&ser_4_i2c_0 {
+	pca9554_cam_4: pca9554@26 {
 		compatible = "nxp,pca9554";
 		reg = <0x26>;
 		gpio-controller;
@@ -3668,8 +3785,8 @@
 	};
 };
 
-&des_3_i2c_1 {
-	ser_7: gmsl-serializer@42 {
+&des_2_i2c_1 {
+	ser_5: gmsl-serializer@42 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -3682,12 +3799,12 @@
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_7 0 0 11>;
+		gpio-ranges = <&ser_5 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_7_pinmux_default>;
+		pinctrl-0 = <&ser_5_pinmux_default>;
 
-		ser_7_pinmux_default: pinmux {
+		ser_5_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -3706,7 +3823,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_7_i2c_0: i2c@0 {
+			ser_5_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -3722,17 +3839,17 @@
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_7_ch_0";
+			label = "ser_5_ch_0";
 
 			clock-lanes = <0>;
-			data-lanes = <1 2 3 4>;
+			data-lanes = <1 2>;
 			clock-noncontinuous;
 		};
 	};
 };
 
-&ser_7_i2c_0 {
-	pca9554_cam_7: pca9554@27 {
+&ser_5_i2c_0 {
+	pca9554_cam_5: pca9554@27 {
 		compatible = "nxp,pca9554";
 		reg = <0x27>;
 		gpio-controller;
