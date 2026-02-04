@@ -682,22 +682,23 @@
 			reg = <0>;
 		};
 
-		pipe@1 {
-			reg = <1>;
-
-			maxim,phy-id = <0>;
-		};
-
 		pipe@0 {
 			reg = <0>;
 
 			maxim,phy-id = <0>;
 		};
 
-		channel@1 {
+		pipe@1 {
 			reg = <1>;
-			label = "des_0_ch_1";
 
+			maxim,phy-id = <0>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_0_ch_0";
+
+			maxim,pipe-id = <1>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -705,10 +706,11 @@
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
-		channel@0 {
-			reg = <0>;
-			label = "des_0_ch_0";
+		channel@1 {
+			reg = <1>;
+			label = "des_0_ch_1";
 
+			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -1490,22 +1492,23 @@
 			reg = <0>;
 		};
 
-		pipe@1 {
-			reg = <1>;
-
-			maxim,phy-id = <0>;
-		};
-
 		pipe@0 {
 			reg = <0>;
 
 			maxim,phy-id = <0>;
 		};
 
-		channel@1 {
+		pipe@1 {
 			reg = <1>;
-			label = "des_1_ch_1";
 
+			maxim,phy-id = <0>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_1_ch_0";
+
+			maxim,pipe-id = <1>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -1513,10 +1516,11 @@
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
-		channel@0 {
-			reg = <0>;
-			label = "des_1_ch_0";
+		channel@1 {
+			reg = <1>;
+			label = "des_1_ch_1";
 
+			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -2298,22 +2302,23 @@
 			reg = <0>;
 		};
 
-		pipe@1 {
-			reg = <1>;
-
-			maxim,phy-id = <0>;
-		};
-
 		pipe@0 {
 			reg = <0>;
 
 			maxim,phy-id = <0>;
 		};
 
-		channel@1 {
+		pipe@1 {
 			reg = <1>;
-			label = "des_2_ch_1";
 
+			maxim,phy-id = <0>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_2_ch_0";
+
+			maxim,pipe-id = <1>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -2321,10 +2326,11 @@
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
-		channel@0 {
-			reg = <0>;
-			label = "des_2_ch_0";
+		channel@1 {
+			reg = <1>;
+			label = "des_2_ch_1";
 
+			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -3106,22 +3112,23 @@
 			reg = <0>;
 		};
 
-		pipe@1 {
-			reg = <1>;
-
-			maxim,phy-id = <0>;
-		};
-
 		pipe@0 {
 			reg = <0>;
 
 			maxim,phy-id = <0>;
 		};
 
-		channel@1 {
+		pipe@1 {
 			reg = <1>;
-			label = "des_3_ch_1";
 
+			maxim,phy-id = <0>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_3_ch_0";
+
+			maxim,pipe-id = <1>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
@@ -3129,10 +3136,11 @@
 			link-frequencies = /bits/ 64 <1250000000>;
 		};
 
-		channel@0 {
-			reg = <0>;
-			label = "des_3_ch_0";
+		channel@1 {
+			reg = <1>;
+			label = "des_3_ch_1";
 
+			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
 
 			clock-lanes = <0>;
