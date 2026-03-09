@@ -647,7 +647,7 @@
 		reset-gpios = <&tca9555_a21 1 GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
-		i2c-addr-alias-map-local = <0x41 0x42>;
+		i2c-addr-alias-map-local = <0x42 0x41>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <0 1>;
 
@@ -686,32 +686,34 @@
 			reg = <0>;
 
 			maxim,phy-id = <0>;
+			maxim,link-id = <1>;
 		};
 
 		pipe@1 {
 			reg = <1>;
 
 			maxim,phy-id = <0>;
-		};
-
-		channel@0 {
-			reg = <0>;
-			label = "des_0_ch_0";
-
-			maxim,pipe-id = <1>;
-			maxim,phy-id = <0>;
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <1250000000>;
+			maxim,link-id = <0>;
 		};
 
 		channel@1 {
 			reg = <1>;
 			label = "des_0_ch_1";
 
-			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
+			maxim,pipe-id = <1>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <1250000000>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_0_ch_0";
+
+			maxim,phy-id = <0>;
+			maxim,pipe-id = <0>;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -1281,89 +1283,6 @@
 };
 
 &des_0_i2c_0 {
-	ser_0: gmsl-serializer@41 {
-		status = "okay";
-		#address-cells = <1>;
-		#size-cells = <0>;
-		compatible = "maxim,max96717";
-		reg = <0x41>;
-
-		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3d 0x26>;
-		i2c-addr-alias-map-remote = <0x48 0x25>;
-
-		gpio-controller;
-		#gpio-cells = <2>;
-		gpio-ranges = <&ser_0 0 0 11>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&ser_0_pinmux_default>;
-
-		ser_0_pinmux_default: pinmux {
-			mfp0_fsync {
-				pins = "mfp0";
-				function = "gpio";
-				maxim,gmsl-rx = <1>;
-				maxim,gmsl-rx-id = <0>;
-				output-enable;
-				output-low;
-			};
-		};
-
-		i2c-mux {
-			#address-cells = <1>;
-			#size-cells = <0>;
-
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
-			ser_0_i2c_0: i2c@0 {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				reg = <0>;
-			};
-		};
-
-		pipe@0 {
-			reg = <0>;
-
-			maxim,stream-id = <0>;
-		};
-
-		channel@0 {
-			reg = <0>;
-			label = "ser_0_ch_0";
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			clock-noncontinuous;
-		};
-	};
-};
-
-&ser_0_i2c_0 {
-	pca9554_cam_0: pca9554@26 {
-		compatible = "nxp,pca9554";
-		reg = <0x26>;
-		gpio-controller;
-		#gpio-cells = <2>;
-		gpio-line-names = "EXPOSURE_TRIG_IN",
-						"FLASH_OUT",
-						"INFO_TRIG_IN",
-						"CAMA_SHUTTER",
-						"CSI_P1_nRST",
-						"PWR_TIME0",
-						"PWR_TIME1",
-						"3V3_EN";
-		vcc-supply = <&vdd_1v8_hs>;
-		vcc_lp = "vcc";
-		status = "okay";
-	};
-};
-
-&des_0_i2c_1 {
 	ser_1: gmsl-serializer@42 {
 		status = "okay";
 		#address-cells = <1>;
@@ -1446,6 +1365,89 @@
 	};
 };
 
+&des_0_i2c_1 {
+	ser_0: gmsl-serializer@41 {
+		status = "okay";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "maxim,max96717";
+		reg = <0x41>;
+
+		// i2c addr alias map "sensor, gpio expander"
+		i2c-addr-alias-map-local = <0x3d 0x26>;
+		i2c-addr-alias-map-remote = <0x48 0x25>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&ser_0 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_0_pinmux_default>;
+
+		ser_0_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
+		i2c-mux {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			compatible = "i2c-mux-gpio";
+			i2c-parent = <&cam_i2c>;
+			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
+
+			ser_0_i2c_0: i2c@0 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <0>;
+			};
+		};
+
+		pipe@0 {
+			reg = <0>;
+
+			maxim,stream-id = <0>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "ser_1_ch_0";
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			clock-noncontinuous;
+		};
+	};
+};
+
+&ser_0_i2c_0 {
+	pca9554_cam_0: pca9554@26 {
+		compatible = "nxp,pca9554";
+		reg = <0x26>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-line-names = "EXPOSURE_TRIG_IN",
+						"FLASH_OUT",
+						"INFO_TRIG_IN",
+						"CAMA_SHUTTER",
+						"CSI_P1_nRST",
+						"PWR_TIME0",
+						"PWR_TIME1",
+						"3V3_EN";
+		vcc-supply = <&vdd_1v8_hs>;
+		vcc_lp = "vcc";
+		status = "okay";
+	};
+};
+
 &cam_i2c_1 {
 	des_1: gmsl-deserializer@4c {
 		status = "okay";
@@ -1457,7 +1459,7 @@
 		reset-gpios = <&tca9555_a21 3 GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
-		i2c-addr-alias-map-local = <0x41 0x42>;
+		i2c-addr-alias-map-local = <0x42 0x41>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <0 1>;
 
@@ -1496,32 +1498,34 @@
 			reg = <0>;
 
 			maxim,phy-id = <0>;
+			maxim,link-id = <1>;
 		};
 
 		pipe@1 {
 			reg = <1>;
 
 			maxim,phy-id = <0>;
-		};
-
-		channel@0 {
-			reg = <0>;
-			label = "des_1_ch_0";
-
-			maxim,pipe-id = <1>;
-			maxim,phy-id = <0>;
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <1250000000>;
+			maxim,link-id = <0>;
 		};
 
 		channel@1 {
 			reg = <1>;
 			label = "des_1_ch_1";
 
-			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
+			maxim,pipe-id = <1>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <1250000000>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_1_ch_0";
+
+			maxim,phy-id = <0>;
+			maxim,pipe-id = <0>;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -2091,89 +2095,6 @@
 };
 
 &des_1_i2c_0 {
-	ser_2: gmsl-serializer@41 {
-		status = "okay";
-		#address-cells = <1>;
-		#size-cells = <0>;
-		compatible = "maxim,max96717";
-		reg = <0x41>;
-
-		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3d 0x26>;
-		i2c-addr-alias-map-remote = <0x48 0x25>;
-
-		gpio-controller;
-		#gpio-cells = <2>;
-		gpio-ranges = <&ser_2 0 0 11>;
-
-		pinctrl-names = "default";
-		pinctrl-0 = <&ser_2_pinmux_default>;
-
-		ser_2_pinmux_default: pinmux {
-			mfp0_fsync {
-				pins = "mfp0";
-				function = "gpio";
-				maxim,gmsl-rx = <1>;
-				maxim,gmsl-rx-id = <0>;
-				output-enable;
-				output-low;
-			};
-		};
-
-		i2c-mux {
-			#address-cells = <1>;
-			#size-cells = <0>;
-
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
-			ser_2_i2c_0: i2c@0 {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				reg = <0>;
-			};
-		};
-
-		pipe@0 {
-			reg = <0>;
-
-			maxim,stream-id = <0>;
-		};
-
-		channel@0 {
-			reg = <0>;
-			label = "ser_2_ch_0";
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			clock-noncontinuous;
-		};
-	};
-};
-
-&ser_2_i2c_0 {
-	pca9554_cam_2: pca9554@26 {
-		compatible = "nxp,pca9554";
-		reg = <0x26>;
-		gpio-controller;
-		#gpio-cells = <2>;
-		gpio-line-names = "EXPOSURE_TRIG_IN",
-						"FLASH_OUT",
-						"INFO_TRIG_IN",
-						"CAMA_SHUTTER",
-						"CSI_P1_nRST",
-						"PWR_TIME0",
-						"PWR_TIME1",
-						"3V3_EN";
-		vcc-supply = <&vdd_1v8_hs>;
-		vcc_lp = "vcc";
-		status = "okay";
-	};
-};
-
-&des_1_i2c_1 {
 	ser_3: gmsl-serializer@42 {
 		status = "okay";
 		#address-cells = <1>;
@@ -2256,6 +2177,89 @@
 	};
 };
 
+&des_1_i2c_1 {
+	ser_2: gmsl-serializer@41 {
+		status = "okay";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "maxim,max96717";
+		reg = <0x41>;
+
+		// i2c addr alias map "sensor, gpio expander"
+		i2c-addr-alias-map-local = <0x3d 0x26>;
+		i2c-addr-alias-map-remote = <0x48 0x25>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&ser_2 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_2_pinmux_default>;
+
+		ser_2_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
+		i2c-mux {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			compatible = "i2c-mux-gpio";
+			i2c-parent = <&cam_i2c>;
+			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
+
+			ser_2_i2c_0: i2c@0 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <0>;
+			};
+		};
+
+		pipe@0 {
+			reg = <0>;
+
+			maxim,stream-id = <0>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "ser_2_ch_0";
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			clock-noncontinuous;
+		};
+	};
+};
+
+&ser_2_i2c_0 {
+	pca9554_cam_2: pca9554@26 {
+		compatible = "nxp,pca9554";
+		reg = <0x26>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-line-names = "EXPOSURE_TRIG_IN",
+						"FLASH_OUT",
+						"INFO_TRIG_IN",
+						"CAMA_SHUTTER",
+						"CSI_P1_nRST",
+						"PWR_TIME0",
+						"PWR_TIME1",
+						"3V3_EN";
+		vcc-supply = <&vdd_1v8_hs>;
+		vcc_lp = "vcc";
+		status = "okay";
+	};
+};
+
 &cam_i2c_2 {
 	des_2: gmsl-deserializer@4c {
 		status = "okay";
@@ -2267,7 +2271,7 @@
 		reset-gpios = <&tca9555_a21 5 GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
-		i2c-addr-alias-map-local = <0x41 0x42>;
+		i2c-addr-alias-map-local = <0x42 0x41>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <0 1>;
 
@@ -2306,32 +2310,34 @@
 			reg = <0>;
 
 			maxim,phy-id = <0>;
+			maxim,link-id = <1>;
 		};
 
 		pipe@1 {
 			reg = <1>;
 
 			maxim,phy-id = <0>;
-		};
-
-		channel@0 {
-			reg = <0>;
-			label = "des_2_ch_0";
-
-			maxim,pipe-id = <1>;
-			maxim,phy-id = <0>;
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <1250000000>;
+			maxim,link-id = <0>;
 		};
 
 		channel@1 {
 			reg = <1>;
 			label = "des_2_ch_1";
 
-			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
+			maxim,pipe-id = <0>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <1250000000>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_2_ch_0";
+
+			maxim,phy-id = <0>;
+			maxim,pipe-id = <1>;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -2900,26 +2906,26 @@
 	};
 };
 
-&des_3_i2c_0 {
-	ser_6: gmsl-serializer@41 {
+&des_2_i2c_0 {
+	ser_5: gmsl-serializer@42 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "maxim,max96717";
-		reg = <0x41>;
+		reg = <0x42>;
 
 		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3d 0x26>;
+		i2c-addr-alias-map-local = <0x3e 0x27>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_6 0 0 11>;
+		gpio-ranges = <&ser_5 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_6_pinmux_default>;
+		pinctrl-0 = <&ser_5_pinmux_default>;
 
-		ser_6_pinmux_default: pinmux {
+		ser_5_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -2938,7 +2944,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_6_i2c_0: i2c@0 {
+			ser_5_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -2949,12 +2955,12 @@
 		pipe@0 {
 			reg = <0>;
 
-			maxim,stream-id = <0>;
+			maxim,stream-id = <1>;
 		};
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_6_ch_0";
+			label = "ser_5_ch_0";
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -2963,10 +2969,10 @@
 	};
 };
 
-&ser_6_i2c_0 {
-	pca9554_cam_6: pca9554@26 {
+&ser_5_i2c_0 {
+	pca9554_cam_5: pca9554@27 {
 		compatible = "nxp,pca9554";
-		reg = <0x26>;
+		reg = <0x27>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
@@ -2983,26 +2989,26 @@
 	};
 };
 
-&des_3_i2c_1 {
-	ser_7: gmsl-serializer@42 {
+&des_2_i2c_1 {
+	ser_4: gmsl-serializer@41 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "maxim,max96717";
-		reg = <0x42>;
+		reg = <0x41>;
 
 		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3e 0x27>;
+		i2c-addr-alias-map-local = <0x3d 0x26>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_7 0 0 11>;
+		gpio-ranges = <&ser_4 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_7_pinmux_default>;
+		pinctrl-0 = <&ser_4_pinmux_default>;
 
-		ser_7_pinmux_default: pinmux {
+		ser_4_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -3021,7 +3027,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_7_i2c_0: i2c@0 {
+			ser_4_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -3032,12 +3038,12 @@
 		pipe@0 {
 			reg = <0>;
 
-			maxim,stream-id = <1>;
+			maxim,stream-id = <0>;
 		};
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_7_ch_0";
+			label = "ser_4_ch_0";
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -3046,10 +3052,10 @@
 	};
 };
 
-&ser_7_i2c_0 {
-	pca9554_cam_7: pca9554@27 {
+&ser_4_i2c_0 {
+	pca9554_cam_4: pca9554@26 {
 		compatible = "nxp,pca9554";
-		reg = <0x27>;
+		reg = <0x26>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
@@ -3077,7 +3083,7 @@
 		reset-gpios = <&tca9555_a21 7 GPIO_ACTIVE_HIGH>;
 
 		//i2c addr alias map "serializer0, serializer1"
-		i2c-addr-alias-map-local = <0x41 0x42>;
+		i2c-addr-alias-map-local = <0x42 0x41>;
 		i2c-addr-alias-map-remote = <0x40 0x40>;
 		i2c-addr-alias-source-id = <0 1>;
 
@@ -3116,32 +3122,34 @@
 			reg = <0>;
 
 			maxim,phy-id = <0>;
+			maxim,link-id = <1>;
 		};
 
 		pipe@1 {
 			reg = <1>;
 
 			maxim,phy-id = <0>;
-		};
-
-		channel@0 {
-			reg = <0>;
-			label = "des_3_ch_0";
-
-			maxim,pipe-id = <1>;
-			maxim,phy-id = <0>;
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <1250000000>;
+			maxim,link-id = <0>;
 		};
 
 		channel@1 {
 			reg = <1>;
 			label = "des_3_ch_1";
 
-			maxim,pipe-id = <0>;
 			maxim,phy-id = <0>;
+			maxim,pipe-id = <0>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <1250000000>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_3_ch_0";
+
+			maxim,phy-id = <0>;
+			maxim,pipe-id = <1>;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -3710,26 +3718,26 @@
 	};
 };
 
-&des_2_i2c_0 {
-	ser_4: gmsl-serializer@41 {
+&des_3_i2c_0 {
+	ser_7: gmsl-serializer@42 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "maxim,max96717";
-		reg = <0x41>;
+		reg = <0x42>;
 
 		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3d 0x26>;
+		i2c-addr-alias-map-local = <0x3e 0x27>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_4 0 0 11>;
+		gpio-ranges = <&ser_7 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_4_pinmux_default>;
+		pinctrl-0 = <&ser_7_pinmux_default>;
 
-		ser_4_pinmux_default: pinmux {
+		ser_7_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -3748,7 +3756,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_4_i2c_0: i2c@0 {
+			ser_7_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -3759,12 +3767,12 @@
 		pipe@0 {
 			reg = <0>;
 
-			maxim,stream-id = <0>;
+			maxim,stream-id = <1>;
 		};
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_4_ch_0";
+			label = "ser_7_ch_0";
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -3773,10 +3781,10 @@
 	};
 };
 
-&ser_4_i2c_0 {
-	pca9554_cam_4: pca9554@26 {
+&ser_7_i2c_0 {
+	pca9554_cam_7: pca9554@27 {
 		compatible = "nxp,pca9554";
-		reg = <0x26>;
+		reg = <0x27>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
@@ -3793,26 +3801,26 @@
 	};
 };
 
-&des_2_i2c_1 {
-	ser_5: gmsl-serializer@42 {
+&des_3_i2c_1 {
+	ser_6: gmsl-serializer@41 {
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
 		compatible = "maxim,max96717";
-		reg = <0x42>;
+		reg = <0x41>;
 
 		// i2c addr alias map "sensor, gpio expander"
-		i2c-addr-alias-map-local = <0x3e 0x27>;
+		i2c-addr-alias-map-local = <0x3d 0x26>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
 
 		gpio-controller;
 		#gpio-cells = <2>;
-		gpio-ranges = <&ser_5 0 0 11>;
+		gpio-ranges = <&ser_6 0 0 11>;
 
 		pinctrl-names = "default";
-		pinctrl-0 = <&ser_5_pinmux_default>;
+		pinctrl-0 = <&ser_6_pinmux_default>;
 
-		ser_5_pinmux_default: pinmux {
+		ser_6_pinmux_default: pinmux {
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
@@ -3831,7 +3839,7 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			ser_5_i2c_0: i2c@0 {
+			ser_6_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
@@ -3842,12 +3850,12 @@
 		pipe@0 {
 			reg = <0>;
 
-			maxim,stream-id = <1>;
+			maxim,stream-id = <0>;
 		};
 
 		channel@0 {
 			reg = <0>;
-			label = "ser_5_ch_0";
+			label = "ser_6_ch_0";
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -3856,10 +3864,10 @@
 	};
 };
 
-&ser_5_i2c_0 {
-	pca9554_cam_5: pca9554@27 {
+&ser_6_i2c_0 {
+	pca9554_cam_6: pca9554@26 {
 		compatible = "nxp,pca9554";
-		reg = <0x27>;
+		reg = <0x26>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
