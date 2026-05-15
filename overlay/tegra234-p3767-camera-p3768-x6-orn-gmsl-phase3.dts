@@ -1,0 +1,2750 @@
+/dts-v1/;
+
+/*
+ * X6-ORN GMSL phase 3 serializer-only overlay.
+ *
+ * This source is based on the proven phase 1 combined overlay, but starts
+ * replacing the borrowed G300/FG96 camera topology with the X6 routing plan.
+ *
+ * Current phase 3 scope:
+ * - keep Path A max9296a bind and X6 MFP4 power init;
+ * - keep Path A MAX9296A channel skeleton on serial_a/port-index 0;
+ * - add one Path A MAX96717 serializer alias and node;
+ * - disable old G300 sensor nodes and tegra-camera-platform modules;
+ * - disable Path B until Path A has a coherent media graph;
+ * - do not add final sensor nodes until exact parts are known.
+ */
+
+/ {
+	overlay-name = "X6-ORN GMSL phase 3 serializer";
+	jetson-header-name = "Jetson 40pin Header";
+	compatible = "nvidia,p3768-0000+p3767-0000\0nvidia,p3768-0000+p3767-0001\0nvidia,p3768-0000+p3767-0003\0nvidia,p3768-0000+p3767-0004\0nvidia,p3768-0000+p3767-0005\0nvidia,p3768-0000+p3767-0000-super\0nvidia,p3768-0000+p3767-0001-super\0nvidia,p3768-0000+p3767-0003-super\0nvidia,p3768-0000+p3767-0004-super\0nvidia,p3768-0000+p3767-0005-super";
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <0x01>;
+
+			exp-header-pinmux {
+				phandle = <0x01>;
+
+				hdr40-pin15 {
+					nvidia,pins = "soc_gpio39_pn1";
+					nvidia,function = "gp";
+					nvidia,pin-group = "pwm1";
+					nvidia,tristate = <0x00>;
+					nvidia,enable-input = <0x00>;
+				};
+			};
+		};
+	};
+
+	fragment@1 {
+		target-path = "/";
+
+		__overlay__ {
+
+			tegra-capture-vi {
+				num-channels = <0x10>;
+
+				ports {
+					status = "disabled";
+					#address-cells = <0x01>;
+					#size-cells = <0x00>;
+
+					port@0 {
+						reg = <0x00>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x00>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x02>;
+							phandle = <0x13>;
+						};
+					};
+
+					port@1 {
+						reg = <0x01>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x01>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x03>;
+							phandle = <0x15>;
+						};
+					};
+
+					port@2 {
+						reg = <0x02>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x02>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x04>;
+							phandle = <0x17>;
+						};
+					};
+
+					port@3 {
+						reg = <0x03>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x03>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x05>;
+							phandle = <0x19>;
+						};
+					};
+
+					port@4 {
+						reg = <0x04>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x03>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x06>;
+							phandle = <0x1b>;
+						};
+					};
+
+					port@5 {
+						reg = <0x05>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x02>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x07>;
+							phandle = <0x1d>;
+						};
+					};
+
+					port@6 {
+						reg = <0x06>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x01>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x08>;
+							phandle = <0x1f>;
+						};
+					};
+
+					port@7 {
+						reg = <0x07>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x00>;
+							port-index = <0x00>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x09>;
+							phandle = <0x21>;
+						};
+					};
+
+					port@8 {
+						reg = <0x08>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x00>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x0a>;
+							phandle = <0x23>;
+						};
+					};
+
+					port@9 {
+						reg = <0x09>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x01>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x0b>;
+							phandle = <0x25>;
+						};
+					};
+
+					port@10 {
+						reg = <0x0a>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x02>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x0c>;
+							phandle = <0x27>;
+						};
+					};
+
+					port@11 {
+						reg = <0x0b>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x03>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x0d>;
+							phandle = <0x29>;
+						};
+					};
+
+					port@12 {
+						reg = <0x0c>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x03>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x0e>;
+							phandle = <0x2b>;
+						};
+					};
+
+					port@13 {
+						reg = <0x0d>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x02>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x0f>;
+							phandle = <0x2d>;
+						};
+					};
+
+					port@14 {
+						reg = <0x0e>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x01>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x10>;
+							phandle = <0x2f>;
+						};
+					};
+
+					port@15 {
+						reg = <0x0f>;
+						status = "disabled";
+
+						endpoint {
+							status = "disabled";
+							vc-id = <0x00>;
+							port-index = <0x02>;
+							bus-width = <0x04>;
+							remote-endpoint = <0x11>;
+							phandle = <0x31>;
+						};
+					};
+				};
+			};
+
+			obc_cam_sync {
+				compatible = "orbbec,obc_cam_sync";
+				ranges = <0x00 0x00 0xc6a0000 0x10000>;
+				reg = <0x00 0xc6a0000 0x00 0x18>;
+				#address-cells = <0x01>;
+				#size-cells = <0x01>;
+				status = "disabled";
+				pwms = <0xffffffff 0x00 0x1fca055>;
+
+				generator@380 {
+					reg = <0x380 0x80>;
+					freq_hz = <0x1e>;
+					duty_cycle = <0x0a>;
+					offset_ms = <0x00>;
+					gpio_pinmux = <0xffffffff 0x0a 0x01>;
+					status = "disabled";
+				};
+			};
+
+			bus@0 {
+
+				host1x@13e00000 {
+
+					nvcsi@15a00000 {
+						#address-cells = <0x01>;
+						#size-cells = <0x00>;
+						num-channels = <0x10>;
+
+						channel@0 {
+							reg = <0x00>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@0 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x12>;
+										phandle = <0x3a>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@1 {
+										status = "disabled";
+										remote-endpoint = <0x13>;
+										phandle = <0x02>;
+									};
+								};
+							};
+						};
+
+						channel@1 {
+							reg = <0x01>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@2 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x14>;
+										phandle = <0x39>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@3 {
+										status = "disabled";
+										remote-endpoint = <0x15>;
+										phandle = <0x03>;
+									};
+								};
+							};
+						};
+
+						channel@2 {
+							reg = <0x02>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@4 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x16>;
+										phandle = <0x38>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@5 {
+										status = "disabled";
+										remote-endpoint = <0x17>;
+										phandle = <0x04>;
+									};
+								};
+							};
+						};
+
+						channel@3 {
+							reg = <0x03>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@6 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x18>;
+										phandle = <0x37>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@7 {
+										status = "disabled";
+										remote-endpoint = <0x19>;
+										phandle = <0x05>;
+									};
+								};
+							};
+						};
+
+						channel@4 {
+							reg = <0x04>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@8 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x1a>;
+										phandle = <0x36>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@9 {
+										status = "disabled";
+										remote-endpoint = <0x1b>;
+										phandle = <0x06>;
+									};
+								};
+							};
+						};
+
+						channel@5 {
+							reg = <0x05>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@10 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x1c>;
+										phandle = <0x35>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@11 {
+										status = "disabled";
+										remote-endpoint = <0x1d>;
+										phandle = <0x07>;
+									};
+								};
+							};
+						};
+
+						channel@6 {
+							reg = <0x06>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@12 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x1e>;
+										phandle = <0x34>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@13 {
+										status = "disabled";
+										remote-endpoint = <0x1f>;
+										phandle = <0x08>;
+									};
+								};
+							};
+						};
+
+						channel@7 {
+							reg = <0x07>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@14 {
+										status = "disabled";
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x20>;
+										phandle = <0x33>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@15 {
+										status = "disabled";
+										remote-endpoint = <0x21>;
+										phandle = <0x09>;
+									};
+								};
+							};
+						};
+
+						channel@8 {
+							reg = <0x08>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@16 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x22>;
+										phandle = <0x43>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@17 {
+										status = "disabled";
+										remote-endpoint = <0x23>;
+										phandle = <0x0a>;
+									};
+								};
+							};
+						};
+
+						channel@9 {
+							reg = <0x09>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@18 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x24>;
+										phandle = <0x42>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@19 {
+										status = "disabled";
+										remote-endpoint = <0x25>;
+										phandle = <0x0b>;
+									};
+								};
+							};
+						};
+
+						channel@10 {
+							reg = <0x0a>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@20 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x26>;
+										phandle = <0x41>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@21 {
+										status = "disabled";
+										remote-endpoint = <0x27>;
+										phandle = <0x0c>;
+									};
+								};
+							};
+						};
+
+						channel@11 {
+							reg = <0x0b>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@22 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x28>;
+										phandle = <0x40>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@23 {
+										status = "disabled";
+										remote-endpoint = <0x29>;
+										phandle = <0x0d>;
+									};
+								};
+							};
+						};
+
+						channel@12 {
+							reg = <0x0c>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@24 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x2a>;
+										phandle = <0x3f>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@25 {
+										status = "disabled";
+										remote-endpoint = <0x2b>;
+										phandle = <0x0e>;
+									};
+								};
+							};
+						};
+
+						channel@13 {
+							reg = <0x0d>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@26 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x2c>;
+										phandle = <0x3e>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@27 {
+										status = "disabled";
+										remote-endpoint = <0x2d>;
+										phandle = <0x0f>;
+									};
+								};
+							};
+						};
+
+						channel@14 {
+							reg = <0x0e>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@28 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x2e>;
+										phandle = <0x3d>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@29 {
+										status = "disabled";
+										remote-endpoint = <0x2f>;
+										phandle = <0x10>;
+									};
+								};
+							};
+						};
+
+						channel@15 {
+							reg = <0x0f>;
+							status = "disabled";
+
+							ports {
+								status = "disabled";
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+									status = "disabled";
+
+									endpoint@30 {
+										status = "disabled";
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x30>;
+										phandle = <0x3c>;
+									};
+								};
+
+								port@1 {
+									reg = <0x01>;
+									status = "disabled";
+
+									endpoint@31 {
+										status = "disabled";
+										remote-endpoint = <0x31>;
+										phandle = <0x11>;
+									};
+								};
+							};
+						};
+					};
+				};
+
+				cam_i2cmux {
+					status = "okay";
+					compatible = "i2c-mux-gpio";
+					#address-cells = <0x01>;
+					#size-cells = <0x00>;
+					i2c-parent = <0xffffffff>;
+					mux-gpios = <0xffffffff 0x13 0x00>;
+
+					i2c@0 {
+						status = "okay";
+						reg = <0x00>;
+						#address-cells = <0x01>;
+						#size-cells = <0x00>;
+
+						g2m3@6D {
+							status = "disabled";
+							reg = <0x6d>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_R";
+							dser-link-port = "b";
+							st-vc = <0x03>;
+							vc-id = <0x00>;
+							orbbec_cam_num = <0x01>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x44>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x00>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x33>;
+										phandle = <0x20>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "0";
+							};
+						};
+
+						g2m2@6C {
+							status = "disabled";
+							reg = <0x6c>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_L";
+							dser-link-port = "b";
+							st-vc = <0x02>;
+							vc-id = <0x01>;
+							orbbec_cam_num = <0x01>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x45>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x01>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x34>;
+										phandle = <0x1e>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "1";
+							};
+						};
+
+						g2m1@6B {
+							status = "disabled";
+							reg = <0x6b>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "RGB";
+							dser-link-port = "b";
+							st-vc = <0x01>;
+							vc-id = <0x02>;
+							orbbec_cam_num = <0x01>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x46>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x02>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x35>;
+										phandle = <0x1c>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "2";
+							};
+						};
+
+						g2m0@6A {
+							status = "disabled";
+							reg = <0x6a>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "Depth";
+							dser-link-port = "b";
+							st-vc = <0x00>;
+							vc-id = <0x03>;
+							orbbec_cam_num = <0x01>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x47>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x03>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x36>;
+										phandle = <0x1a>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "3";
+							};
+						};
+
+						g2m3@69 {
+							status = "disabled";
+							reg = <0x69>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_R";
+							dser-link-port = "a";
+							st-vc = <0x03>;
+							vc-id = <0x03>;
+							orbbec_cam_num = <0x00>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x48>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x03>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x37>;
+										phandle = <0x18>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "3";
+							};
+						};
+
+						g2m2@68 {
+							status = "disabled";
+							reg = <0x68>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_L";
+							dser-link-port = "a";
+							st-vc = <0x02>;
+							vc-id = <0x02>;
+							orbbec_cam_num = <0x00>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x49>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x02>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x38>;
+										phandle = <0x16>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "2";
+							};
+						};
+
+						g2m1@67 {
+							status = "disabled";
+							def-addr = <0x66>;
+							reg = <0x67>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "RGB";
+							dser-link-port = "a";
+							st-vc = <0x01>;
+							vc-id = <0x01>;
+							orbbec_cam_num = <0x00>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x4a>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x01>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x39>;
+										phandle = <0x14>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "1";
+							};
+						};
+
+						g2m0@66 {
+							status = "disabled";
+							def-addr = <0x66>;
+							reg = <0x66>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "Depth";
+							dser-link-port = "a";
+							st-vc = <0x00>;
+							vc-id = <0x00>;
+							orbbec_cam_num = <0x00>;
+							maxim,gmsl-dser-device = <0x32>;
+							phandle = <0x4b>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x00>;
+										port-index = <0x00>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x3a>;
+										phandle = <0x12>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_a";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								lane_polarity = "6";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "0";
+							};
+						};
+
+						max9296@48 {
+							status = "disabled";
+							reg = <0x48>;
+							compatible = "maxim,obc_max9296";
+							index = <0x00>;
+							csi-mode = "2x4";
+							seri-addr = <0x50>;
+							proxy-addr = <0x1a>;
+							real-addr = <0x66>;
+							fsync_mfp_index = <0x00>;
+							pps_mfp_index = <0x06>;
+							is-fg96-2ch;
+							vdd_supply_1v2;
+							phandle = <0x32>;
+						};
+					};
+
+					i2c@1 {
+						status = "okay";
+						reg = <0x01>;
+						#address-cells = <0x01>;
+						#size-cells = <0x00>;
+
+						g2m3@6D {
+							status = "disabled";
+							reg = <0x6d>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_R";
+							dser-link-port = "b";
+							st-vc = <0x03>;
+							vc-id = <0x00>;
+							orbbec_cam_num = <0x03>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x4c>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x00>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x3c>;
+										phandle = <0x30>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "0";
+							};
+						};
+
+						g2m2@6C {
+							status = "disabled";
+							reg = <0x6c>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_L";
+							dser-link-port = "b";
+							st-vc = <0x02>;
+							vc-id = <0x01>;
+							orbbec_cam_num = <0x03>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x4d>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x01>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x3d>;
+										phandle = <0x2e>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "1";
+							};
+						};
+
+						g2m1@6B {
+							status = "disabled";
+							reg = <0x6b>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "RGB";
+							dser-link-port = "b";
+							st-vc = <0x01>;
+							vc-id = <0x02>;
+							orbbec_cam_num = <0x03>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x4e>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x02>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x3e>;
+										phandle = <0x2c>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "2";
+							};
+						};
+
+						g2m0@6A {
+							status = "disabled";
+							reg = <0x6a>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "Depth";
+							dser-link-port = "b";
+							st-vc = <0x00>;
+							vc-id = <0x03>;
+							orbbec_cam_num = <0x03>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x4f>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x03>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x3f>;
+										phandle = <0x2a>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "3";
+							};
+						};
+
+						g2m3@69 {
+							status = "disabled";
+							reg = <0x69>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_R";
+							dser-link-port = "a";
+							st-vc = <0x03>;
+							vc-id = <0x03>;
+							orbbec_cam_num = <0x02>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x50>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x03>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x40>;
+										phandle = <0x28>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "3";
+							};
+						};
+
+						g2m2@68 {
+							status = "disabled";
+							reg = <0x68>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "IR_L";
+							dser-link-port = "a";
+							st-vc = <0x02>;
+							vc-id = <0x02>;
+							orbbec_cam_num = <0x02>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x51>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x02>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x41>;
+										phandle = <0x26>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "grey_y8";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "8";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "750000000";
+								serdes_pix_clk_hz = "750000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "2";
+							};
+						};
+
+						g2m1@67 {
+							status = "disabled";
+							reg = <0x67>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "RGB";
+							dser-link-port = "a";
+							st-vc = <0x01>;
+							vc-id = <0x01>;
+							orbbec_cam_num = <0x02>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x52>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x01>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x42>;
+										phandle = <0x24>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "1";
+							};
+						};
+
+						g2m0@66 {
+							status = "disabled";
+							reg = <0x66>;
+							compatible = "orbbec,g300";
+							use_sensor_mode_id = "true";
+							cam-type = "Depth";
+							dser-link-port = "a";
+							st-vc = <0x00>;
+							vc-id = <0x00>;
+							orbbec_cam_num = <0x02>;
+							maxim,gmsl-dser-device = <0x3b>;
+							phandle = <0x53>;
+
+							ports {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								port@0 {
+									reg = <0x00>;
+
+									endpoint {
+										vc-id = <0x00>;
+										port-index = <0x02>;
+										bus-width = <0x04>;
+										remote-endpoint = <0x43>;
+										phandle = <0x22>;
+									};
+								};
+							};
+
+							mode0 {
+								pixel_t = "yuv_yvyu16";
+								num_lanes = "4";
+								csi_pixel_bit_depth = "16";
+								active_w = "1280";
+								active_h = "720";
+								tegra_sinterface = "serial_c";
+								mclk_khz = "24000";
+								pix_clk_hz = "375000000";
+								serdes_pix_clk_hz = "375000000";
+								discontinuous_clk = "no";
+								dpcm_enable = "false";
+								cil_settletime = "0";
+								line_length = "1280";
+								mclk_multiplier = "15.625";
+								embedded_metadata_height = "1";
+								vc_id = "0";
+							};
+						};
+
+						max9296@48 {
+							status = "okay";
+							reg = <0x48>;
+							compatible = "maxim,max9296a";
+							phy-reg = <0x48>;
+							maxim,x6-orn-mfp4-power-init;
+							i2c-addr-alias-map-local = <0x41>;
+							i2c-addr-alias-map-remote = <0x40>;
+							i2c-addr-alias-source-id = <0x00>;
+							index = <0x01>;
+							csi-mode = "2x4";
+							seri-addr = <0x50>;
+							proxy-addr = <0x1a>;
+							real-addr = <0x66>;
+							fsync_mfp_index = <0x00>;
+							pps_mfp_index = <0x06>;
+							is-fg96-2ch;
+							vdd_supply_1v2;
+							phandle = <0x3b>;
+
+							#address-cells = <0x01>;
+							#size-cells = <0x00>;
+
+							i2c-mux {
+								#address-cells = <0x01>;
+								#size-cells = <0x00>;
+
+								i2c@0 {
+									#address-cells = <0x01>;
+									#size-cells = <0x00>;
+									reg = <0x00>;
+									status = "okay";
+
+									max96717@41 {
+										status = "okay";
+										#address-cells = <0x01>;
+										#size-cells = <0x00>;
+										compatible = "maxim,max96717";
+										reg = <0x41>;
+
+										i2c-mux {
+											#address-cells = <0x01>;
+											#size-cells = <0x00>;
+
+											i2c@0 {
+												#address-cells = <0x01>;
+												#size-cells = <0x00>;
+												reg = <0x00>;
+												status = "okay";
+											};
+										};
+
+										pipe@0 {
+											reg = <0x00>;
+											maxim,stream-id = <0x00>;
+										};
+
+										channel@0 {
+											reg = <0x00>;
+											label = "x6_orn_path_a_serializer";
+											maxim,pipe-id = <0x00>;
+											maxim,vc-id = <0x00>;
+											clock-lanes = <0x00>;
+											data-lanes = <0x01 0x02 0x03 0x04>;
+											clock-noncontinuous;
+										};
+									};
+								};
+
+								i2c@1 {
+									reg = <0x01>;
+									status = "disabled";
+								};
+							};
+
+							phy@0 {
+								reg = <0x00>;
+							};
+
+							pipe@0 {
+								reg = <0x00>;
+								maxim,phy-id = <0x00>;
+							};
+
+							channel@0 {
+								reg = <0x00>;
+								label = "x6_orn_path_a";
+								maxim,phy-id = <0x00>;
+								maxim,pipe-id = <0x00>;
+								maxim,src-vc-id = <0x00>;
+								maxim,dst-vc-id = <0x00>;
+								clock-lanes = <0x00>;
+								data-lanes = <0x01 0x02 0x03 0x04>;
+								link-frequencies = <0x00 0x3b9aca00>;
+							};
+						};
+					};
+				};
+			};
+
+			tegra-camera-platform {
+				compatible = "nvidia, tegra-camera-platform";
+				num_csi_lanes = <0x08>;
+				max_lane_speed = <0x16e360>;
+				min_bits_per_pixel = <0x08>;
+				vi_peak_byte_per_pixel = <0x02>;
+				vi_bw_margin_pct = <0x19>;
+				max_pixel_rate = <0x7270e0>;
+				isp_peak_byte_per_pixel = <0x05>;
+				isp_bw_margin_pct = <0x19>;
+
+				modules {
+					status = "disabled";
+
+					module0 {
+						status = "disabled";
+						badge = "g300_0";
+						position = "front";
+						orientation = "1";
+
+						drivernode0 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m0@66";
+						};
+
+						drivernode1 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m1@67";
+						};
+
+						drivernode2 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m2@68";
+						};
+
+						drivernode3 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m3@69";
+						};
+					};
+
+					module1 {
+						status = "disabled";
+						badge = "g300_1";
+						position = "rear";
+						orientation = "1";
+
+						drivernode0 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m0@6A";
+						};
+
+						drivernode1 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m1@6B";
+						};
+
+						drivernode2 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m2@6C";
+						};
+
+						drivernode3 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@0/g2m3@6D";
+						};
+					};
+
+					module2 {
+						status = "disabled";
+						badge = "g300_2";
+						position = "top";
+						orientation = "1";
+
+						drivernode0 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m0@66";
+						};
+
+						drivernode1 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m1@67";
+						};
+
+						drivernode2 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m2@68";
+						};
+
+						drivernode3 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m3@69";
+						};
+					};
+
+					module3 {
+						status = "disabled";
+						badge = "g300_3";
+						position = "bottom";
+						orientation = "1";
+
+						drivernode0 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m0@6A";
+						};
+
+						drivernode1 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m1@6B";
+						};
+
+						drivernode2 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m2@6C";
+						};
+
+						drivernode3 {
+							status = "okay";
+							pcl_id = "v4l2_sensor";
+							proc-device-tree = "/proc/device-tree/cam_i2cmux/i2c@1/g2m3@6D";
+						};
+					};
+				};
+			};
+		};
+	};
+
+	__symbols__ {
+		jetson_io_pinmux = "/fragment@0/__overlay__/exp-header-pinmux";
+		g300_vi_in0 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@0/endpoint";
+		g300_vi_in1 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@1/endpoint";
+		g300_vi_in2 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@2/endpoint";
+		g300_vi_in3 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@3/endpoint";
+		g300_vi_in4 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@4/endpoint";
+		g300_vi_in5 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@5/endpoint";
+		g300_vi_in6 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@6/endpoint";
+		g300_vi_in7 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@7/endpoint";
+		g300_vi_in8 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@8/endpoint";
+		g300_vi_in9 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@9/endpoint";
+		g300_vi_in10 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@10/endpoint";
+		g300_vi_in11 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@11/endpoint";
+		g300_vi_in12 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@12/endpoint";
+		g300_vi_in13 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@13/endpoint";
+		g300_vi_in14 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@14/endpoint";
+		g300_vi_in15 = "/fragment@1/__overlay__/tegra-capture-vi/ports/port@15/endpoint";
+		g300_csi_in0 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@0/ports/port@0/endpoint@0";
+		g300_csi_out0 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@0/ports/port@1/endpoint@1";
+		g300_csi_in1 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@1/ports/port@0/endpoint@2";
+		g300_csi_out1 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@1/ports/port@1/endpoint@3";
+		g300_csi_in2 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@2/ports/port@0/endpoint@4";
+		g300_csi_out2 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@2/ports/port@1/endpoint@5";
+		g300_csi_in3 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@3/ports/port@0/endpoint@6";
+		g300_csi_out3 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@3/ports/port@1/endpoint@7";
+		g300_csi_in4 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@4/ports/port@0/endpoint@8";
+		g300_csi_out4 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@4/ports/port@1/endpoint@9";
+		g300_csi_in5 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@5/ports/port@0/endpoint@10";
+		g300_csi_out5 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@5/ports/port@1/endpoint@11";
+		g300_csi_in6 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@6/ports/port@0/endpoint@12";
+		g300_csi_out6 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@6/ports/port@1/endpoint@13";
+		g300_csi_in7 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@7/ports/port@0/endpoint@14";
+		g300_csi_out7 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@7/ports/port@1/endpoint@15";
+		g300_csi_in8 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@8/ports/port@0/endpoint@16";
+		g300_csi_out8 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@8/ports/port@1/endpoint@17";
+		g300_csi_in9 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@9/ports/port@0/endpoint@18";
+		g300_csi_out9 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@9/ports/port@1/endpoint@19";
+		g300_csi_in10 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@10/ports/port@0/endpoint@20";
+		g300_csi_out10 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@10/ports/port@1/endpoint@21";
+		g300_csi_in11 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@11/ports/port@0/endpoint@22";
+		g300_csi_out11 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@11/ports/port@1/endpoint@23";
+		g300_csi_in12 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@12/ports/port@0/endpoint@24";
+		g300_csi_out12 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@12/ports/port@1/endpoint@25";
+		g300_csi_in13 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@13/ports/port@0/endpoint@26";
+		g300_csi_out13 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@13/ports/port@1/endpoint@27";
+		g300_csi_in14 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@14/ports/port@0/endpoint@28";
+		g300_csi_out14 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@14/ports/port@1/endpoint@29";
+		g300_csi_in15 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@15/ports/port@0/endpoint@30";
+		g300_csi_out15 = "/fragment@1/__overlay__/bus@0/host1x@13e00000/nvcsi@15a00000/channel@15/ports/port@1/endpoint@31";
+		g2m1_3 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m3@6D";
+		g2m1_3_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m3@6D/ports/port@0/endpoint";
+		g2m1_2 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m2@6C";
+		g2m1_2_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m2@6C/ports/port@0/endpoint";
+		g2m1_1 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m1@6B";
+		g2m1_1_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m1@6B/ports/port@0/endpoint";
+		g2m1_0 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m0@6A";
+		g2m1_0_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m0@6A/ports/port@0/endpoint";
+		g2m0_3 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m3@69";
+		g2m0_3_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m3@69/ports/port@0/endpoint";
+		g2m0_2 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m2@68";
+		g2m0_2_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m2@68/ports/port@0/endpoint";
+		g2m0_1 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m1@67";
+		g2m0_1_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m1@67/ports/port@0/endpoint";
+		g2m0_0 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m0@66";
+		g2m0_0_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/g2m0@66/ports/port@0/endpoint";
+		dser0 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@0/max9296@48";
+		g2m3_3 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m3@6D";
+		g2m3_3_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m3@6D/ports/port@0/endpoint";
+		g2m3_2 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m2@6C";
+		g2m3_2_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m2@6C/ports/port@0/endpoint";
+		g2m3_1 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m1@6B";
+		g2m3_1_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m1@6B/ports/port@0/endpoint";
+		g2m3_0 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m0@6A";
+		g2m3_0_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m0@6A/ports/port@0/endpoint";
+		g2m2_3 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m3@69";
+		g2m2_3_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m3@69/ports/port@0/endpoint";
+		g2m2_2 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m2@68";
+		g2m2_2_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m2@68/ports/port@0/endpoint";
+		g2m2_1 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m1@67";
+		g2m2_1_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m1@67/ports/port@0/endpoint";
+		g2m2_0 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m0@66";
+		g2m2_0_out = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/g2m0@66/ports/port@0/endpoint";
+		dser1 = "/fragment@1/__overlay__/bus@0/cam_i2cmux/i2c@1/max9296@48";
+	};
+
+	__fixups__ {
+		pinmux = "/fragment@0:target:0";
+		pwm8 = "/fragment@1/__overlay__/obc_cam_sync:pwms:0";
+		gpio_aon = "/fragment@1/__overlay__/obc_cam_sync/generator@380:gpio_pinmux:0\0/fragment@1/__overlay__/bus@0/cam_i2cmux:mux-gpios:0";
+		cam_i2c = "/fragment@1/__overlay__/bus@0/cam_i2cmux:i2c-parent:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@0 {
+
+			__overlay__ {
+				pinctrl-0 = <0x00>;
+			};
+		};
+
+		fragment@1 {
+
+			__overlay__ {
+
+				tegra-capture-vi {
+
+					ports {
+
+						port@0 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@1 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@2 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@3 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@4 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@5 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@6 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@7 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@8 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@9 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@10 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@11 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@12 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@13 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@14 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+
+						port@15 {
+
+							endpoint {
+								remote-endpoint = <0x00>;
+							};
+						};
+					};
+				};
+
+				bus@0 {
+
+					host1x@13e00000 {
+
+						nvcsi@15a00000 {
+
+							channel@0 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@0 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@1 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@1 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@2 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@3 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@2 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@4 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@5 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@3 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@6 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@7 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@4 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@8 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@9 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@5 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@10 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@11 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@6 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@12 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@13 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@7 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@14 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@15 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@8 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@16 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@17 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@9 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@18 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@19 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@10 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@20 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@21 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@11 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@22 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@23 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@12 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@24 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@25 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@13 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@26 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@27 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@14 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@28 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@29 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							channel@15 {
+
+								ports {
+
+									port@0 {
+
+										endpoint@30 {
+											remote-endpoint = <0x00>;
+										};
+									};
+
+									port@1 {
+
+										endpoint@31 {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+						};
+					};
+
+					cam_i2cmux {
+
+						i2c@0 {
+
+							g2m3@6D {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m2@6C {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m1@6B {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m0@6A {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m3@69 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m2@68 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m1@67 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m0@66 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+						};
+
+						i2c@1 {
+
+							g2m3@6D {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m2@6C {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m1@6B {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m0@6A {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m3@69 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m2@68 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m1@67 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+
+							g2m0@66 {
+								maxim,gmsl-dser-device = <0x00>;
+
+								ports {
+
+									port@0 {
+
+										endpoint {
+											remote-endpoint = <0x00>;
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
