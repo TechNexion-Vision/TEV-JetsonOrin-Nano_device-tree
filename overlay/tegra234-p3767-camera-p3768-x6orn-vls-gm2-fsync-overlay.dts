@@ -16,7 +16,7 @@
 #define X6_DES_PHY_ID		0
 
 / {
-	overlay-name = "X6-ORN VLS-GM2 MAX9296A camera overlay";
+	overlay-name = "X6-ORN VLS-GM2 FSYNC MAX9296A camera overlay";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE;
 
@@ -191,6 +191,9 @@
 		#gpio-cells = <2>;
 		gpio-ranges = <&des_0 0 0 12>;
 
+		fsync-mode = "internal-output";
+		fsync-freq = <30>;
+
 		pinctrl-names = "default";
 		pinctrl-0 = <&des_0_pinmux_default>;
 
@@ -266,6 +269,7 @@
 		status = "okay";
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
+		trigger-mode = <2>;
 		devnode = "video0";
 		physical_w = "3.680";
 		physical_h = "2.760";
@@ -531,6 +535,7 @@
 		status = "okay";
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
+		trigger-mode = <2>;
 		devnode = "video1";
 		physical_w = "3.680";
 		physical_h = "2.760";

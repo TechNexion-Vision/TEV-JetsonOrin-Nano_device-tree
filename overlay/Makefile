@@ -87,6 +87,7 @@ dtbo-y += tegra234-p3767-camera-tek-orin-vls3.dtbo
 dtbo-y += tegra234-p3767-camera-tek-orin-vls-gm2-4cam.dtbo
 dtbo-y += tegra234-p3767-camera-tek-orin-vls-gm2-8cam.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-x6orn-vls-gm2-overlay.dtbo
+dtbo-y += tegra234-p3767-camera-p3768-x6orn-vls-gm2-fsync-overlay.dtbo
 dtbo-y += tegra234-p3767-camera-aie510-onx-vls-gm2-overlay.dtbo
 dtbo-y += tegra234-p3767-camera-aie510-onx-vls-gm2-fsync-overlay.dtbo
 dtbo-y += tegra234-p3767-camera-j401-vls-gm2-overlay.dtbo
