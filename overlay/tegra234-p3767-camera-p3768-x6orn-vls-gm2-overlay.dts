@@ -210,16 +210,16 @@
 			i2c-parent = <&cam_i2c>;
 			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
-			des_0_i2c_0: i2c@0 {
-				#address-cells = <1>;
-				#size-cells = <0>;
-				reg = <0>;
-			};
-
 			des_0_i2c_1: i2c@1 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 				reg = <1>;
+			};
+
+			des_0_i2c_0: i2c@0 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+				reg = <0>;
 			};
 		};
 
@@ -227,16 +227,16 @@
 			reg = <X6_DES_PHY_ID>;
 		};
 
-		pipe@0 {
-			reg = <0>;
-			maxim,phy-id = <X6_DES_PHY_ID>;
-			maxim,stream-id = <0>;
-		};
-
 		pipe@1 {
 			reg = <1>;
 			maxim,phy-id = <X6_DES_PHY_ID>;
 			maxim,stream-id = <1>;
+		};
+
+		pipe@0 {
+			reg = <0>;
+			maxim,phy-id = <X6_DES_PHY_ID>;
+			maxim,stream-id = <0>;
 		};
 
 		channel@1 {
@@ -260,7 +260,7 @@
 		};
 	};
 
-	x6_path_b_tevs: rpi22_tevs_a@3b {
+	x6_path_b_tevs: rpi22_tevs_b@3b {
 		compatible = "tn,tevs";
 		reg = <0x3b>;
 		status = "okay";
@@ -525,7 +525,7 @@
 		};
 	};
 
-	x6_path_a_tevs: rpi22_tevs_b@3a {
+	x6_path_a_tevs: rpi22_tevs_a@3a {
 		compatible = "tn,tevs";
 		reg = <0x3a>;
 		status = "okay";
