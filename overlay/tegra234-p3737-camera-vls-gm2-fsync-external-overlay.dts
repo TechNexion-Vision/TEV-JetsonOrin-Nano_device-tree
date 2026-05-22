@@ -28,19 +28,15 @@
 	compatible = JETSON_COMPATIBLE;
 
 	fragment@0 {
-		target = <&pinmux>;
+		target = <&pinmux_default>;
 		__overlay__ {
-			pinctrl-names = "default";
-			pinctrl-0 = <&jetson_io_pinmux>;
-			jetson_io_pinmux: exp-header-pinmux {
-				hdr40-pin15 {
-					nvidia,pins = "soc_gpio39_pn1";
-					nvidia,function = "gp";
-					nvidia,pin-group = "pwm1";
-					nvidia,pin-label = "cam_ext_sync_in";
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
+			hdr40-pin15 {
+				nvidia,pins = "soc_gpio39_pn1";
+				nvidia,function = "gp";
+				nvidia,pin-group = "pwm1";
+				nvidia,pin-label = "cam_ext_sync_in";
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 		};
 	};

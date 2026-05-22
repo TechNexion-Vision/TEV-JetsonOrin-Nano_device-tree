@@ -21,27 +21,23 @@
 	jetson-header-name = "Jetson 24pin CSI Connector";
 
 	fragment@0 {
-		target = <&pinmux>;
+		target = <&pinmux_default>;
 		__overlay__ {
-			pinctrl-names = "default";
-			pinctrl-0 = <&jetson_io_pinmux>;
-			jetson_io_pinmux: exp-header-pinmux {
-				uart4_cts_ph6 {
-					nvidia,pins = "uart4_cts_ph6";
-					nvidia,function = "rsvd1";
-					nvidia,pin-label = "cam_pwdn0";
-					nvidia,pull = <TEGRA_PIN_PULL_UP>;
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
-				spi5_sck_pac0 {
-					nvidia,pins = "spi5_sck_pac0";
-					nvidia,function = "rsvd3";
-					nvidia,pin-group = "cam_pwdn1";
-					nvidia,pull = <TEGRA_PIN_PULL_UP>;
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				};
+			uart4_cts_ph6 {
+				nvidia,pins = "uart4_cts_ph6";
+				nvidia,function = "rsvd1";
+				nvidia,pin-label = "cam_pwdn0";
+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			};
+			spi5_sck_pac0 {
+				nvidia,pins = "spi5_sck_pac0";
+				nvidia,function = "rsvd3";
+				nvidia,pin-group = "cam_pwdn1";
+				nvidia,pull = <TEGRA_PIN_PULL_UP>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 			};
 		};
 	};

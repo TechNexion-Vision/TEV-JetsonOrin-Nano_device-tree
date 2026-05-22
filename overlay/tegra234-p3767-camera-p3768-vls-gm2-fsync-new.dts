@@ -26,80 +26,76 @@
 	compatible = JETSON_COMPATIBLE_P3768;
 
 	fragment@0 {
-		target = <&pinmux>;
+		target = <&pinmux_default>;
 		__overlay__ {
-			pinctrl-names = "default";
-			pinctrl-0 = <&jetson_io_pinmux>;
-			jetson_io_pinmux: exp-header-pinmux {
-				hdr40-pin7 {
-					nvidia,pins = "soc_gpio59_pac6";
-					nvidia,function = "rsvd2";
-					nvidia,pin-label = "cam_pdb1";
-					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
-				hdr40-pin11 {
-					nvidia,pins = "uart1_rts_pr4";
-					nvidia,function = "rsvd1";
-					nvidia,pin-group = "cam_intb2";
-					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				};
-				hdr40-pin12 {
-					nvidia,pins = "soc_gpio41_ph7";
-					nvidia,function = "rsvd2";
-					nvidia,pin-label = "cam_intb1";
-					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				};
-				hdr40-pin13 {
-					nvidia,pins = "spi3_sck_py0";
-					nvidia,function = "rsvd1";
-					nvidia,pin-label = "cam_pdb2";
-					nvidia,pull = <TEGRA_PIN_PULL_NONE>;
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
-				hdr40-pin15 {
-					nvidia,pins = "soc_gpio39_pn1";
-					nvidia,function = "gp";
-					nvidia,pin-group = "pwm1";
-					nvidia,pin-label = "cam_ext_sync_in";
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
-				hdr40-pin21 {
-					nvidia,pins = "spi1_miso_pz4";
-					nvidia,function = "rsvd1";
-					nvidia,pin-label = "cam_exposure";
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
-				hdr40-pin22 {
-					nvidia,pins = "spi3_miso_py1";
-					nvidia,function = "rsvd1";
-					nvidia,pin-label = "cam_flash";
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				};
-				hdr40-pin23 {
-					nvidia,pins = "spi1_sck_pz3";
-					nvidia,function = "rsvd1";
-					nvidia,pin-label = "cam_shutter";
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
-				};
-				hdr40-pin32 {
-					nvidia,pins = "soc_gpio19_pg6";
-					nvidia,function = "gp";
-					nvidia,pin-group = "pwm7";
-					nvidia,pin-label = "cam_frame_sync";
-					nvidia,tristate = <TEGRA_PIN_DISABLE>;
-					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-				};
+			hdr40-pin7 {
+				nvidia,pins = "soc_gpio59_pac6";
+				nvidia,function = "rsvd2";
+				nvidia,pin-label = "cam_pdb1";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			};
+			hdr40-pin11 {
+				nvidia,pins = "uart1_rts_pr4";
+				nvidia,function = "rsvd1";
+				nvidia,pin-group = "cam_intb2";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+			};
+			hdr40-pin12 {
+				nvidia,pins = "soc_gpio41_ph7";
+				nvidia,function = "rsvd2";
+				nvidia,pin-label = "cam_intb1";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+			};
+			hdr40-pin13 {
+				nvidia,pins = "spi3_sck_py0";
+				nvidia,function = "rsvd1";
+				nvidia,pin-label = "cam_pdb2";
+				nvidia,pull = <TEGRA_PIN_PULL_NONE>;
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			};
+			hdr40-pin15 {
+				nvidia,pins = "soc_gpio39_pn1";
+				nvidia,function = "gp";
+				nvidia,pin-group = "pwm1";
+				nvidia,pin-label = "cam_ext_sync_in";
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			};
+			hdr40-pin21 {
+				nvidia,pins = "spi1_miso_pz4";
+				nvidia,function = "rsvd1";
+				nvidia,pin-label = "cam_exposure";
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			};
+			hdr40-pin22 {
+				nvidia,pins = "spi3_miso_py1";
+				nvidia,function = "rsvd1";
+				nvidia,pin-label = "cam_flash";
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+			};
+			hdr40-pin23 {
+				nvidia,pins = "spi1_sck_pz3";
+				nvidia,function = "rsvd1";
+				nvidia,pin-label = "cam_shutter";
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_ENABLE>;
+			};
+			hdr40-pin32 {
+				nvidia,pins = "soc_gpio19_pg6";
+				nvidia,function = "gp";
+				nvidia,pin-group = "pwm7";
+				nvidia,pin-label = "cam_frame_sync";
+				nvidia,tristate = <TEGRA_PIN_DISABLE>;
+				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
 			};
 		};
 	};
