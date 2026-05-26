@@ -15,17 +15,21 @@
 #define AFE_R750_SENSOR_LANES		4
 #define AFE_R750_SENSOR_LANES_STR	"4"
 
-#define AFE_R750_CAM0_PORT		0
-#define AFE_R750_CAM0_SINTERFACE	"serial_a"
-#define AFE_R750_DES_PHY_ID		0
+#define AFE_R750_DAX_PORT		0
+#define AFE_R750_DAX_SINTERFACE	"serial_a"
+#define AFE_R750_DAX_DES_PHY_ID	0
+#define AFE_R750_DBX_PORT		4
+#define AFE_R750_DBX_SINTERFACE	"serial_e"
+#define AFE_R750_DBX_DES_PHY_ID	1
+#define AFE_R750_TOTAL_CSI_LANES	4
 
 #define AFE_R750_DES_LINK_FREQ		1000000000
 #define AFE_R750_TEVS_LINK_FREQ		280000000
 
-#define AFE_R750_TEVS_MODE_COMMON					\
+#define AFE_R750_TEVS_MODE_COMMON(SINTERFACE)				\
 	mclk_khz = "24000";						\
 	num_lanes = AFE_R750_CAM_LANES_STR;				\
-	tegra_sinterface = AFE_R750_CAM0_SINTERFACE;			\
+	tegra_sinterface = SINTERFACE;					\
 	lane_polarity = "6";						\
 	phy_mode = "DPHY";						\
 	discontinuous_clk = "yes";					\
@@ -57,44 +61,44 @@
 	default_exp_time = "2495";					\
 	embedded_metadata_height = "0";
 
-#define AFE_R750_TEVS_MODES						\
+#define AFE_R750_TEVS_MODES(SINTERFACE)				\
 	mode0 {								\
-		AFE_R750_TEVS_MODE_COMMON				\
+		AFE_R750_TEVS_MODE_COMMON(SINTERFACE)			\
 		active_w = "3280";					\
 		active_h = "2464";					\
 		max_framerate = "21000000";				\
 		default_framerate = "21000000";				\
 	};								\
 	mode1 {								\
-		AFE_R750_TEVS_MODE_COMMON				\
+		AFE_R750_TEVS_MODE_COMMON(SINTERFACE)			\
 		active_w = "3280";					\
 		active_h = "1848";					\
 		max_framerate = "28000000";				\
 		default_framerate = "28000000";				\
 	};								\
 	mode2 {								\
-		AFE_R750_TEVS_MODE_COMMON				\
+		AFE_R750_TEVS_MODE_COMMON(SINTERFACE)			\
 		active_w = "1920";					\
 		active_h = "1080";					\
 		max_framerate = "30000000";				\
 		default_framerate = "30000000";				\
 	};								\
 	mode3 {								\
-		AFE_R750_TEVS_MODE_COMMON				\
+		AFE_R750_TEVS_MODE_COMMON(SINTERFACE)			\
 		active_w = "1640";					\
 		active_h = "1232";					\
 		max_framerate = "30000000";				\
 		default_framerate = "30000000";				\
 	};								\
 	mode4 {								\
-		AFE_R750_TEVS_MODE_COMMON				\
+		AFE_R750_TEVS_MODE_COMMON(SINTERFACE)			\
 		active_w = "1280";					\
 		active_h = "720";					\
 		max_framerate = "60000000";				\
 		default_framerate = "60000000";				\
 	};								\
 	mode5 {								\
-		AFE_R750_TEVS_MODE_COMMON				\
+		AFE_R750_TEVS_MODE_COMMON(SINTERFACE)			\
 		active_w = "640";					\
 		active_h = "480";					\
 		max_framerate = "60000000";				\
@@ -120,7 +124,7 @@
 
 						vi_in0: endpoint {
 							vc-id = <0>;
-							port-index = <AFE_R750_CAM0_PORT>;
+							port-index = <AFE_R750_DAX_PORT>;
 							bus-width = <AFE_R750_CAM_LANES>;
 							remote-endpoint = <&csi_0_out>;
 						};
@@ -131,7 +135,7 @@
 
 						vi_in1: endpoint {
 							vc-id = <1>;
-							port-index = <AFE_R750_CAM0_PORT>;
+							port-index = <AFE_R750_DAX_PORT>;
 							bus-width = <AFE_R750_CAM_LANES>;
 							remote-endpoint = <&csi_1_out>;
 						};
@@ -142,7 +146,7 @@
 
 						vi_in2: endpoint {
 							vc-id = <2>;
-							port-index = <AFE_R750_CAM0_PORT>;
+							port-index = <AFE_R750_DBX_PORT>;
 							bus-width = <AFE_R750_CAM_LANES>;
 							remote-endpoint = <&csi_2_out>;
 						};
@@ -153,7 +157,7 @@
 
 						vi_in3: endpoint {
 							vc-id = <3>;
-							port-index = <AFE_R750_CAM0_PORT>;
+							port-index = <AFE_R750_DBX_PORT>;
 							bus-width = <AFE_R750_CAM_LANES>;
 							remote-endpoint = <&csi_3_out>;
 						};
@@ -164,7 +168,7 @@
 			tcp: tegra-camera-platform {
 				compatible = "nvidia, tegra-camera-platform";
 
-				num_csi_lanes = <AFE_R750_CAM_LANES>;
+				num_csi_lanes = <AFE_R750_TOTAL_CSI_LANES>;
 				max_lane_speed = <1500000>;
 				min_bits_per_pixel = <16>;
 				vi_peak_byte_per_pixel = <2>;
@@ -231,7 +235,7 @@
 									reg = <0>;
 
 									csi_0_in: endpoint@0 {
-										port-index = <AFE_R750_CAM0_PORT>;
+										port-index = <AFE_R750_DAX_PORT>;
 										bus-width = <AFE_R750_CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_0_out>;
 									};
@@ -257,7 +261,7 @@
 									reg = <0>;
 
 									csi_1_in: endpoint@2 {
-										port-index = <AFE_R750_CAM0_PORT>;
+										port-index = <AFE_R750_DAX_PORT>;
 										bus-width = <AFE_R750_CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_1_out>;
 									};
@@ -283,7 +287,7 @@
 									reg = <0>;
 
 									csi_2_in: endpoint@4 {
-										port-index = <AFE_R750_CAM0_PORT>;
+										port-index = <AFE_R750_DBX_PORT>;
 										bus-width = <AFE_R750_CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_2_out>;
 									};
@@ -309,7 +313,7 @@
 									reg = <0>;
 
 									csi_3_in: endpoint@6 {
-										port-index = <AFE_R750_CAM0_PORT>;
+										port-index = <AFE_R750_DBX_PORT>;
 										bus-width = <AFE_R750_CAM_LANES>;
 										remote-endpoint = <&rpi22_tevs_3_out>;
 									};
@@ -437,11 +441,15 @@
 			reg = <0>;
 		};
 
+		phy@1 {
+			reg = <1>;
+		};
+
 		pipe@0 {
 			reg = <0>;
 
 			maxim,link-id = <0>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
 			maxim,stream-id = <0>;
 		};
 
@@ -449,7 +457,7 @@
 			reg = <1>;
 
 			maxim,link-id = <1>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
 			maxim,stream-id = <1>;
 		};
 
@@ -457,7 +465,7 @@
 			reg = <2>;
 
 			maxim,link-id = <2>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DBX_DES_PHY_ID>;
 			maxim,stream-id = <2>;
 		};
 
@@ -465,7 +473,7 @@
 			reg = <3>;
 
 			maxim,link-id = <3>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DBX_DES_PHY_ID>;
 			maxim,stream-id = <3>;
 		};
 
@@ -474,7 +482,7 @@
 			label = "des_0_ch_0";
 
 			maxim,pipe-id = <0>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <0>;
 
@@ -488,7 +496,7 @@
 			label = "des_0_ch_1";
 
 			maxim,pipe-id = <1>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <1>;
 
@@ -502,7 +510,7 @@
 			label = "des_0_ch_2";
 
 			maxim,pipe-id = <2>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DBX_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <2>;
 
@@ -516,7 +524,7 @@
 			label = "des_0_ch_3";
 
 			maxim,pipe-id = <3>;
-			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,phy-id = <AFE_R750_DBX_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <3>;
 
@@ -540,7 +548,7 @@
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES
+		AFE_R750_TEVS_MODES(AFE_R750_DAX_SINTERFACE)
 
 		ports {
 			#address-cells = <1>;
@@ -549,7 +557,7 @@
 				reg = <0>;
 
 				rpi22_tevs_0_out: endpoint {
-					port-index = <AFE_R750_CAM0_PORT>;
+					port-index = <AFE_R750_DAX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
 					remote-endpoint = <&csi_0_in>;
 					clock-noncontinuous;
@@ -573,7 +581,7 @@
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES
+		AFE_R750_TEVS_MODES(AFE_R750_DAX_SINTERFACE)
 
 		ports {
 			#address-cells = <1>;
@@ -582,7 +590,7 @@
 				reg = <0>;
 
 				rpi22_tevs_1_out: endpoint {
-					port-index = <AFE_R750_CAM0_PORT>;
+					port-index = <AFE_R750_DAX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
 					remote-endpoint = <&csi_1_in>;
 					clock-noncontinuous;
@@ -606,7 +614,7 @@
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES
+		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE)
 
 		ports {
 			#address-cells = <1>;
@@ -615,7 +623,7 @@
 				reg = <0>;
 
 				rpi22_tevs_2_out: endpoint {
-					port-index = <AFE_R750_CAM0_PORT>;
+					port-index = <AFE_R750_DBX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
 					remote-endpoint = <&csi_2_in>;
 					clock-noncontinuous;
@@ -639,7 +647,7 @@
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES
+		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE)
 
 		ports {
 			#address-cells = <1>;
@@ -648,7 +656,7 @@
 				reg = <0>;
 
 				rpi22_tevs_3_out: endpoint {
-					port-index = <AFE_R750_CAM0_PORT>;
+					port-index = <AFE_R750_DBX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
 					remote-endpoint = <&csi_3_in>;
 					clock-noncontinuous;
