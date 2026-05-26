@@ -26,6 +26,7 @@
 	mclk_khz = "24000";						\
 	num_lanes = AFE_R750_CAM_LANES_STR;				\
 	tegra_sinterface = AFE_R750_CAM0_SINTERFACE;			\
+	lane_polarity = "6";						\
 	phy_mode = "DPHY";						\
 	discontinuous_clk = "yes";					\
 	dpcm_enable = "false";						\
@@ -345,6 +346,20 @@
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-ranges = <&ser_0 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_0_pinmux_default>;
+
+		ser_0_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
 
 		i2c-mux {
 			#address-cells = <1>;
