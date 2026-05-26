@@ -12,6 +12,8 @@
 #define AFE_R750_CAM_NUM		1
 #define AFE_R750_CAM_LANES		2
 #define AFE_R750_CAM_LANES_STR		"2"
+#define AFE_R750_SENSOR_LANES		4
+#define AFE_R750_SENSOR_LANES_STR	"4"
 
 #define AFE_R750_CAM0_PORT		0
 #define AFE_R750_CAM0_SINTERFACE	"serial_a"
@@ -22,7 +24,7 @@
 
 #define AFE_R750_TEVS_MODE_COMMON					\
 	mclk_khz = "24000";						\
-	num_lanes = AFE_R750_CAM_LANES_STR;				\
+	num_lanes = AFE_R750_SENSOR_LANES_STR;				\
 	tegra_sinterface = AFE_R750_CAM0_SINTERFACE;			\
 	phy_mode = "DPHY";						\
 	discontinuous_clk = "yes";					\
@@ -35,8 +37,8 @@
 	line_length = "3448";						\
 	inherent_gain = "1";						\
 	mclk_multiplier = "9.33";					\
-	pix_clk_hz = "70000000";					\
-	serdes_pix_clk_hz = "312500000";				\
+	pix_clk_hz = "140000000";					\
+	serdes_pix_clk_hz = "250000000";				\
 	gain_factor = "16";						\
 	framerate_factor = "1000000";					\
 	exposure_factor = "1000000";					\
@@ -318,7 +320,7 @@
 
 				rpi22_tevs_0_out: endpoint {
 					port-index = <AFE_R750_CAM0_PORT>;
-					bus-width = <AFE_R750_CAM_LANES>;
+					bus-width = <AFE_R750_SENSOR_LANES>;
 					remote-endpoint = <&csi_0_in>;
 					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
@@ -375,7 +377,7 @@
 			maxim,vc-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			clock-noncontinuous;
 		};
 	};
