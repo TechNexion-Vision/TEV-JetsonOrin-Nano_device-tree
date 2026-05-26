@@ -24,7 +24,7 @@
 
 #define AFE_R750_TEVS_MODE_COMMON					\
 	mclk_khz = "24000";						\
-	num_lanes = AFE_R750_SENSOR_LANES_STR;				\
+	num_lanes = AFE_R750_CAM_LANES_STR;				\
 	tegra_sinterface = AFE_R750_CAM0_SINTERFACE;			\
 	phy_mode = "DPHY";						\
 	discontinuous_clk = "yes";					\
