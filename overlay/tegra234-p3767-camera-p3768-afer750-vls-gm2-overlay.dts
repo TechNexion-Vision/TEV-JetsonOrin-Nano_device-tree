@@ -9,7 +9,7 @@
 #define AFE_R750_CAM0_PWDN		TEGRA234_MAIN_GPIO(H, 6)
 #define AFE_R750_CAM_I2C_MUX		TEGRA234_AON_GPIO(CC, 3)
 
-#define AFE_R750_CAM_NUM		1
+#define AFE_R750_CAM_NUM		4
 #define AFE_R750_CAM_LANES		2
 #define AFE_R750_CAM_LANES_STR		"2"
 #define AFE_R750_SENSOR_LANES		4
@@ -57,6 +57,50 @@
 	default_exp_time = "2495";					\
 	embedded_metadata_height = "0";
 
+#define AFE_R750_TEVS_MODES						\
+	mode0 {								\
+		AFE_R750_TEVS_MODE_COMMON				\
+		active_w = "3280";					\
+		active_h = "2464";					\
+		max_framerate = "21000000";				\
+		default_framerate = "21000000";				\
+	};								\
+	mode1 {								\
+		AFE_R750_TEVS_MODE_COMMON				\
+		active_w = "3280";					\
+		active_h = "1848";					\
+		max_framerate = "28000000";				\
+		default_framerate = "28000000";				\
+	};								\
+	mode2 {								\
+		AFE_R750_TEVS_MODE_COMMON				\
+		active_w = "1920";					\
+		active_h = "1080";					\
+		max_framerate = "30000000";				\
+		default_framerate = "30000000";				\
+	};								\
+	mode3 {								\
+		AFE_R750_TEVS_MODE_COMMON				\
+		active_w = "1640";					\
+		active_h = "1232";					\
+		max_framerate = "30000000";				\
+		default_framerate = "30000000";				\
+	};								\
+	mode4 {								\
+		AFE_R750_TEVS_MODE_COMMON				\
+		active_w = "1280";					\
+		active_h = "720";					\
+		max_framerate = "60000000";				\
+		default_framerate = "60000000";				\
+	};								\
+	mode5 {								\
+		AFE_R750_TEVS_MODE_COMMON				\
+		active_w = "640";					\
+		active_h = "480";					\
+		max_framerate = "60000000";				\
+		default_framerate = "60000000";				\
+	};
+
 / {
 	overlay-name = "TechNexion AFE-R750 VLS-GM2 Camera";
 	jetson-header-name = "Jetson 24pin CSI Connector";
@@ -81,6 +125,39 @@
 							remote-endpoint = <&csi_0_out>;
 						};
 					};
+
+					vi_port1: port@1 {
+						reg = <1>;
+
+						vi_in1: endpoint {
+							vc-id = <1>;
+							port-index = <AFE_R750_CAM0_PORT>;
+							bus-width = <AFE_R750_CAM_LANES>;
+							remote-endpoint = <&csi_1_out>;
+						};
+					};
+
+					vi_port2: port@2 {
+						reg = <2>;
+
+						vi_in2: endpoint {
+							vc-id = <2>;
+							port-index = <AFE_R750_CAM0_PORT>;
+							bus-width = <AFE_R750_CAM_LANES>;
+							remote-endpoint = <&csi_2_out>;
+						};
+					};
+
+					vi_port3: port@3 {
+						reg = <3>;
+
+						vi_in3: endpoint {
+							vc-id = <3>;
+							port-index = <AFE_R750_CAM0_PORT>;
+							bus-width = <AFE_R750_CAM_LANES>;
+							remote-endpoint = <&csi_3_out>;
+						};
+					};
 				};
 			};
 
@@ -101,6 +178,36 @@
 						cam_module0_drivernode0: drivernode0 {
 							pcl_id = "v4l2_sensor";
 							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/cam_i2cmux/i2c@0/rpi22_tevs_a@39";
+						};
+					};
+
+					cam_module1: module1 {
+						badge = "afer750_front_RBP194";
+						position = "front";
+						orientation = "1";
+						cam_module1_drivernode0: drivernode0 {
+							pcl_id = "v4l2_sensor";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/cam_i2cmux/i2c@0/rpi22_tevs_b@3a";
+						};
+					};
+
+					cam_module2: module2 {
+						badge = "afer750_front_RBP194";
+						position = "front";
+						orientation = "1";
+						cam_module2_drivernode0: drivernode0 {
+							pcl_id = "v4l2_sensor";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/cam_i2cmux/i2c@0/rpi22_tevs_c@3b";
+						};
+					};
+
+					cam_module3: module3 {
+						badge = "afer750_front_RBP194";
+						position = "front";
+						orientation = "1";
+						cam_module3_drivernode0: drivernode0 {
+							pcl_id = "v4l2_sensor";
+							sysfs-device-tree = "/sys/firmware/devicetree/base/bus@0/cam_i2cmux/i2c@0/rpi22_tevs_d@3c";
 						};
 					};
 				};
@@ -135,6 +242,84 @@
 
 									csi_0_out: endpoint@1 {
 										remote-endpoint = <&vi_in0>;
+									};
+								};
+							};
+						};
+
+						channel@1 {
+							reg = <1>;
+							ports {
+								#address-cells = <1>;
+								#size-cells = <0>;
+
+								port@0 {
+									reg = <0>;
+
+									csi_1_in: endpoint@2 {
+										port-index = <AFE_R750_CAM0_PORT>;
+										bus-width = <AFE_R750_CAM_LANES>;
+										remote-endpoint = <&rpi22_tevs_1_out>;
+									};
+								};
+
+								port@1 {
+									reg = <1>;
+
+									csi_1_out: endpoint@3 {
+										remote-endpoint = <&vi_in1>;
+									};
+								};
+							};
+						};
+
+						channel@2 {
+							reg = <2>;
+							ports {
+								#address-cells = <1>;
+								#size-cells = <0>;
+
+								port@0 {
+									reg = <0>;
+
+									csi_2_in: endpoint@4 {
+										port-index = <AFE_R750_CAM0_PORT>;
+										bus-width = <AFE_R750_CAM_LANES>;
+										remote-endpoint = <&rpi22_tevs_2_out>;
+									};
+								};
+
+								port@1 {
+									reg = <1>;
+
+									csi_2_out: endpoint@5 {
+										remote-endpoint = <&vi_in2>;
+									};
+								};
+							};
+						};
+
+						channel@3 {
+							reg = <3>;
+							ports {
+								#address-cells = <1>;
+								#size-cells = <0>;
+
+								port@0 {
+									reg = <0>;
+
+									csi_3_in: endpoint@6 {
+										port-index = <AFE_R750_CAM0_PORT>;
+										bus-width = <AFE_R750_CAM_LANES>;
+										remote-endpoint = <&rpi22_tevs_3_out>;
+									};
+								};
+
+								port@1 {
+									reg = <1>;
+
+									csi_3_out: endpoint@7 {
+										remote-endpoint = <&vi_in3>;
 									};
 								};
 							};
@@ -199,9 +384,9 @@
 
 		reset-gpios = <&gpio AFE_R750_CAM0_PWDN GPIO_ACTIVE_HIGH>;
 
-		i2c-addr-alias-map-local = <0x31>;
-		i2c-addr-alias-map-remote = <0x40>;
-		i2c-addr-alias-source-id = <0>;
+		i2c-addr-alias-map-local = <0x31 0x32 0x33 0x34>;
+		i2c-addr-alias-map-remote = <0x40 0x40 0x40 0x40>;
+		i2c-addr-alias-source-id = <0 0 0 0>;
 
 		gpio-controller;
 		#gpio-cells = <2>;
@@ -222,6 +407,30 @@
 				reg = <0>;
 				status = "okay";
 			};
+
+			des_0_i2c_1: i2c@1 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <1>;
+				status = "okay";
+			};
+
+			des_0_i2c_2: i2c@2 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <2>;
+				status = "okay";
+			};
+
+			des_0_i2c_3: i2c@3 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <3>;
+				status = "okay";
+			};
 		};
 
 		phy@0 {
@@ -236,6 +445,30 @@
 			maxim,stream-id = <0>;
 		};
 
+		pipe@1 {
+			reg = <1>;
+
+			maxim,link-id = <1>;
+			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,stream-id = <1>;
+		};
+
+		pipe@2 {
+			reg = <2>;
+
+			maxim,link-id = <2>;
+			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,stream-id = <2>;
+		};
+
+		pipe@3 {
+			reg = <3>;
+
+			maxim,link-id = <3>;
+			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,stream-id = <3>;
+		};
+
 		channel@0 {
 			reg = <0>;
 			label = "des_0_ch_0";
@@ -244,6 +477,48 @@
 			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <0>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <AFE_R750_DES_LINK_FREQ>;
+		};
+
+		channel@1 {
+			reg = <1>;
+			label = "des_0_ch_1";
+
+			maxim,pipe-id = <1>;
+			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,src-vc-id = <0>;
+			maxim,dst-vc-id = <1>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <AFE_R750_DES_LINK_FREQ>;
+		};
+
+		channel@2 {
+			reg = <2>;
+			label = "des_0_ch_2";
+
+			maxim,pipe-id = <2>;
+			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,src-vc-id = <0>;
+			maxim,dst-vc-id = <2>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <AFE_R750_DES_LINK_FREQ>;
+		};
+
+		channel@3 {
+			reg = <3>;
+			label = "des_0_ch_3";
+
+			maxim,pipe-id = <3>;
+			maxim,phy-id = <AFE_R750_DES_PHY_ID>;
+			maxim,src-vc-id = <0>;
+			maxim,dst-vc-id = <3>;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -265,53 +540,7 @@
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		mode0 {
-			AFE_R750_TEVS_MODE_COMMON
-			active_w = "3280";
-			active_h = "2464";
-			max_framerate = "21000000";
-			default_framerate = "21000000";
-		};
-
-		mode1 {
-			AFE_R750_TEVS_MODE_COMMON
-			active_w = "3280";
-			active_h = "1848";
-			max_framerate = "28000000";
-			default_framerate = "28000000";
-		};
-
-		mode2 {
-			AFE_R750_TEVS_MODE_COMMON
-			active_w = "1920";
-			active_h = "1080";
-			max_framerate = "30000000";
-			default_framerate = "30000000";
-		};
-
-		mode3 {
-			AFE_R750_TEVS_MODE_COMMON
-			active_w = "1640";
-			active_h = "1232";
-			max_framerate = "30000000";
-			default_framerate = "30000000";
-		};
-
-		mode4 {
-			AFE_R750_TEVS_MODE_COMMON
-			active_w = "1280";
-			active_h = "720";
-			max_framerate = "60000000";
-			default_framerate = "60000000";
-		};
-
-		mode5 {
-			AFE_R750_TEVS_MODE_COMMON
-			active_w = "640";
-			active_h = "480";
-			max_framerate = "60000000";
-			default_framerate = "60000000";
-		};
+		AFE_R750_TEVS_MODES
 
 		ports {
 			#address-cells = <1>;
@@ -323,6 +552,105 @@
 					port-index = <AFE_R750_CAM0_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
 					remote-endpoint = <&csi_0_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
+				};
+			};
+		};
+	};
+
+	cam_1: rpi22_tevs_b@3a {
+		compatible = "tn,tevs";
+		reg = <0x3a>;
+		status = "okay";
+
+		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
+
+		devnode = "video1";
+		physical_w = "3.680";
+		physical_h = "2.760";
+		sensor_model = "tevs";
+		use_sensor_mode_id = "false";
+
+		AFE_R750_TEVS_MODES
+
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			port@0 {
+				reg = <0>;
+
+				rpi22_tevs_1_out: endpoint {
+					port-index = <AFE_R750_CAM0_PORT>;
+					bus-width = <AFE_R750_SENSOR_LANES>;
+					remote-endpoint = <&csi_1_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
+				};
+			};
+		};
+	};
+
+	cam_2: rpi22_tevs_c@3b {
+		compatible = "tn,tevs";
+		reg = <0x3b>;
+		status = "okay";
+
+		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
+
+		devnode = "video2";
+		physical_w = "3.680";
+		physical_h = "2.760";
+		sensor_model = "tevs";
+		use_sensor_mode_id = "false";
+
+		AFE_R750_TEVS_MODES
+
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			port@0 {
+				reg = <0>;
+
+				rpi22_tevs_2_out: endpoint {
+					port-index = <AFE_R750_CAM0_PORT>;
+					bus-width = <AFE_R750_SENSOR_LANES>;
+					remote-endpoint = <&csi_2_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
+				};
+			};
+		};
+	};
+
+	cam_3: rpi22_tevs_d@3c {
+		compatible = "tn,tevs";
+		reg = <0x3c>;
+		status = "okay";
+
+		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
+
+		devnode = "video3";
+		physical_w = "3.680";
+		physical_h = "2.760";
+		sensor_model = "tevs";
+		use_sensor_mode_id = "false";
+
+		AFE_R750_TEVS_MODES
+
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			port@0 {
+				reg = <0>;
+
+				rpi22_tevs_3_out: endpoint {
+					port-index = <AFE_R750_CAM0_PORT>;
+					bus-width = <AFE_R750_SENSOR_LANES>;
+					remote-endpoint = <&csi_3_in>;
 					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
 				};
@@ -402,6 +730,267 @@
 	pca9554_cam_0: pca9554@21 {
 		compatible = "nxp,pca9554";
 		reg = <0x21>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-line-names = "EXPOSURE_TRIG_IN",
+				  "FLASH_OUT",
+				  "INFO_TRIG_IN",
+				  "CAMA_SHUTTER",
+				  "CSI_P1_nRST",
+				  "PWR_TIME0",
+				  "PWR_TIME1",
+				  "3V3_EN";
+		vcc-supply = <&vdd_1v8_hs>;
+		vcc_lp = "vcc";
+		status = "okay";
+	};
+};
+
+&des_0_i2c_1 {
+	ser_1: max96717_b@32 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		compatible = "maxim,max96717";
+		reg = <0x32>;
+		status = "okay";
+
+		i2c-addr-alias-map-local = <0x3a 0x22>;
+		i2c-addr-alias-map-remote = <0x48 0x25>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&ser_1 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_1_pinmux_default>;
+
+		ser_1_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
+		i2c-mux {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			compatible = "i2c-mux-gpio";
+			i2c-parent = <&cam_i2c>;
+			mux-gpios = <&gpio_aon AFE_R750_CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
+
+			ser_1_i2c_0: i2c@0 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <0>;
+				status = "okay";
+			};
+		};
+
+		pipe@0 {
+			reg = <0>;
+
+			maxim,stream-id = <1>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "ser_1_ch_0";
+
+			maxim,pipe-id = <0>;
+			maxim,vc-id = <0>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
+			clock-noncontinuous;
+		};
+	};
+};
+
+&ser_1_i2c_0 {
+	pca9554_cam_1: pca9554@22 {
+		compatible = "nxp,pca9554";
+		reg = <0x22>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-line-names = "EXPOSURE_TRIG_IN",
+				  "FLASH_OUT",
+				  "INFO_TRIG_IN",
+				  "CAMA_SHUTTER",
+				  "CSI_P1_nRST",
+				  "PWR_TIME0",
+				  "PWR_TIME1",
+				  "3V3_EN";
+		vcc-supply = <&vdd_1v8_hs>;
+		vcc_lp = "vcc";
+		status = "okay";
+	};
+};
+
+&des_0_i2c_2 {
+	ser_2: max96717_c@33 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		compatible = "maxim,max96717";
+		reg = <0x33>;
+		status = "okay";
+
+		i2c-addr-alias-map-local = <0x3b 0x23>;
+		i2c-addr-alias-map-remote = <0x48 0x25>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&ser_2 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_2_pinmux_default>;
+
+		ser_2_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
+		i2c-mux {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			compatible = "i2c-mux-gpio";
+			i2c-parent = <&cam_i2c>;
+			mux-gpios = <&gpio_aon AFE_R750_CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
+
+			ser_2_i2c_0: i2c@0 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <0>;
+				status = "okay";
+			};
+		};
+
+		pipe@0 {
+			reg = <0>;
+
+			maxim,stream-id = <2>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "ser_2_ch_0";
+
+			maxim,pipe-id = <0>;
+			maxim,vc-id = <0>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
+			clock-noncontinuous;
+		};
+	};
+};
+
+&ser_2_i2c_0 {
+	pca9554_cam_2: pca9554@23 {
+		compatible = "nxp,pca9554";
+		reg = <0x23>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-line-names = "EXPOSURE_TRIG_IN",
+				  "FLASH_OUT",
+				  "INFO_TRIG_IN",
+				  "CAMA_SHUTTER",
+				  "CSI_P1_nRST",
+				  "PWR_TIME0",
+				  "PWR_TIME1",
+				  "3V3_EN";
+		vcc-supply = <&vdd_1v8_hs>;
+		vcc_lp = "vcc";
+		status = "okay";
+	};
+};
+
+&des_0_i2c_3 {
+	ser_3: max96717_d@34 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		compatible = "maxim,max96717";
+		reg = <0x34>;
+		status = "okay";
+
+		i2c-addr-alias-map-local = <0x3c 0x24>;
+		i2c-addr-alias-map-remote = <0x48 0x25>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+		gpio-ranges = <&ser_3 0 0 11>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&ser_3_pinmux_default>;
+
+		ser_3_pinmux_default: pinmux {
+			mfp0_fsync {
+				pins = "mfp0";
+				function = "gpio";
+				maxim,gmsl-rx = <1>;
+				maxim,gmsl-rx-id = <0>;
+				output-enable;
+				output-low;
+			};
+		};
+
+		i2c-mux {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			compatible = "i2c-mux-gpio";
+			i2c-parent = <&cam_i2c>;
+			mux-gpios = <&gpio_aon AFE_R750_CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
+
+			ser_3_i2c_0: i2c@0 {
+				#address-cells = <1>;
+				#size-cells = <0>;
+
+				reg = <0>;
+				status = "okay";
+			};
+		};
+
+		pipe@0 {
+			reg = <0>;
+
+			maxim,stream-id = <3>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "ser_3_ch_0";
+
+			maxim,pipe-id = <0>;
+			maxim,vc-id = <0>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2 3 4>;
+			clock-noncontinuous;
+		};
+	};
+};
+
+&ser_3_i2c_0 {
+	pca9554_cam_3: pca9554@24 {
+		compatible = "nxp,pca9554";
+		reg = <0x24>;
 		gpio-controller;
 		#gpio-cells = <2>;
 		gpio-line-names = "EXPOSURE_TRIG_IN",
