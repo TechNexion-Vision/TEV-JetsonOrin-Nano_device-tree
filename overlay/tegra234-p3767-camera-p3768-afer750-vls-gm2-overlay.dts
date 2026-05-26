@@ -22,7 +22,7 @@
 #define AFE_R750_DBX_PORT		2
 #define AFE_R750_DBX_SINTERFACE	"serial_c"
 #define AFE_R750_DBX_DES_PHY_ID	1
-#define AFE_R750_DBX_LANE_POLARITY	"0"
+#define AFE_R750_DBX_LANE_POLARITY	"6"
 #define AFE_R750_TOTAL_CSI_LANES	4
 
 #define AFE_R750_DES_LINK_FREQ		1000000000
@@ -536,21 +536,21 @@
 		};
 	};
 
-	cam_3: rpi22_tevs_d@3c {
+	cam_0: rpi22_tevs_a@39 {
 		compatible = "tn,tevs";
-		reg = <0x3c>;
+		reg = <0x39>;
 		status = "okay";
 
-		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
-		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
 
-		devnode = "video3";
+		devnode = "video0";
 		physical_w = "3.680";
 		physical_h = "2.760";
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE, AFE_R750_DBX_LANE_POLARITY)
+		AFE_R750_TEVS_MODES(AFE_R750_DAX_SINTERFACE, AFE_R750_DAX_LANE_POLARITY)
 
 		ports {
 			#address-cells = <1>;
@@ -558,43 +558,10 @@
 			port@0 {
 				reg = <0>;
 
-				rpi22_tevs_3_out: endpoint {
-					port-index = <AFE_R750_DBX_PORT>;
+				rpi22_tevs_0_out: endpoint {
+					port-index = <AFE_R750_DAX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
-					remote-endpoint = <&csi_3_in>;
-					clock-noncontinuous;
-					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
-				};
-			};
-		};
-	};
-
-	cam_2: rpi22_tevs_c@3b {
-		compatible = "tn,tevs";
-		reg = <0x3b>;
-		status = "okay";
-
-		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
-		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
-
-		devnode = "video2";
-		physical_w = "3.680";
-		physical_h = "2.760";
-		sensor_model = "tevs";
-		use_sensor_mode_id = "false";
-
-		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE, AFE_R750_DBX_LANE_POLARITY)
-
-		ports {
-			#address-cells = <1>;
-			#size-cells = <0>;
-			port@0 {
-				reg = <0>;
-
-				rpi22_tevs_2_out: endpoint {
-					port-index = <AFE_R750_DBX_PORT>;
-					bus-width = <AFE_R750_SENSOR_LANES>;
-					remote-endpoint = <&csi_2_in>;
+					remote-endpoint = <&csi_0_in>;
 					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
 				};
@@ -635,21 +602,21 @@
 		};
 	};
 
-	cam_0: rpi22_tevs_a@39 {
+	cam_2: rpi22_tevs_c@3b {
 		compatible = "tn,tevs";
-		reg = <0x39>;
+		reg = <0x3b>;
 		status = "okay";
 
-		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
-		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
 
-		devnode = "video0";
+		devnode = "video2";
 		physical_w = "3.680";
 		physical_h = "2.760";
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES(AFE_R750_DAX_SINTERFACE, AFE_R750_DAX_LANE_POLARITY)
+		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE, AFE_R750_DBX_LANE_POLARITY)
 
 		ports {
 			#address-cells = <1>;
@@ -657,10 +624,43 @@
 			port@0 {
 				reg = <0>;
 
-				rpi22_tevs_0_out: endpoint {
-					port-index = <AFE_R750_DAX_PORT>;
+				rpi22_tevs_2_out: endpoint {
+					port-index = <AFE_R750_DBX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
-					remote-endpoint = <&csi_0_in>;
+					remote-endpoint = <&csi_2_in>;
+					clock-noncontinuous;
+					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
+				};
+			};
+		};
+	};
+
+	cam_3: rpi22_tevs_d@3c {
+		compatible = "tn,tevs";
+		reg = <0x3c>;
+		status = "okay";
+
+		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
+
+		devnode = "video3";
+		physical_w = "3.680";
+		physical_h = "2.760";
+		sensor_model = "tevs";
+		use_sensor_mode_id = "false";
+
+		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE, AFE_R750_DBX_LANE_POLARITY)
+
+		ports {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			port@0 {
+				reg = <0>;
+
+				rpi22_tevs_3_out: endpoint {
+					port-index = <AFE_R750_DBX_PORT>;
+					bus-width = <AFE_R750_SENSOR_LANES>;
+					remote-endpoint = <&csi_3_in>;
 					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
 				};
