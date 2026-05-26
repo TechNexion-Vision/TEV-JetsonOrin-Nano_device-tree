@@ -18,8 +18,8 @@
 #define AFE_R750_DAX_PORT		0
 #define AFE_R750_DAX_SINTERFACE	"serial_a"
 #define AFE_R750_DAX_DES_PHY_ID	0
-#define AFE_R750_DBX_PORT		4
-#define AFE_R750_DBX_SINTERFACE	"serial_e"
+#define AFE_R750_DBX_PORT		2
+#define AFE_R750_DBX_SINTERFACE	"serial_c"
 #define AFE_R750_DBX_DES_PHY_ID	1
 #define AFE_R750_TOTAL_CSI_LANES	4
 
