@@ -20,7 +20,7 @@
 #define DAX_DES_PHY_ID		0
 #define DAX_LANE_POLARITY	"6"
 #define DBX_PORT		2
-#define DBX_SINTERFACE		"serial_e"
+#define DBX_SINTERFACE		"serial_c"
 #define DBX_DES_PHY_ID		2
 #define DBX_LANE_POLARITY	"0"
 #define TOTAL_CSI_LANES		4
@@ -443,8 +443,8 @@
 			reg = <0>;
 		};
 
-		phy@1 {
-			reg = <1>;
+		phy@2 {
+			reg = <2>;
 		};
 
 		pipe@0 {
