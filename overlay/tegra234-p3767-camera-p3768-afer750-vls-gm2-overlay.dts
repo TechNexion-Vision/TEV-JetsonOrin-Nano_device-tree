@@ -25,8 +25,8 @@
 #define AFE_R750_DBX_LANE_POLARITY	"0"
 #define AFE_R750_TOTAL_CSI_LANES	4
 
-#define AFE_R750_DES_LINK_FREQ		1000000000
-#define AFE_R750_TEVS_LINK_FREQ		280000000
+#define AFE_R750_DES_LINK_FREQ		1250000000
+#define AFE_R750_TEVS_LINK_FREQ		400000000
 
 #define AFE_R750_TEVS_MODE_COMMON(SINTERFACE, LANE_POLARITY)		\
 	mclk_khz = "24000";						\
@@ -44,8 +44,8 @@
 	line_length = "3448";						\
 	inherent_gain = "1";						\
 	mclk_multiplier = "9.33";					\
-	pix_clk_hz = "140000000";					\
-	serdes_pix_clk_hz = "250000000";				\
+	pix_clk_hz = "200000000";					\
+	serdes_pix_clk_hz = "625000000";				\
 	gain_factor = "16";						\
 	framerate_factor = "1000000";					\
 	exposure_factor = "1000000";					\
@@ -479,26 +479,18 @@
 			maxim,stream-id = <3>;
 		};
 
-		channel@0 {
-			reg = <0>;
-			label = "des_0_ch_0";
+		/*
+		 * The MAX96712 mux driver creates downstream I2C adapters from
+		 * parsed channel-node order. Keep this source order paired with
+		 * the TEVS source-node order below; on this overlay stack the
+		 * remaining deferred TEVS probes are observed in reverse order.
+		 */
+		channel@3 {
+			reg = <3>;
+			label = "des_0_ch_3";
 
-			maxim,pipe-id = <0>;
-			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
-			maxim,src-vc-id = <0>;
-			maxim,dst-vc-id = <0>;
-
-			clock-lanes = <0>;
-			data-lanes = <1 2>;
-			link-frequencies = /bits/ 64 <AFE_R750_DES_LINK_FREQ>;
-		};
-
-		channel@1 {
-			reg = <1>;
-			label = "des_0_ch_1";
-
-			maxim,pipe-id = <1>;
-			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
+			maxim,pipe-id = <3>;
+			maxim,phy-id = <AFE_R750_DBX_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <1>;
 
@@ -521,14 +513,28 @@
 			link-frequencies = /bits/ 64 <AFE_R750_DES_LINK_FREQ>;
 		};
 
-		channel@3 {
-			reg = <3>;
-			label = "des_0_ch_3";
+		channel@1 {
+			reg = <1>;
+			label = "des_0_ch_1";
 
-			maxim,pipe-id = <3>;
-			maxim,phy-id = <AFE_R750_DBX_DES_PHY_ID>;
+			maxim,pipe-id = <1>;
+			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
 			maxim,src-vc-id = <0>;
 			maxim,dst-vc-id = <1>;
+
+			clock-lanes = <0>;
+			data-lanes = <1 2>;
+			link-frequencies = /bits/ 64 <AFE_R750_DES_LINK_FREQ>;
+		};
+
+		channel@0 {
+			reg = <0>;
+			label = "des_0_ch_0";
+
+			maxim,pipe-id = <0>;
+			maxim,phy-id = <AFE_R750_DAX_DES_PHY_ID>;
+			maxim,src-vc-id = <0>;
+			maxim,dst-vc-id = <0>;
 
 			clock-lanes = <0>;
 			data-lanes = <1 2>;
@@ -569,21 +575,21 @@
 		};
 	};
 
-	cam_1: rpi22_tevs_b@3a {
+	cam_3: rpi22_tevs_d@3c {
 		compatible = "tn,tevs";
-		reg = <0x3a>;
+		reg = <0x3c>;
 		status = "okay";
 
-		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
-		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
 
-		devnode = "video1";
+		devnode = "video3";
 		physical_w = "3.680";
 		physical_h = "2.760";
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES(AFE_R750_DAX_SINTERFACE, AFE_R750_DAX_LANE_POLARITY)
+		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE, AFE_R750_DBX_LANE_POLARITY)
 
 		ports {
 			#address-cells = <1>;
@@ -591,10 +597,10 @@
 			port@0 {
 				reg = <0>;
 
-				rpi22_tevs_1_out: endpoint {
-					port-index = <AFE_R750_DAX_PORT>;
+				rpi22_tevs_3_out: endpoint {
+					port-index = <AFE_R750_DBX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
-					remote-endpoint = <&csi_1_in>;
+					remote-endpoint = <&csi_3_in>;
 					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
 				};
@@ -635,21 +641,21 @@
 		};
 	};
 
-	cam_3: rpi22_tevs_d@3c {
+	cam_1: rpi22_tevs_b@3a {
 		compatible = "tn,tevs";
-		reg = <0x3c>;
+		reg = <0x3a>;
 		status = "okay";
 
-		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
-		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
+		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
 
-		devnode = "video3";
+		devnode = "video1";
 		physical_w = "3.680";
 		physical_h = "2.760";
 		sensor_model = "tevs";
 		use_sensor_mode_id = "false";
 
-		AFE_R750_TEVS_MODES(AFE_R750_DBX_SINTERFACE, AFE_R750_DBX_LANE_POLARITY)
+		AFE_R750_TEVS_MODES(AFE_R750_DAX_SINTERFACE, AFE_R750_DAX_LANE_POLARITY)
 
 		ports {
 			#address-cells = <1>;
@@ -657,10 +663,10 @@
 			port@0 {
 				reg = <0>;
 
-				rpi22_tevs_3_out: endpoint {
-					port-index = <AFE_R750_DBX_PORT>;
+				rpi22_tevs_1_out: endpoint {
+					port-index = <AFE_R750_DAX_PORT>;
 					bus-width = <AFE_R750_SENSOR_LANES>;
-					remote-endpoint = <&csi_3_in>;
+					remote-endpoint = <&csi_1_in>;
 					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <AFE_R750_TEVS_LINK_FREQ>;
 				};
