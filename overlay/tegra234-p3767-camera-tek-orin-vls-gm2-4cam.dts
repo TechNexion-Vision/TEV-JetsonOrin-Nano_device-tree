@@ -569,7 +569,7 @@
 			maxim,pipe-id = <1>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <DES_LINK_FREQ>;
 		};
 
@@ -581,7 +581,7 @@
 			maxim,pipe-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <DES_LINK_FREQ>;
 		};
 	};
@@ -893,7 +893,7 @@
 			maxim,pipe-id = <1>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <DES_LINK_FREQ>;
 		};
 
@@ -905,7 +905,7 @@
 			maxim,pipe-id = <0>;
 
 			clock-lanes = <0>;
-			data-lanes = <1 2>;
+			data-lanes = <1 2 3 4>;
 			link-frequencies = /bits/ 64 <DES_LINK_FREQ>;
 		};
 	};
