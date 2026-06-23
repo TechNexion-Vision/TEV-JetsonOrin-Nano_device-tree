@@ -33,35 +33,39 @@
 	compatible = JETSON_COMPATIBLE;
 
 	fragment@0 {
-		target = <&pinmux_default>;
+		target = <&pinmux>;
 		__overlay__ {
-			hdr40-pin7 {
-				nvidia,pins = "soc_gpio33_pq6";
-				nvidia,function = "rsvd0";
-				nvidia,pin-label = "gpio0_pwdn";
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-			};
-			hdr40-pin11 {
-				nvidia,pins = "uart1_rts_pr4";
-				nvidia,function = "rsvd1";
-				nvidia,pin-label = "gpio2_pwdn";
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-			};
-			hdr40-pin12 {
-				nvidia,pins = "soc_gpio41_ph7";
-				nvidia,function = "rsvd0";
-				nvidia,pin-label = "gpio3_pwdn";
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
-			};
-			hdr40-pin18 {
-				nvidia,pins = "soc_gpio21_ph0";
-				nvidia,function = "rsvd0";
-				nvidia,pin-label = "gpio1_pwdn";
-				nvidia,tristate = <TEGRA_PIN_DISABLE>;
-				nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+			pinctrl-names = "default";
+			pinctrl-0 = <&jetson_io_pinmux>;
+			jetson_io_pinmux: exp-header-pinmux {
+				hdr40-pin7 {
+					nvidia,pins = "soc_gpio33_pq6";
+					nvidia,function = "rsvd0";
+					nvidia,pin-label = "gpio0_pwdn";
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
+				hdr40-pin11 {
+					nvidia,pins = "uart1_rts_pr4";
+					nvidia,function = "rsvd1";
+					nvidia,pin-label = "gpio2_pwdn";
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
+				hdr40-pin12 {
+					nvidia,pins = "soc_gpio41_ph7";
+					nvidia,function = "rsvd0";
+					nvidia,pin-label = "gpio3_pwdn";
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
+				hdr40-pin18 {
+					nvidia,pins = "soc_gpio21_ph0";
+					nvidia,function = "rsvd0";
+					nvidia,pin-label = "gpio1_pwdn";
+					nvidia,tristate = <TEGRA_PIN_DISABLE>;
+					nvidia,enable-input = <TEGRA_PIN_DISABLE>;
+				};
 			};
 		};
 	};
