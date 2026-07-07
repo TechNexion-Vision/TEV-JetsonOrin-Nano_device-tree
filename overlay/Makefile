@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-only
-# SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+# SPDX-FileCopyrightText: Copyright (c) 2023-2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 DTC_FLAGS += -@
 
@@ -9,64 +9,10 @@ dtb-y :=
 dtbo-y :=
 makefile-path := t23x/nv-public/overlay
 
-dtbo-y += tegra-optee.dtbo
-dtbo-y += tegra234-audio-overlay.dtbo
-dtbo-y += tegra234-carveouts.dtbo
-dtbo-y += tegra234-dcb-p3767-0000-hdmi.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3701-0004.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0000.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0001.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0003.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-as-p3767-0004.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-dynamic.dtbo
-dtbo-y += tegra234-p3768-0000+p3767-0000-dynamic.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-audio-adafruit-uda1334a.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-audio-adafruit-sph0645lm4h.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-audio-fe-pi.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-audio-respeaker-4-mic-array.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-audio-respeaker-4-mic-lin-array.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-csi.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-hdr40.dtbo
-dtbo-y += tegra234-p3737-0000+p3701-0000-m2ke.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-sph0645lm4h.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-audio-adafruit-uda1334a.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-audio-fe-pi.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-audio-respeaker-4-mic-array.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-audio-respeaker-4-mic-lin-array.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-csi.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-hdr40.dtbo
-dtbo-y += tegra234-p3767-0000+p3509-a02-m2ke.dtbo
-dtbo-y += tegra234-p3767-0000+p3768-0000-csi.dtbo
-dtbo-y += tegra234-p3740-0002+p3701-0008-hdr20.dtbo
-dtbo-y += tegra234-p3740-0002+p3701-0008-m2ke.dtbo
-dtbo-y += tegra234-p3740-0002+p3701-0008-m2kb.dtbo
-dtbo-y += tegra234-p3740-0002-p3701-0008-csi.dtbo
-dtbo-y += tegra234-p3737-camera-dual-imx274-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-e3331-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-e3333-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-imx185-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx219-dual.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx477-dual.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx477-dual-4lane.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx477-imx219.dtbo
-dtbo-y += tegra234-p3737-camera-eCAM130A-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-dual-hawk-ar0234-e3653-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-imx390-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-imx390-addr-0x21-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-p3762-a00-1Hawk-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-p3762-a00-2Hawk-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-p3762-a00-3Hawk-3Owl-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-p3762-a00-4Hawk-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-p3762-a00-4Owl-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-p3762-a00-overlay.dtbo
-dtbo-y += tegra234-p3740-camera-p3783-a00-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx219-C.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx219-A.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx219-imx477.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx477-C.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-imx477-A.dtbo
+# JP7.2 first-pass validation is intentionally limited to Orin Nano P3768
+# TEVS direct and VLS-GM2/GMSL overlays. Restore broader overlay targets after
+# the P3768 camera bring-up is proven on Jetson Linux r39.2.
 dtbo-y += tegra234-p3767-camera-p3768-tevs-dual.dtbo
-dtbo-y += tegra234-p3767-camera-p3768-vls3.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-vls-gm2.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-vls-gm2-fsync.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-vls-gm2-fsync-external.dtbo
@@ -78,35 +24,6 @@ dtbo-y += tegra234-p3767-camera-p3768-vls-gm2-fsync-external-new.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-vls-gm2-tunnel-new.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync-new.dtbo
 dtbo-y += tegra234-p3767-camera-p3768-vls-gm2-ext-io-new.dtbo
-dtbo-y += tegra234-p3767-camera-2nor0x-tevs-dual-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-2nor0x-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-2nor0x-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-2nor0x-vls-gm2-tunnel-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-2nor0x-vls-gm2-tunnel-fsync-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-tek-orin-vls3.dtbo
-dtbo-y += tegra234-p3767-camera-tek-orin-vls-gm2-4cam.dtbo
-dtbo-y += tegra234-p3767-camera-tek-orin-vls-gm2-8cam.dtbo
-dtbo-y += tegra234-p3767-camera-aie510-onx-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-aie510-onx-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-j401-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3768-camera-d133oxb-tevs-dual-overlay.dtbo
-dtbo-y += tegra234-p3768-camera-d133oxb-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3768-camera-d133oxb-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3768-camera-d133oxb-vls-gm2-tunnel-overlay.dtbo
-dtbo-y += tegra234-p3768-camera-d133oxb-vls-gm2-tunnel-fsync-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-aie900a-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-aie900a-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-eac5000-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-eac5000-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-jco-6000-orn-a-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-jco-6000-orn-a-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-vls-gm2-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-vls-gm2-fsync-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-vls-gm2-fsync-external-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-vls-gm2-tunnel-overlay.dtbo
-dtbo-y += tegra234-p3737-camera-vls-gm2-tunnel-fsync-overlay.dtbo
 
 ifneq ($(dtb-y),)
 dtb-y := $(addprefix $(makefile-path)/,$(dtb-y))
