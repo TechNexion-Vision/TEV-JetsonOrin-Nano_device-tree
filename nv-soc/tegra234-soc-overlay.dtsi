@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2022-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2022-2026, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 //
 // This file contains the DT nodes of T234 which are not in base/tegra234.dtsi
 
@@ -19,81 +19,6 @@
 	aliases {
 		nvdla0 = "/bus@0/host1x@13e00000/nvdla0@15880000";
 		nvdla1 = "/bus@0/host1x@13e00000/nvdla1@158c0000";
-	};
-
-	chosen {
-		framebuffer {
-			compatible = "simple-framebuffer";
-			status = "disabled";
-			memory-region = <&fb0_reserved>;
-			power-domains = <&bpmp TEGRA234_POWER_DOMAIN_DISP>;
-			clocks = <&bpmp TEGRA234_CLK_HUB>,
-				 <&bpmp TEGRA234_CLK_DISP>,
-				 <&bpmp TEGRA234_CLK_NVDISPLAY_P0>,
-				 <&bpmp TEGRA234_CLK_NVDISPLAY_P1>,
-				 <&bpmp TEGRA234_CLK_DPAUX>,
-				 <&bpmp TEGRA234_CLK_FUSE>,
-				 <&bpmp TEGRA234_CLK_DSIPLL_VCO>,
-				 <&bpmp TEGRA234_CLK_DSIPLL_CLKOUTPN>,
-				 <&bpmp TEGRA234_CLK_DSIPLL_CLKOUTA>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_VCO>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_CLKOUTPN>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_CLKOUTA>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_CLKOUTB>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_DIV10>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_DIV25>,
-				 <&bpmp TEGRA234_CLK_SPPLL0_DIV27PN>,
-				 <&bpmp TEGRA234_CLK_SPPLL1_VCO>,
-				 <&bpmp TEGRA234_CLK_SPPLL1_CLKOUTPN>,
-				 <&bpmp TEGRA234_CLK_SPPLL1_DIV27PN>,
-				 <&bpmp TEGRA234_CLK_VPLL0_REF>,
-				 <&bpmp TEGRA234_CLK_VPLL0>,
-				 <&bpmp TEGRA234_CLK_VPLL1>,
-				 <&bpmp TEGRA234_CLK_NVDISPLAY_P0_REF>,
-				 <&bpmp TEGRA234_CLK_RG0>,
-				 <&bpmp TEGRA234_CLK_RG1>,
-				 <&bpmp TEGRA234_CLK_DISPPLL>,
-				 <&bpmp TEGRA234_CLK_DISPHUBPLL>,
-				 <&bpmp TEGRA234_CLK_DSI_LP>,
-				 <&bpmp TEGRA234_CLK_DSI_CORE>,
-				 <&bpmp TEGRA234_CLK_DSI_PIXEL>,
-				 <&bpmp TEGRA234_CLK_PRE_SOR0>,
-				 <&bpmp TEGRA234_CLK_PRE_SOR1>,
-				 <&bpmp TEGRA234_CLK_DP_LINK_REF>,
-				 <&bpmp TEGRA234_CLK_SOR_LINKA_INPUT>,
-				 <&bpmp TEGRA234_CLK_SOR_LINKA_AFIFO>,
-				 <&bpmp TEGRA234_CLK_SOR_LINKA_AFIFO_M>,
-				 <&bpmp TEGRA234_CLK_RG0_M>,
-				 <&bpmp TEGRA234_CLK_RG1_M>,
-				 <&bpmp TEGRA234_CLK_SOR0_M>,
-				 <&bpmp TEGRA234_CLK_SOR1_M>,
-				 <&bpmp TEGRA234_CLK_PLLHUB>,
-				 <&bpmp TEGRA234_CLK_SOR0>,
-				 <&bpmp TEGRA234_CLK_SOR1>,
-				 <&bpmp TEGRA234_CLK_SOR_PAD_INPUT>,
-				 <&bpmp TEGRA234_CLK_PRE_SF0>,
-				 <&bpmp TEGRA234_CLK_SF0>,
-				 <&bpmp TEGRA234_CLK_SF1>,
-				 <&bpmp TEGRA234_CLK_DSI_PAD_INPUT>,
-				 <&bpmp TEGRA234_CLK_PRE_SOR0_REF>,
-				 <&bpmp TEGRA234_CLK_PRE_SOR1_REF>,
-				 <&bpmp TEGRA234_CLK_SOR0_PLL_REF>,
-				 <&bpmp TEGRA234_CLK_SOR1_PLL_REF>,
-				 <&bpmp TEGRA234_CLK_SOR0_REF>,
-				 <&bpmp TEGRA234_CLK_SOR1_REF>,
-				 <&bpmp TEGRA234_CLK_OSC>,
-				 <&bpmp TEGRA234_CLK_DSC>,
-				 <&bpmp TEGRA234_CLK_MAUD>,
-				 <&bpmp TEGRA234_CLK_AZA_2XBIT>,
-				 <&bpmp TEGRA234_CLK_AZA_BIT>,
-				 <&bpmp TEGRA234_CLK_MIPI_CAL>,
-				 <&bpmp TEGRA234_CLK_UART_FST_MIPI_CAL>,
-				 <&bpmp TEGRA234_CLK_SOR0_DIV>;
-			width  = <0>;
-			height = <0>;
-			stride = <0>;
-			format = "x8b8g8r8";
-		};
 	};
 
 	firmware {
@@ -129,6 +54,106 @@
 			timeout-sec = <120>;
 			nvidia,disable-debug-reset;
 			status = "disabled";
+		};
+
+		timer@3010000 {
+			/* Do not enable this node (SOC Timer) as ARM Generic Timer
+			 * (DT node="timer") should be used instead
+			 */
+			compatible = "nvidia,tegra186-timer";
+			interrupts = <0 0 4>,
+				     <0 1 4>,
+				     <0 2 4>,
+				     <0 3 4>,
+				     <0 4 4>,
+				     <0 5 4>,
+				     <0 6 4>,
+				     <0 7 4>;
+			clock-frequency = <19200000>;
+			reg = <0x0 0x03010000 0x0 0x000e0000>;
+			tmr-count = <10>;
+			wdt-count = <3>;
+			status = "disabled";
+		};
+
+		fuse@3810000 {
+			reg = <0x0 0x03810000 0x0 0x20000>;
+		};
+
+		tegra_tachometer1: tachometer@39b0000 {
+			compatible = "nvidia,pwm-tegra234-tachometer";
+			reg = <0x0 0x039b0000 0x0 0x10>;
+			#pwm-cells = <2>;
+			clocks = <&bpmp TEGRA234_CLK_TACH1>;
+			clock-names = "tach";
+			resets = <&bpmp TEGRA234_RESET_TACH1>;
+			reset-names = "tach";
+			interrupts = <0 TEGRA234_IRQ_TACH1 0x4>;
+			pulse-per-rev = <2>;
+			capture-window-length = <2>;
+			disable-clk-gate;
+			status = "disabled";
+		};
+
+		sce_hsp: tegra-hsp@b150000 {
+			compatible = "nvidia,tegra186-hsp", "nvidia,tegra234-hsp";
+			status = "disabled";
+
+			reg = <0x0 0x0b150000 0x0 0x00090000>;
+			interrupts =	<0 141 0x4>,
+					<0 142 0x4>,
+					<0 143 0x4>,
+					<0 144 0x4>;
+			interrupt-names = "shared1", "shared2", "shared3", "shared4";
+			nvidia,mbox-ie;
+		};
+
+		hsp_pva0: tegra-hsp@16160000 {
+			compatible = "nvidia,tegra186-hsp", "nvidia,tegra234-hsp";
+			reg = <0x0 0x16160000 0x0 0x00090000>;
+			interrupts = <0 234 0x04>;
+			interrupt-names = "shared0";
+			nvidia,num-SM = <0x8>; /* num of shared mailboxes  */
+			nvidia,num-SS = <0x4>; /* num of shared semaphores */
+			nvidia,num-SI = <0x5>; /* num of shared interrupts */
+			nvidia,mbox-ie;
+			status = "disabled";
+		};
+
+		i2c@3160000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@3180000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@3190000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@31b0000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@31c0000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@31e0000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@c240000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		i2c@c250000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
+		spi@c260000 {
+			compatible = "nvidia,tegra234-spi", "nvidia,tegra210-spi", "nvidia,tegra114-spi";
 		};
 
 		pinmux@2430000 {
@@ -201,6 +226,14 @@
 					nvidia,enable-input = <TEGRA_PIN_ENABLE>;
 				};
 			};
+		};
+
+		spi@3210000 {
+			compatible = "nvidia,tegra234-spi", "nvidia,tegra210-spi", "nvidia,tegra114-spi";
+		};
+
+		spi@3230000 {
+			compatible = "nvidia,tegra234-spi", "nvidia,tegra210-spi", "nvidia,tegra114-spi";
 		};
 
 		tegra_ufs: ufshci@2500000 {
@@ -285,6 +318,10 @@
 			};
 		};
 
+		serial@3100000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
+		};
+
 		serial@3110000 {
 			compatible = "nvidia,tegra234-uart", "nvidia,tegra20-uart";
 			reg = <0x0 0x03110000 0x0 0x10000>;
@@ -292,6 +329,10 @@
 			clocks = <&bpmp TEGRA234_CLK_UARTB>;
 			resets = <&bpmp TEGRA234_RESET_UARTB>;
 			status = "disabled";
+		};
+
+		serial@3140000 {
+			iommus = <&smmu_niso0 TEGRA234_SID_GPCDMA>;
 		};
 
 		tachometer@39c0000 {
@@ -305,6 +346,17 @@
 			pulse-per-rev = <2>;
 			capture-window-length = <2>;
 			disable-clk-gate;
+			status = "disabled";
+		};
+
+		nvrng@3ae0000 {
+			compatible = "nvidia,tegra234-se-nvrng";
+			reg-names = "rng1", "sap";
+			reg = <0x0 0x3ae0000 0x0 0x10000>,
+			      <0x0 0x3ac0000 0x0 0x10000>;
+			interrupts = <0x0 284 0x4>;
+			clocks = <&bpmp TEGRA234_CLK_SE>;
+			clock-names = "se";
 			status = "disabled";
 		};
 
@@ -334,6 +386,15 @@
 			status = "disabled";
 		};
 
+		reserved-memory {
+			ape_resv: reservation-ape {
+				iommu-addresses = <&adsp 0x0 0x00000000 0x0 0x40000000>,
+						<&adsp 0x0 0x60000000 0xffffffff 0x9fffffff>,
+						<&tegra_admaif 0x0 0x00000000 0x0 0x40000000>,
+						<&tegra_admaif 0x0 0x60000000 0xffffffff 0x9fffffff>;
+			};
+		};
+
 		aconnect@2900000 {
 			ahub@2900800 {
 				/* Below AHUB modules are not yet upstreamed */
@@ -344,7 +405,6 @@
 					reg = <0x0 0x290e400 0x0 0x400>;
 					#address-cells = <1>;
 					#size-cells = <1>;
-					#sound-dai-cells = <1>;
 				};
 
 				tegra_afc1: afc@2907000 {
@@ -356,7 +416,6 @@
 					#address-cells = <1>;
 					#size-cells = <1>;
 					sound-name-prefix = "AFC1";
-					#sound-dai-cells = <1>;
 				};
 
 				tegra_afc2: afc@2907100 {
@@ -368,7 +427,6 @@
 					#address-cells = <1>;
 					#size-cells = <1>;
 					sound-name-prefix = "AFC2";
-					#sound-dai-cells = <1>;
 				};
 
 				tegra_afc3: afc@2907200 {
@@ -380,7 +438,6 @@
 					#address-cells = <1>;
 					#size-cells = <1>;
 					sound-name-prefix = "AFC3";
-					#sound-dai-cells = <1>;
 				};
 
 				tegra_afc4: afc@2907300 {
@@ -392,7 +449,6 @@
 					#address-cells = <1>;
 					#size-cells = <1>;
 					sound-name-prefix = "AFC4";
-					#sound-dai-cells = <1>;
 				};
 
 				tegra_afc5: afc@2907400 {
@@ -404,7 +460,6 @@
 					#address-cells = <1>;
 					#size-cells = <1>;
 					sound-name-prefix = "AFC5";
-					#sound-dai-cells = <1>;
 				};
 
 				tegra_afc6: afc@2907500 {
@@ -416,8 +471,45 @@
 					#address-cells = <1>;
 					#size-cells = <1>;
 					sound-name-prefix = "AFC6";
-					#sound-dai-cells = <1>;
 				};
+			};
+
+			admaif@290f000 {
+				memory-region = <&ape_resv>;
+			};
+
+			adsp: adsp@2993000 {
+				compatible = "nvidia,tegra18x-adsp";
+				interrupt-parent = <&agic>;
+				nvidia,adsp_os_secload;
+				reg = <0x0 0x02993000 0x0 0x1000>, /* AMC */
+					<0x0 0x02990000 0x0 0x2000>, /* AMISC */
+					<0x0 0x029B0000 0x0 0x90000>; /* AHSP */
+				nvidia,dram_map =
+					    <0x0 0x40000000 0x0 0xC0000000>;
+				nvidia,adsp_mem = <0x5EF00000 0x01000000>, /* ADSP OS */
+					<0x5F700000 0x00800000>, /* ADSP APP */
+					<0x3F813000 0x5000>, /* ARAM ALIAS 0 */
+					<0x5FD00000 0x200000>; /* ACSR */
+				nvidia,adsp-evp-base = <0x02993700 0x00000040>;
+				interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>, /* MBOX SEND */
+					   <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>,  /* MBOX RECV */
+					   <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>, /* ATKE Watchdog */
+					   <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>, /* WFI */
+					   <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>, /* AMC ERR IRQ */
+					   <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>; /* ADSP ACTMON IRQ */
+				clocks = <&bpmp TEGRA234_CLK_APE>,
+				       <&bpmp TEGRA234_CLK_APB2APE>,
+				       <&bpmp TEGRA234_CLK_ADSPNEON>,
+				       <&bpmp TEGRA234_CLK_ADSP>,
+				       <&bpmp TEGRA234_CLK_ACLK>;
+				clock-names = "adsp.ape", "adsp.apb2ape", "adspneon",
+					"adsp", "aclk";
+				resets = <&bpmp TEGRA234_RESET_ADSP_ALL>;
+				reset-names = "adspall";
+				iommus = <&smmu_niso0 TEGRA234_SID_APE>;
+				memory-region = <&ape_resv>;
+				status = "disabled";
 			};
 		};
 
@@ -564,6 +656,8 @@
 				 <&bpmp TEGRA234_CLK_ACTMON>;
 			clock-names = "host1x", "actmon";
 
+			nvidia,syncpoint-shim = <&syncpoint_shim>;
+
 			nvjpg@15380000 {
 				compatible = "nvidia,tegra234-nvjpg";
 				reg = <0x0 0x15380000 0x0 0x00040000>;
@@ -637,7 +731,6 @@
 			};
 
 			crypto@15820000 {
-				compatible = "nvidia,tegra234-se2-aes", "nvidia,tegra234-se-aes";
 				clock-names = "se";
 				interconnects = <&mc TEGRA234_MEMORY_CLIENT_SESRD &emc>,
 						<&mc TEGRA234_MEMORY_CLIENT_SESWR &emc>;
@@ -647,7 +740,6 @@
 			};
 
 			crypto@15840000 {
-				compatible = "nvidia,tegra234-se4-hash", "nvidia,tegra234-se-hash";
 				clock-names = "se";
 				interconnects = <&mc TEGRA234_MEMORY_CLIENT_SESRD &emc>,
 						<&mc TEGRA234_MEMORY_CLIENT_SESWR &emc>;
@@ -857,39 +949,12 @@
 		};
 
 		pcie-ep@14160000 {
-			compatible = "nvidia,tegra234-pcie-ep";
-			power-domains = <&bpmp TEGRA234_POWER_DOMAIN_PCIEX4BB>;
-			reg = <0x00 0x14160000 0x0 0x00020000     /* appl registers (128K)      */
-				0x00 0x36040000 0x0 0x00040000    /* iATU_DMA reg space (256K)  */
-				0x00 0x36080000 0x0 0x00040000    /* DBI space (256K)           */
-				0x21 0x40000000 0x3 0x00000000>;  /* Address Space (12G)        */
-			reg-names = "appl", "atu_dma", "dbi", "addr_space";
-			num-lanes = <4>;
-			clocks = <&bpmp TEGRA234_CLK_PEX0_C4_CORE>;
-			clock-names = "core";
-			resets = <&bpmp TEGRA234_RESET_PEX0_CORE_4_APB>,
-			       <&bpmp TEGRA234_RESET_PEX0_CORE_4>;
-			reset-names = "apb", "core";
-
 			pinctrl-names = "default";
 			pinctrl-0 = <&pex_rst_c4_in_state>;
-			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;  /* controller interrupt */
-			interrupt-names = "intr";
-			nvidia,bpmp = <&bpmp 4>;
-			nvidia,enable-ext-refclk;
-			nvidia,aspm-cmrt-us = <60>;
-			nvidia,aspm-pwr-on-t-us = <20>;
-			nvidia,aspm-l0s-entrance-latency-us = <3>;
 
 			nvidia,host1x = <&host1x>;
 			num-ib-windows = <2>;
 			num-ob-windows = <8>;
-			interconnects = <&mc TEGRA234_MEMORY_CLIENT_PCIE4R &emc>,
-				      <&mc TEGRA234_MEMORY_CLIENT_PCIE4W &emc>;
-			interconnect-names = "dma-mem", "write";
-			iommus = <&smmu_niso0 TEGRA234_SID_PCIE4>;
-			dma-coherent;
-			status = "disabled";
 		};
 
 		pcie-ep@141a0000 {
@@ -1040,6 +1105,14 @@
 		status = "disabled";
 	};
 
+	bwmgr {
+		compatible = "nvidia,tegra234-bpmp-bwmgr";
+		nvidia,bpmp = <&bpmp>;
+		clocks = <&bpmp TEGRA234_CLK_EMC>;
+		clock-names = "emc";
+		status = "disabled";
+	};
+
 	soctherm-oc-event {
 		compatible = "nvidia,tegra234-oc-event";
 		nvidia,bpmp = <&bpmp>;
@@ -1048,7 +1121,7 @@
 
 	/* TSC Signal Generators */
 	tsc_sig_gen@c6a0000 {
-		compatible = "nvidia,tegra234-cam-cdi-tsc";
+		compatible = "nvidia,tegra234-cdi-tsc";
 		ranges = <0x0 0x0 0xc6a0000 0x10000>;
 		reg = <0x0 0xc6a0000 0x0 0x18>;
 		#address-cells = <1>;
@@ -1087,5 +1160,10 @@
 			offset_ms = <0>;
 			status = "disabled";
 		};
+	};
+
+	syncpoint_shim: memory@60000000 {
+		compatible = "nvidia,tegra234-syncpoint-shim";
+		reg = <0x0 0x60000000 0x0 0x4000000>;
 	};
 };

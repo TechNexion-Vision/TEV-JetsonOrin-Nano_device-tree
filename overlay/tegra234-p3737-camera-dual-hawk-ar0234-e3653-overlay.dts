@@ -295,12 +295,6 @@
 								compatible = "bmi,bmi088";
 								reg = <0x69>;
 								accel_i2c_addr = <0x19>;
-								/* Old BMI088 driver uses *_gpio property and the latest
-								 * BMI088 driver uses *-gpios property. Have both versions
-								 * to maintain backward compatibility.
-								 */
-								accel_irq_gpio = <&gpio_aon ACCE1_IRQ_GPIO GPIO_ACTIVE_HIGH>;
-								gyro_irq_gpio = <&gpio_aon GYRO1_IRQ_GPIO GPIO_ACTIVE_HIGH>;
 								accel_irq-gpios = <&gpio_aon ACCE1_IRQ_GPIO GPIO_ACTIVE_HIGH>;
 								gyro_irq-gpios = <&gpio_aon GYRO1_IRQ_GPIO GPIO_ACTIVE_HIGH>;
 								accel_matrix = [01 00 00 00 01 00 00 00 01];

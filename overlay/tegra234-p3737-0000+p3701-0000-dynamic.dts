@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2026, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 /dts-v1/;
 /plugin/;
@@ -18,22 +18,45 @@
 		};
 		__overlay__ {
 			bus@0 {
+				aconnect@2900000 {
+					ahub@2900800 {
+						i2s@2901000 {
+							ports {
+								port@1 {
+									endpoint {
+										remote-endpoint = <&rt5640_ep>;
+									};
+								};
+							};
+						};
+					};
+				};
+
 				i2c@31e0000 {
 					rt5640: audio-codec@1c {
-						#sound-dai-cells = <1>;
 						status = "okay";
+
+						port {
+							endpoint {
+								remote-endpoint = <&i2s1_dap>;
+								link-name = "rt5640-playback";
+							};
+						};
 					};
 				};
 			};
 
 			sound {
-				nvidia-audio-card,widgets =
+				widgets =
 					"Headphone",	"CVB-RT Headphone Jack",
 					"Microphone",	"CVB-RT Mic Jack",
 					"Speaker",	"CVB-RT Int Spk",
 					"Microphone",	"CVB-RT Int Mic";
 
-				nvidia-audio-card,routing =
+				routing = /* I2S1 <-> RT5640 */
+					"CVB-RT AIF1 Playback",       "I2S1 DAP-Playback",
+					"I2S1 DAP-Capture",           "CVB-RT AIF1 Capture",
+					/* RT5640 codec controls */
 					"CVB-RT Headphone Jack",     "CVB-RT HPOL",
 					"CVB-RT Headphone Jack",     "CVB-RT HPOR",
 					"CVB-RT IN1P",		     "CVB-RT Mic Jack",
@@ -42,14 +65,6 @@
 					"CVB-RT Int Spk",	     "CVB-RT SPORP",
 					"CVB-RT DMIC1",		     "CVB-RT Int Mic",
 					"CVB-RT DMIC2",		     "CVB-RT Int Mic";
-
-				nvidia-audio-card,dai-link@76 {
-					link-name = "rt5640-playback";
-					codec {
-						sound-dai = <&rt5640 0>;
-						prefix = "CVB-RT";
-					};
-				};
 			};
 		};
 	};
@@ -103,8 +118,16 @@
 					vpcie12v-supply = <&ncp_12v_pcie_supply>;
 				};
 			};
- 		};
- 	};
+		};
+	};
+
+	fragment-t234-p3737-0000-p3701-0000@3 {
+		target-path = "/bus@0/pcie@14100000";
+		delete_prop = "nvidia,pex-wake-gpios";
+		board_config {
+			ids = "3737-0000-TS1","3737-0000-TS2","3737-0000-TS3","3737-0000-EB1","3737-0000-EB2","3737-0000-EB3","3737-0000-000","3737-0000-100","3737-0000-200";
+		};
+	};
 
 	/* PCIe C5 endpoint */
 	fragment-t234-p3737-0000-p3701-0000-pcie-c5-ep@0 {

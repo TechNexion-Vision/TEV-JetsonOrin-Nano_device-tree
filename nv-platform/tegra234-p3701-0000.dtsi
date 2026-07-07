@@ -1,61 +1,23 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2022-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2022-2026, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "tegra234-p3701-0000-prod-overlay.dtsi"
+#include "nv-soc/tegra234-soc-thermal.dtsi"
+#include "nv-soc/tegra234-soc-thermal-slowdown-cluster.dtsi"
+#include "nv-soc/tegra234-soc-thermal-shutdown.dtsi"
+#include "nv-soc/tegra234-soc-thermal-trip-event.dtsi"
 
 / {
 	bus@0 {
-		i2c@c240000 {
-			ina3221@40 {
-				compatible = "ti,ina3221";
-				reg = <0x40>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-				channel@0 {
-					reg = <0x0>;
-					label = "VDD_GPU_SOC";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-				channel@1 {
-					reg = <0x1>;
-					label = "VDD_CPU_CV";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-				channel@2 {
-					reg = <0x2>;
-					label = "VIN_SYS_5V0";
-					shunt-resistor-micro-ohms = <2000>;
-					ti,summation-disable;
-				};
-			};
-
-			ina3221@41 {
-				compatible = "ti,ina3221";
-				reg = <0x41>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-				channel@0 {
-					reg = <0x0>;
-					status = "disabled";
-				};
-				channel@1 {
-					reg = <0x1>;
-					label = "VDDQ_VDD2_1V8AO";
-					shunt-resistor-micro-ohms = <2000>;
-				};
-				channel@2 {
-					reg = <0x2>;
-					status = "disabled";
-				};
+		spi@3270000 {
+			flash@0 {
+				nvidia,tx-clk-tap-delay = <0>;
+				nvidia,rx-clk-tap-delay = <4>;
 			};
 		};
 
-		spi@3270000 {
-			flash@0 {
-				spi-max-frequency = <51000000>;
-				spi-tx-bus-width = <1>;
-				spi-rx-bus-width = <1>;
-			};
+		nvrng@3ae0000 {
+			status = "okay";
 		};
 	};
 
@@ -73,11 +35,7 @@
 			};
 
 			tegra_tmp451: thermal-sensor@4c {
-				compatible = "ti,tmp451";
-				reg = <0x4c>;
-				vcc-supply = <&vdd_1v8_ao>;
 				#thermal-sensor-cells = <1>;
-				status = "okay";
 			};
 
 			vrs11_1@20 {

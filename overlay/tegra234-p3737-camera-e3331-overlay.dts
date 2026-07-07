@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2017-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2017-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 /dts-v1/;
 /plugin/;
@@ -41,14 +41,6 @@
 			};
 			tegra-camera-platform {
 				compatible = "nvidia, tegra-camera-platform";
-				num_csi_lanes = <3>;
-				max_lane_speed = <1500000>;
-				min_bits_per_pixel = <10>;
-				vi_peak_byte_per_pixel = <2>;
-				vi_bw_margin_pct = <25>;
-				max_pixel_rate = <800000>;
-				isp_peak_byte_per_pixel = <5>;
-				isp_bw_margin_pct = <25>;
 
 				modules {
 					status = "okay";
@@ -66,14 +58,6 @@
 				};
 			};
 			bus@0 {
-				gpio@2200000 {
-					camera-control-output-low {
-						gpio-hog;
-						output-low;
-						gpios = <CAM0_RST_L 0>;
-						label = "cam0-rst";
-					};
-				};
 				host1x@13e00000 {
 					nvcsi@15a00000 {
 						num-channels = <1>;
@@ -141,14 +125,4 @@
 			};
 		};
 	};
-	fragment@16 {
-		target-path = "/bus@0/i2c@3180000/tca9546@70";
-		board_config {
-			ids = "3331-*";
-			sw-modules = "kernel";
-		};
-		__overlay__ {
-			status = "okay";
-		};
-	};        
 };

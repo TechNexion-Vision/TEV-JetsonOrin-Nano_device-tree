@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2022-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2022-2026, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 / {
 	bus@0 {
@@ -46,12 +46,32 @@
 
 		aconnect@2900000 {
 			ahub@2900800 {
+				i2s@2901000 {
+					ports {
+						port@1 {
+							endpoint {
+								/delete-property/ remote-endpoint;
+							};
+						};
+					};
+				};
+
 				i2s@2901100 {
 					ports {
 						port@1 {
 							hdr40_snd_i2s_dap_ep: endpoint {
 							};
 						};
+					};
+				};
+			};
+		};
+
+		i2c@31e0000 {
+			audio-codec@1c {
+				port {
+					endpoint {
+						/delete-property/ remote-endpoint;
 					};
 				};
 			};
@@ -67,6 +87,7 @@
 			nvidia,phy-iface-mode = <0>;
 			nvidia,phy-reset-gpio = <&gpio TEGRA234_MAIN_GPIO(Y, 1) 0>;
 			nvidia,mdio_addr = <0>;
+			nvidia,pps_op_ctrl = <4>;
 
 			mdio {
 				compatible = "nvidia,eqos-mdio";
@@ -88,22 +109,33 @@
 			status = "okay";
 			compatible = "nvidia,tegra234-nvpps";
 			primary-emac = <&mgbe0>;
-			sec-emac = <&mgbe0>;
+			ptp_tsc_sync_trig_interval = <3>;
+			ptp_tsc_lock_threshold = <20000>; //20us
+			ts-capture-interval = <1000>;
+			nvpps-event-mode-init = <2>; /* 1: GPIO mode, 2: TIMER mode */
 			reg = <0x0 0xc6a0000 0x0 0x1000>;
 		};
 	};
 
 	hdr40_vdd_3v3: regulator@3 {
 		compatible = "regulator-fixed";
-		reg = <3>;
 		regulator-name = "vdd-3v3-sys";
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 	};
 
-	tegra_sound_graph: tegra_sound: sound {
-		compatible = "nvidia,tegra186-audio-graph-card",
-			     "nvidia,tegra186-ape";
+	/* TSC signal generator for cam_fsync (external fsync) - used by SIPL without camera overlay */
+	tsc_sig_gen@c6a0000 {
+		status = "okay";
+		generator@380 {
+			status = "okay";
+		};
+		fsync-groups {
+			status = "disabled";
+		};
+	};
+
+	tegra_sound: sound {
 		clocks = <&bpmp TEGRA234_CLK_PLLA>,
 			 <&bpmp TEGRA234_CLK_PLLA_OUT0>,
 			 <&bpmp TEGRA234_CLK_AUD_MCLK>;
@@ -111,11 +143,10 @@
 		assigned-clocks = <&bpmp TEGRA234_CLK_AUD_MCLK>;
 		assigned-clock-parents = <&bpmp TEGRA234_CLK_PLLA_OUT0>;
 
-		nvidia-audio-card,name = "NVIDIA Jetson AGX Orin APE";
+		mclk-fs = <256>;
 
-		nvidia-audio-card,mclk-fs = <256>;
-
-		hdr40_snd_link_i2s: nvidia-audio-card,dai-link@77 { };
+		/delete-property/ widgets;
+		/delete-property/ routing;
 	};
 
 	eeprom-manager {

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 /dts-v1/;
 /plugin/;
@@ -12,7 +12,7 @@
 
 / {
 	overlay-name = "Camera IMX477-C";
-	jetson-header-name = "Jetson 24pin CSI Connector";
+	jetson-header-name = "Jetson 22pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 	/*IMX477 connected on cam0 port */
 
@@ -36,41 +36,6 @@
 			};
 			tegra-camera-platform {
 				compatible = "nvidia, tegra-camera-platform";
-				/**
-				* Physical settings to calculate max ISO BW
-				*
-				* num_csi_lanes = <>;
-				* Total number of CSI lanes when all cameras are active
-				*
-				* max_lane_speed = <>;
-				* Max lane speed in Kbit/s
-				*
-				* min_bits_per_pixel = <>;
-				* Min bits per pixel
-				*
-				* vi_peak_byte_per_pixel = <>;
-				* Max byte per pixel for the VI ISO case
-				*
-				* vi_bw_margin_pct = <>;
-				* Vi bandwidth margin in percentage
-				*
-				* max_pixel_rate = <>;
-				* Max pixel rate in Kpixel/s for the ISP ISO case
-				*
-				* isp_peak_byte_per_pixel = <>;
-				* Max byte per pixel for the ISP ISO case
-				*
-				* isp_bw_margin_pct = <>;
-				* Isp bandwidth margin in percentage
-				*/
-				num_csi_lanes = <4>;
-				max_lane_speed = <1500000>;
-				min_bits_per_pixel = <10>;
-				vi_peak_byte_per_pixel = <2>;
-				vi_bw_margin_pct = <25>;
-				max_pixel_rate = <7500000>;
-				isp_peak_byte_per_pixel = <5>;
-				isp_bw_margin_pct = <25>;
 				/**
 				 * The general guideline for naming badge_info contains 3 parts, and is as follows,
 				 * The first part is the camera_board_id for the module; if the module is in a FFD
@@ -248,8 +213,8 @@
 					camera-control-output-low {
 						gpio-hog;
 						output-low;
-						gpios = <CAM1_PWDN 0  CAM0_PWDN 0>;
-						label = "cam1-pwdn", "cam0-pwdn";
+						gpios = <CAM0_PWDN 0>;
+						label = "cam0-pwdn";
 					};
 				};
 			};

@@ -1,11 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2023-2025, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 #include "nv-soc/tegra234-overlay.dtsi"
-#include "nv-soc/tegra234-soc-thermal.dtsi"
-#include "nv-soc/tegra234-soc-thermal-slowdown-corepair.dtsi"
-#include "nv-soc/tegra234-soc-thermal-shutdown.dtsi"
-#include "nv-soc/tegra234-soc-thermal-trip-event.dtsi"
 #include "nv-soc/tegra234-soc-audio-dai-links.dtsi"
 #include "tegra234-p3768-0000.dtsi"
 #include "tegra234-p3767-0000.dtsi"
@@ -43,80 +39,14 @@
 			status = "okay";
 		};
 
-		aconnect@2900000 {
-			ahub@2900800 {
-				i2s@2901200 {
-					status = "okay";
-				};
-
-				i2s@2901400 {
-					status = "okay";
-				};
-
-				dmic@2904000 {
-					status = "okay";
-				};
-
-				dmic@2904100 {
-					status = "okay";
-				};
-
-				dmic@2904300 {
-					status = "okay";
-				};
-
-				dspk@2905000 {
-					status = "okay";
-				};
-
-				dspk@2905100 {
-					status = "okay";
-				};
-
-				afc@2907000 {
-					status = "okay";
-				};
-
-				afc@2907100 {
-					status = "okay";
-				};
-
-				afc@2907200 {
-					status = "okay";
-				};
-
-				afc@2907300 {
-					status = "okay";
-				};
-
-				afc@2907400 {
-					status = "okay";
-				};
-
-				afc@2907500 {
-					status = "okay";
-				};
-
-				arad@290e400 {
-					status = "okay";
-				};
-			};
-		};
-
-		serial@3100000 {
-			compatible = "nvidia,tegra194-hsuart";
-			reset-names = "serial";
-			status = "okay";
-		};
-
-		serial@3140000 {
-			compatible = "nvidia,tegra194-hsuart";
-			reset-names = "serial";
-			status = "okay";
-		};
-
 		i2c@3180000 {
 			status = "okay";
+		};
+
+		aconnect@2900000 {
+			adsp@2993000 {
+				status = "okay";
+			};
 		};
 
 		i2c@31b0000 {
@@ -134,6 +64,8 @@
 				compatible = "tegra-spidev";
 				reg = <0x0>;
 				spi-max-frequency = <50000000>;
+				#address-cells = <1>;
+				#size-cells = <0>;
 				controller-data {
 					nvidia,enable-hw-based-cs;
 					nvidia,rx-clk-tap-delay = <0x10>;
@@ -144,6 +76,8 @@
 				compatible = "tegra-spidev";
 				reg = <0x1>;
 				spi-max-frequency = <50000000>;
+				#address-cells = <1>;
+				#size-cells = <0>;
 				controller-data {
 					nvidia,enable-hw-based-cs;
 					nvidia,rx-clk-tap-delay = <0x10>;
@@ -160,6 +94,8 @@
 				compatible = "tegra-spidev";
 				reg = <0x0>;
 				spi-max-frequency = <50000000>;
+				#address-cells = <1>;
+				#size-cells = <0>;
 				controller-data {
 					nvidia,enable-hw-based-cs;
 					nvidia,rx-clk-tap-delay = <0x10>;
@@ -170,6 +106,8 @@
 				compatible = "tegra-spidev";
 				reg = <0x1>;
 				spi-max-frequency = <50000000>;
+				#address-cells = <1>;
+				#size-cells = <0>;
 				controller-data {
 					nvidia,enable-hw-based-cs;
 					nvidia,rx-clk-tap-delay = <0x10>;
@@ -192,27 +130,6 @@
 
 		i2c@c240000 {
 			status = "okay";
-			ina32211_1_40: ina3221@40 {
-				compatible = "ti,ina3221";
-				reg = <0x40>;
-				#address-cells = <1>;
-				#size-cells = <0>;
-				channel@0 {
-					reg = <0x0>;
-					label = "VDD_IN";
-					shunt-resistor-micro-ohms = <5000>;
-				};
-				channel@1 {
-					reg = <0x1>;
-					label = "VDD_CPU_GPU_CV";
-					shunt-resistor-micro-ohms = <5000>;
-				};
-				channel@2 {
-					reg = <0x2>;
-					label = "VDD_SOC";
-					shunt-resistor-micro-ohms = <5000>;
-				};
-			};
 			fusb301@25 {
 				compatible = "onsemi,fusb301";
 				reg = <0x25>;
@@ -229,18 +146,6 @@
 					};
 				};
 			};
-		};
-
-		pcie-ep@14160000 {/* C4 - End Point */
-			phys = <&p2u_hsio_4>, <&p2u_hsio_5>, <&p2u_hsio_6>,
-					<&p2u_hsio_7>;
-			phy-names = "p2u-0", "p2u-1", "p2u-2", "p2u-3";
-			reset-gpios = <&gpio
-					TEGRA234_MAIN_GPIO(L, 1)
-					GPIO_ACTIVE_LOW>;
-			nvidia,refclk-select-gpios = <&gpio_aon
-							TEGRA234_AON_GPIO(AA, 4)
-							GPIO_ACTIVE_HIGH>;
 		};
 
 		/* PWM1, 40pin header, pin 15 */
@@ -279,7 +184,6 @@
 
 		hardware-timestamp@c1e0000 {
 			status = "okay";
-			nvidia,num-slices = <3>;
 		};
 
 		mttcan@c310000 {
@@ -300,6 +204,14 @@
 			};
 
 			nvenc@154c0000 {
+				status = "okay";
+			};
+
+			crypto@15820000 {
+				status = "okay";
+			};
+
+			crypto@15840000 {
 				status = "okay";
 			};
 
@@ -377,42 +289,16 @@
 		status = "okay";
 	};
 
+	bwmgr {
+		status = "okay";
+	};
+
 	soctherm-oc-event {
 		status = "okay";
 	};
 
-	thermal-zones {
-		cpu-thermal {
-			status = "okay";
-		};
-
-		gpu-thermal {
-			status = "okay";
-		};
-
-		cv0-thermal {
-			status = "okay";
-		};
-
-		cv1-thermal {
-			status = "okay";
-		};
-
-		cv2-thermal {
-			status = "okay";
-		};
-
-		soc0-thermal {
-			status = "okay";
-		};
-
-		soc1-thermal {
-			status = "okay";
-		};
-
-		soc2-thermal {
-			status = "okay";
-		};
+	tegra-hsp@b950000 {
+		status = "okay";
 	};
 
 	dce@d800000 {
@@ -420,14 +306,7 @@
 	};
 
 	display@13800000 {
-		/* os_gpio_hotplug_a is used for hotplug */
 		os_gpio_hotplug_a = <&gpio TEGRA234_MAIN_GPIO(M, 0) GPIO_ACTIVE_HIGH>;
 		status = "okay";
 	};
-
-	tegra-hsp@b950000 {
-		status = "okay";
-	};
 };
-
-/delete-node/ &{/gpio-keys/key-suspend};

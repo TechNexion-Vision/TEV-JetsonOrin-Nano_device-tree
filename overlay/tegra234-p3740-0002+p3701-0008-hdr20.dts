@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+// Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
 
 //Device-tree overlay for tegra234-p3740-0002-p3701-0008 20 pin header.
 

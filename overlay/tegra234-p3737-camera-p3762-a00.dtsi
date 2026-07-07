@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2024-2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 #include "tegra234-camera-p3762-a00.dtsi"
 #include "dt-bindings/gpio/tegra234-gpio.h"
@@ -20,17 +20,6 @@
 		target-path = "/";
 		__overlay__ {
 			bus@0 {
-				/* set camera gpio direction to output */
-				gpio@2200000 {
-					camera-control-output-low {
-						gpio-hog;
-						output-low;
-						gpios = <CAM0_RST_L 0 CAM0_PWDN 0
-								CAM1_RST_L 0 CAM1_PWDN 0>;
-						label = "cam0-rst", "cam0-pwdn",
-								"cam1-rst", "cam1-pwdn";
-					};
-				};
 				i2c@3180000 {
 					max96712_b@62 {
 						compatible = "nvidia,max96712";
@@ -215,6 +204,12 @@
 								pwdn-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 								pwr-gpios = <&gpio PWR_EN GPIO_ACTIVE_HIGH>;
 							};
+						};
+						i2c@2 {
+							reg = <2>;
+							i2c-mux,deselect-on-exit;
+							#address-cells = <1>;
+							#size-cells = <0>;
 							ar0234_e@34 {
 								status = "disabled";
 								def-addr = <0x10>;
@@ -247,6 +242,12 @@
 								pwdn-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 								pwr-gpios = <&gpio PWR_EN GPIO_ACTIVE_HIGH>;
 							};
+						};
+						i2c@3 {
+							reg = <3>;
+							i2c-mux,deselect-on-exit;
+							#address-cells = <1>;
+							#size-cells = <0>;
 							ar0234_g@36 {
 								status = "disabled";
 								def-addr = <0x10>;
@@ -285,12 +286,29 @@
 			};
 		};
 	};
+	/* cam_cdi_tsc driver node: separate DT node so /dev/cdi_tsc is
+	 * available for Argus external fsync.  Uses the same generator@380
+	 * and gpio_pinmux as cam_fsync — safe because Argus and nvsipl_camera
+	 * are never used simultaneously.  cam_cdi_tsc uses non-exclusive
+	 * devm_ioremap so both drivers can coexist at boot.
+	 */
 	fragment-cam-cdi-tsc@0 {
 		target-path = "/";
 		__overlay__ {
-			tsc_sig_gen@c6a0000 {
+			tsc_sig_gen_argus@c6a0000 {
+				compatible = "nvidia,tegra234-cam-cdi-tsc";
+				ranges = <0x0 0x0 0xc6a0000 0x10000>;
+				reg = <0x0 0xc6a0000 0x0 0x18>;
+				#address-cells = <1>;
+				#size-cells = <1>;
 				status = "okay";
+
 				generator@380 {
+					reg = <0x380 0x80>;
+					freq_hz = <30>;
+					duty_cycle = <25>;
+					offset_ms = <0>;
+					gpio_pinmux = <&gpio_aon TEGRA234_AON_GPIO(BB, 2) GPIO_ACTIVE_LOW>;
 					status = "okay";
 				};
 			};

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-only
-// SPDX-FileCopyrightText: Copyright (c) 2017-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2017-2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 
 #include "tegra234-camera-imx274-dual.dtsi"
 #include <dt-bindings/clock/tegra234-clock.h>
@@ -13,14 +13,6 @@
 	fragment-camera-dual-imx274@0 {
 		target-path = "/bus@0";
 		__overlay__ {
-			gpio@2200000 {
-				camera-control-output-low {
-					gpio-hog;
-					output-low;
-					gpios = <CAM0_RST_L 0 CAM0_PWDN 0>;
-					label = "cam0-rst", "cam0-pwdn";
-				};
-			};
 			i2c@3180000 {
 				tca9546@70 {
 					compatible = "nxp,pca9546";
