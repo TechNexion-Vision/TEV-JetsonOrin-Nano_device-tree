@@ -145,7 +145,7 @@
 	};
 
 / {
-	overlay-name = "TechNexion VLS-GM2 Camera with Pixel Mode";
+	overlay-name = "TechNexion VLS-GM2 Camera with FSYNC Pixel Mode";
 	jetson-header-name = "Jetson 24pin CSI Connector";
 	compatible = JETSON_COMPATIBLE_P3768;
 
@@ -436,6 +436,9 @@
 						#gpio-cells = <2>;
 						gpio-ranges = <&des_0 0 0 8>;
 
+						fsync-mode = "internal";
+						fsync-freq = <30>;
+
 						i2c-mux {
 							#address-cells = <1>;
 							#size-cells = <0>;
@@ -553,6 +556,7 @@
 						technexion,gmsl-ser = <&ser_3>;
 						technexion,gmsl-des = <&des_0>;
 						technexion,gmsl-des-channel = <3>;
+						trigger-mode = <2>;
 
 						/* V4L2 device node location */
 						devnode = "video3";
@@ -591,6 +595,7 @@
 						technexion,gmsl-ser = <&ser_2>;
 						technexion,gmsl-des = <&des_0>;
 						technexion,gmsl-des-channel = <2>;
+						trigger-mode = <2>;
 
 						/* V4L2 device node location */
 						devnode = "video2";
@@ -629,6 +634,7 @@
 						technexion,gmsl-ser = <&ser_1>;
 						technexion,gmsl-des = <&des_0>;
 						technexion,gmsl-des-channel = <1>;
+						trigger-mode = <2>;
 
 						/* V4L2 device node location */
 						devnode = "video1";
@@ -667,6 +673,7 @@
 						technexion,gmsl-ser = <&ser_0>;
 						technexion,gmsl-des = <&des_0>;
 						technexion,gmsl-des-channel = <0>;
+						trigger-mode = <2>;
 
 						/* V4L2 device node location */
 						devnode = "video0";
