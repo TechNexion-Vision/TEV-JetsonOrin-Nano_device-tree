@@ -25,7 +25,7 @@
 #define CAM1_LANES 				4
 #define CAM1_VC_ID 				1
 #define CAM1_LANES_STRING 		"4"
-#define CAM1_SINTERFACE			"serial_b"
+#define CAM1_SINTERFACE			"serial_a"
 #define CAM1_LANE_POLARITY		"6"
 #define CAM1_PIXEL_CLK			"200000000"
 #define CAM1_SERDES_PIXEL_CLK	"625000000"
@@ -45,7 +45,7 @@
 #define CAM3_LANES 				4
 #define CAM3_VC_ID 				1
 #define CAM3_LANES_STRING 		"4"
-#define CAM3_SINTERFACE			"serial_d"
+#define CAM3_SINTERFACE			"serial_c"
 #define CAM3_LANE_POLARITY		"0"
 #define CAM3_PIXEL_CLK			"200000000"
 #define CAM3_SERDES_PIXEL_CLK	"625000000"
@@ -60,7 +60,7 @@
 	tegra_sinterface = SINTERFACE;				\
 	lane_polarity = LANE_POLARITY;				\
 	phy_mode = "DPHY";							\
-	discontinuous_clk = "yes";					\
+	discontinuous_clk = "no";					\
 	dpcm_enable = "false";						\
 	cil_settletime = "0";						\
 	mode_type = "yuv";							\
@@ -397,19 +397,18 @@
 						status = "disabled";
 						gpio-hog;
 						output-low;
-						gpios = <CAM0_RST 0>;
-						label = "cam0-rst";
 					};
 				};
 
 				i2c@3180000 { /* cam_i2c */
 					pca9849@71 {
-						status = "okay";
-						clock-frequency = <400000>;
-						compatible = "nxp,pca9849";
-						reg = <0x71>;
 						#address-cells = <1>;
 						#size-cells = <0>;
+						status = "okay";
+
+						compatible = "nxp,pca9849";
+						clock-frequency = <400000>;
+						reg = <0x71>;
 						reset-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_LOW>;
 						skip_mux_detect;
 						vcc-supply = <&vdd_1v8_sys>;
@@ -503,10 +502,10 @@
 
 &cam_i2c_0 {
 	des_0: gmsl-deserializer@4c {
-		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		compatible = "maxim,max96716a";
+
+		compatible = "maxim,max96716a_tn";
 		reg = <0x4c>;
 
 		reset-gpios = <&tca9555_a21 1 GPIO_ACTIVE_HIGH>;
@@ -523,10 +522,6 @@
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
-
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
 			des_0_i2c_0: i2c@0 {
 				#address-cells = <1>;
@@ -550,14 +545,14 @@
 		pipe@0 {
 			reg = <0>;
 
-			maxim,phy-id = <CAM1_DES_PHY_ID>;
+			maxim,phy-id = <CAM0_DES_PHY_ID>;
 			maxim,link-id = <1>;
 		};
 
 		pipe@1 {
 			reg = <1>;
 
-			maxim,phy-id = <CAM0_DES_PHY_ID>;
+			maxim,phy-id = <CAM1_DES_PHY_ID>;
 			maxim,link-id = <0>;
 		};
 
@@ -590,10 +585,12 @@
 		compatible = "tn,tevs";
 		/* I2C device address */
 		reg = <0x3e>;
-		status = "okay";
 
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_1>;
+		technexion,gmsl-des = <&des_0>;
+		technexion,gmsl-des-channel = <1>;
 
 		/* V4L2 device node location */
 		devnode = "video1";
@@ -615,7 +612,6 @@
 					port-index = <CAM1_PORT>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_1_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -626,10 +622,12 @@
 		compatible = "tn,tevs";
 		/* I2C device address */
 		reg = <0x3d>;
-		status = "okay";
 
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_0>;
+		technexion,gmsl-des = <&des_0>;
+		technexion,gmsl-des-channel = <0>;
 
 		/* V4L2 device node location */
 		devnode = "video0";
@@ -651,7 +649,6 @@
 					port-index = <CAM0_PORT>;
 					bus-width = <CAM0_LANES>;
 					remote-endpoint = <&csi_0_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -661,10 +658,10 @@
 
 &des_0_i2c_0 {
 	ser_1: gmsl-serializer@42 {
-		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		compatible = "maxim,max96717";
+
+		compatible = "maxim,max96717_tn";
 		reg = <0x42>;
 
 		// i2c addr alias map "sensor, gpio expander"
@@ -693,10 +690,6 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_1_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
@@ -717,7 +710,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
@@ -744,10 +736,10 @@
 
 &des_0_i2c_1 {
 	ser_0: gmsl-serializer@41 {
-		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		compatible = "maxim,max96717";
+
+		compatible = "maxim,max96717_tn";
 		reg = <0x41>;
 
 		// i2c addr alias map "sensor, gpio expander"
@@ -776,10 +768,6 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_0_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
@@ -800,7 +788,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
@@ -827,10 +814,10 @@
 
 &cam_i2c_1 {
 	des_1: gmsl-deserializer@4c {
-		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		compatible = "maxim,max96716a";
+
+		compatible = "maxim,max96716a_tn";
 		reg = <0x4c>;
 
 		reset-gpios = <&tca9555_a21 3 GPIO_ACTIVE_HIGH>;
@@ -847,10 +834,6 @@
 		i2c-mux {
 			#address-cells = <1>;
 			#size-cells = <0>;
-
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
 
 			des_1_i2c_0: i2c@0 {
 				#address-cells = <1>;
@@ -874,14 +857,14 @@
 		pipe@0 {
 			reg = <0>;
 
-			maxim,phy-id = <CAM3_DES_PHY_ID>;
+			maxim,phy-id = <CAM2_DES_PHY_ID>;
 			maxim,link-id = <1>;
 		};
 
 		pipe@1 {
 			reg = <1>;
 
-			maxim,phy-id = <CAM2_DES_PHY_ID>;
+			maxim,phy-id = <CAM3_DES_PHY_ID>;
 			maxim,link-id = <0>;
 		};
 
@@ -914,10 +897,12 @@
 		compatible = "tn,tevs";
 		/* I2C device address */
 		reg = <0x3e>;
-		status = "okay";
 
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_3>;
+		technexion,gmsl-des = <&des_1>;
+		technexion,gmsl-des-channel = <1>;
 
 		/* V4L2 device node location */
 		devnode = "video3";
@@ -939,7 +924,6 @@
 					port-index = <CAM3_PORT>;
 					bus-width = <CAM3_LANES>;
 					remote-endpoint = <&csi_3_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -950,10 +934,12 @@
 		compatible = "tn,tevs";
 		/* I2C device address */
 		reg = <0x3d>;
-		status = "okay";
 
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_2>;
+		technexion,gmsl-des = <&des_1>;
+		technexion,gmsl-des-channel = <0>;
 
 		/* V4L2 device node location */
 		devnode = "video2";
@@ -975,7 +961,6 @@
 					port-index = <CAM2_PORT>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_2_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -985,10 +970,10 @@
 
 &des_1_i2c_0 {
 	ser_3: gmsl-serializer@42 {
-		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		compatible = "maxim,max96717";
+
+		compatible = "maxim,max96717_tn";
 		reg = <0x42>;
 
 		// i2c addr alias map "sensor, gpio expander"
@@ -1017,10 +1002,6 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_3_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
@@ -1041,7 +1022,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
@@ -1068,10 +1048,10 @@
 
 &des_1_i2c_1 {
 	ser_2: gmsl-serializer@41 {
-		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		compatible = "maxim,max96717";
+
+		compatible = "maxim,max96717_tn";
 		reg = <0x41>;
 
 		// i2c addr alias map "sensor, gpio expander"
@@ -1100,10 +1080,6 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_2_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
@@ -1124,7 +1100,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
