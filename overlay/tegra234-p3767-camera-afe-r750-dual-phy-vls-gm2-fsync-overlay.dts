@@ -25,7 +25,7 @@
 #define CAM1_LANES 				4
 #define CAM1_VC_ID 				1
 #define CAM1_LANES_STRING 		"4"
-#define CAM1_SINTERFACE			"serial_b"
+#define CAM1_SINTERFACE			"serial_a"
 #define CAM1_LANE_POLARITY		"6"
 #define CAM1_PIXEL_CLK			"200000000"
 #define CAM1_SERDES_PIXEL_CLK	"625000000"
@@ -45,7 +45,7 @@
 #define CAM3_LANES 				4
 #define CAM3_VC_ID 				3
 #define CAM3_LANES_STRING 		"4"
-#define CAM3_SINTERFACE			"serial_d"
+#define CAM3_SINTERFACE			"serial_c"
 #define CAM3_LANE_POLARITY		"0"
 #define CAM3_PIXEL_CLK			"200000000"
 #define CAM3_SERDES_PIXEL_CLK	"625000000"
@@ -60,7 +60,7 @@
 	tegra_sinterface = SINTERFACE;				\
 	lane_polarity = LANE_POLARITY;				\
 	phy_mode = "DPHY";							\
-	discontinuous_clk = "yes";					\
+	discontinuous_clk = "no";					\
 	dpcm_enable = "false";						\
 	cil_settletime = "0";						\
 	mode_type = "yuv";							\
@@ -412,7 +412,6 @@
 
 		compatible = "maxim,max96712";
 		reg = <0x29>;
-		status = "okay";
 
 		reset-gpios = <&gpio CAM0_PWDN GPIO_ACTIVE_HIGH>;
 
@@ -431,16 +430,11 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			des_0_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
 				reg = <0>;
-				status = "okay";
 			};
 
 			des_0_i2c_1: i2c@1 {
@@ -448,7 +442,6 @@
 				#size-cells = <0>;
 
 				reg = <1>;
-				status = "okay";
 			};
 
 			des_0_i2c_2: i2c@2 {
@@ -456,7 +449,6 @@
 				#size-cells = <0>;
 
 				reg = <2>;
-				status = "okay";
 			};
 
 			des_0_i2c_3: i2c@3 {
@@ -464,7 +456,6 @@
 				#size-cells = <0>;
 
 				reg = <3>;
-				status = "okay";
 			};
 		};
 
@@ -570,6 +561,9 @@
 
 		reset-gpios = <&pca9554_cam_3 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_3 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_3>;
+		technexion,gmsl-des = <&des_0>;
+		technexion,gmsl-des-channel = <3>;
 		trigger-mode = <2>;
 
 		devnode = "video3";
@@ -590,7 +584,6 @@
 					port-index = <CAM3_PORT>;
 					bus-width = <CAM3_LANES>;
 					remote-endpoint = <&csi_3_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -604,6 +597,9 @@
 
 		reset-gpios = <&pca9554_cam_2 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_2 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_2>;
+		technexion,gmsl-des = <&des_0>;
+		technexion,gmsl-des-channel = <2>;
 		trigger-mode = <2>;
 
 		devnode = "video2";
@@ -624,7 +620,6 @@
 					port-index = <CAM2_PORT>;
 					bus-width = <CAM2_LANES>;
 					remote-endpoint = <&csi_2_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -638,6 +633,9 @@
 
 		reset-gpios = <&pca9554_cam_1 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_1 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_1>;
+		technexion,gmsl-des = <&des_0>;
+		technexion,gmsl-des-channel = <1>;
 		trigger-mode = <2>;
 
 		devnode = "video1";
@@ -658,7 +656,6 @@
 					port-index = <CAM1_PORT>;
 					bus-width = <CAM1_LANES>;
 					remote-endpoint = <&csi_1_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -672,6 +669,9 @@
 
 		reset-gpios = <&pca9554_cam_0 4 GPIO_ACTIVE_HIGH>;
 		standby-gpios = <&pca9554_cam_0 2 GPIO_ACTIVE_HIGH>;
+		technexion,gmsl-ser = <&ser_0>;
+		technexion,gmsl-des = <&des_0>;
+		technexion,gmsl-des-channel = <0>;
 		trigger-mode = <2>;
 
 		devnode = "video0";
@@ -692,7 +692,6 @@
 					port-index = <CAM0_PORT>;
 					bus-width = <CAM0_LANES>;
 					remote-endpoint = <&csi_0_in>;
-					clock-noncontinuous;
 					link-frequencies = /bits/ 64 <TEVS_LINK_FREQ>;
 				};
 			};
@@ -707,7 +706,6 @@
 
 		compatible = "maxim,max96717";
 		reg = <0x44>;
-		status = "okay";
 
 		i2c-addr-alias-map-local = <0x4c 0x24>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
@@ -734,16 +732,11 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_3_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
 				reg = <0>;
-				status = "okay";
 			};
 		};
 
@@ -759,7 +752,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
@@ -791,7 +783,6 @@
 
 		compatible = "maxim,max96717";
 		reg = <0x43>;
-		status = "okay";
 
 		i2c-addr-alias-map-local = <0x4b 0x23>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
@@ -818,16 +809,11 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_2_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
 				reg = <0>;
-				status = "okay";
 			};
 		};
 
@@ -843,7 +829,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
@@ -875,7 +860,6 @@
 
 		compatible = "maxim,max96717";
 		reg = <0x42>;
-		status = "okay";
 
 		i2c-addr-alias-map-local = <0x4a 0x22>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
@@ -902,16 +886,11 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_1_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
 				reg = <0>;
-				status = "okay";
 			};
 		};
 
@@ -927,7 +906,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
@@ -959,7 +937,6 @@
 
 		compatible = "maxim,max96717";
 		reg = <0x41>;
-		status = "okay";
 
 		i2c-addr-alias-map-local = <0x49 0x21>;
 		i2c-addr-alias-map-remote = <0x48 0x25>;
@@ -986,16 +963,11 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			compatible = "i2c-mux-gpio";
-			i2c-parent = <&cam_i2c>;
-			mux-gpios = <&gpio_aon CAM_I2C_MUX GPIO_ACTIVE_HIGH>;
-
 			ser_0_i2c_0: i2c@0 {
 				#address-cells = <1>;
 				#size-cells = <0>;
 
 				reg = <0>;
-				status = "okay";
 			};
 		};
 
@@ -1011,7 +983,6 @@
 
 			clock-lanes = <0>;
 			data-lanes = <1 2 3 4>;
-			clock-noncontinuous;
 		};
 	};
 };
