@@ -20,7 +20,7 @@
 #define CAM0_LANES 				2
 #define CAM0_VC_ID 				0
 #define CAM0_LANES_STRING 		"2"
-#define CAM0_SINTERFACE			"serial_a"
+#define CAM0_SINTERFACE			"serial_b"
 #define CAM0_LANE_POLARITY		"6"
 #define CAM0_PIXEL_CLK			"70000000"
 #define CAM0_SERDES_PIXEL_CLK	"312500000"
@@ -40,7 +40,7 @@
 #define CAM2_LANES 				2
 #define CAM2_VC_ID 				2
 #define CAM2_LANES_STRING 		"2"
-#define CAM2_SINTERFACE			"serial_c"
+#define CAM2_SINTERFACE			"serial_b"
 #define CAM2_LANE_POLARITY		"6"
 #define CAM2_PIXEL_CLK			"70000000"
 #define CAM2_SERDES_PIXEL_CLK	"312500000"
@@ -50,7 +50,7 @@
 #define CAM3_LANES 				2
 #define CAM3_VC_ID 				3
 #define CAM3_LANES_STRING 		"2"
-#define CAM3_SINTERFACE			"serial_d"
+#define CAM3_SINTERFACE			"serial_b"
 #define CAM3_LANE_POLARITY		"6"
 #define CAM3_PIXEL_CLK			"70000000"
 #define CAM3_SERDES_PIXEL_CLK	"312500000"
@@ -60,7 +60,7 @@
 #define CAM4_LANES 				4
 #define CAM4_VC_ID 				0
 #define CAM4_LANES_STRING 		"4"
-#define CAM4_SINTERFACE			"serial_e"
+#define CAM4_SINTERFACE			"serial_c"
 #define CAM4_LANE_POLARITY		"0"
 #define CAM4_PIXEL_CLK			"140000000"
 #define CAM4_SERDES_PIXEL_CLK	"625000000"
@@ -70,7 +70,7 @@
 #define CAM5_LANES 				4
 #define CAM5_VC_ID 				1
 #define CAM5_LANES_STRING 		"4"
-#define CAM5_SINTERFACE			"serial_f"
+#define CAM5_SINTERFACE			"serial_c"
 #define CAM5_LANE_POLARITY		"0"
 #define CAM5_PIXEL_CLK			"140000000"
 #define CAM5_SERDES_PIXEL_CLK	"625000000"
@@ -80,7 +80,7 @@
 #define CAM6_LANES 				4
 #define CAM6_VC_ID 				2
 #define CAM6_LANES_STRING 		"4"
-#define CAM6_SINTERFACE			"serial_g"
+#define CAM6_SINTERFACE			"serial_c"
 #define CAM6_LANE_POLARITY		"0"
 #define CAM6_PIXEL_CLK			"140000000"
 #define CAM6_SERDES_PIXEL_CLK	"625000000"
@@ -90,7 +90,7 @@
 #define CAM7_LANES 				4
 #define CAM7_VC_ID 				3
 #define CAM7_LANES_STRING 		"4"
-#define CAM7_SINTERFACE			"serial_h"
+#define CAM7_SINTERFACE			"serial_c"
 #define CAM7_LANE_POLARITY		"0"
 #define CAM7_PIXEL_CLK			"140000000"
 #define CAM7_SERDES_PIXEL_CLK	"625000000"
