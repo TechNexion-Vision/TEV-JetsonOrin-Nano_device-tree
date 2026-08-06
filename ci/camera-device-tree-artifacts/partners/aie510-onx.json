@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/aie510-onx",
+  "artifacts": [
+    {
+      "id": "aie510-onx.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-aie510-onx-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-aie510-onx-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "aie510-onx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "aie510-onx.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-aie510-onx-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-aie510-onx-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "aie510-onx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    }
+  ]
+}
