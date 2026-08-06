@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-index",
+  "fragments": [
+    "ci/camera-device-tree-artifacts/official/orin-nano.json",
+    "ci/camera-device-tree-artifacts/partners/2nor0x.json",
+    "ci/camera-device-tree-artifacts/partners/afe-r750-orinnx.json",
+    "ci/camera-device-tree-artifacts/partners/aie900a-ao.json",
+    "ci/camera-device-tree-artifacts/partners/d133oxb.json",
+    "ci/camera-device-tree-artifacts/partners/eac-5000.json",
+    "ci/camera-device-tree-artifacts/shared.json"
+  ]
+}

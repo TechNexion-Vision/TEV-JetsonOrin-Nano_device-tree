@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "official/orin-nano",
+  "artifacts": [
+    {
+      "id": "orin-nano.tevs.dual",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-tevs-dual.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-tevs-dual.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "tevs",
+      "variant": "dual",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "orin-nano.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "orin-nano.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-fsync.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-fsync.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "orin-nano.vls-gm2.fsync-external",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-fsync-external.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-fsync-external.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync-external",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "orin-nano.vls-gm2.tunnel",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-tunnel.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-tunnel.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "orin-nano.vls-gm2.tunnel-fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel-fsync",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "orin-nano.vls3.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-vls3.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls3.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "vls3",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx219-a",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx219-A.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx219-A.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx219-c",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx219-C.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx219-C.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx219-dual",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx219-dual.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx219-dual.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx219-imx477",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx219-imx477.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx219-imx477.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx477-a",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx477-A.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx477-A.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx477-c",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx477-C.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx477-C.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx477-dual",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx477-dual.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx477-dual.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx477-dual-4lane",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx477-dual-4lane.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx477-dual-4lane.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    },
+    {
+      "id": "source.tegra234-p3767-camera-p3768-imx477-imx219",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-p3768-imx477-imx219.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-imx477-imx219.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "orin-nano"
+      ],
+      "camera": "nvidia-reference",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "NVIDIA reference or unclassified camera source is not distributed by the installer."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/afe-r750-orinnx",
+  "artifacts": [
+    {
+      "id": "afe-r750-orinnx.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-afe-r750-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-afe-r750-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "afe-r750-orinnx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "afe-r750-orinnx.vls-gm2.dual-phy",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-afe-r750-dual-phy-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-afe-r750-dual-phy-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "afe-r750-orinnx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "dual-phy",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "afe-r750-orinnx.vls-gm2.dual-phy-fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-afe-r750-dual-phy-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-afe-r750-dual-phy-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "afe-r750-orinnx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "dual-phy-fsync",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "afe-r750-orinnx.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-afe-r750-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-afe-r750-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "afe-r750-orinnx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    }
+  ]
+}
