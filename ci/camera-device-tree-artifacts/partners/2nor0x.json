@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/2nor0x",
+  "artifacts": [
+    {
+      "id": "2nor0x.base.dtb",
+      "type": "base-dtb",
+      "output": "tegra234-p3768-0000+p3767-0003-nv.dtb",
+      "source": "nv-platform/tegra234-p3768-0000+p3767-0003-nv.dts",
+      "makefile": "nv-platform/Makefile",
+      "makeVariable": "dtb-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "",
+      "variant": "base",
+      "lifecycle": "supported"
+    }
+  ]
+}

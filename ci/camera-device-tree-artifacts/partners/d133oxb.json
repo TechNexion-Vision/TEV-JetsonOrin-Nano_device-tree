@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/d133oxb",
+  "artifacts": [
+    {
+      "id": "d133oxb.base.dtb",
+      "type": "base-dtb",
+      "output": "tegra234-p3768-0000+p3767-0001-nv.dtb",
+      "source": "nv-platform/tegra234-p3768-0000+p3767-0001-nv.dts",
+      "makefile": "nv-platform/Makefile",
+      "makeVariable": "dtb-y",
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "",
+      "variant": "base",
+      "lifecycle": "supported"
+    }
+  ]
+}
