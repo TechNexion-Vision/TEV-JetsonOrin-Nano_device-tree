@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-index",
+  "fragments": [
+    "ci/camera-device-tree-artifacts/official/orin-nano.json",
+    "ci/camera-device-tree-artifacts/official/agx-orin.json",
+    "ci/camera-device-tree-artifacts/partners/2nor0x.json",
+    "ci/camera-device-tree-artifacts/partners/aie510-onx.json",
+    "ci/camera-device-tree-artifacts/partners/aie900a-ao.json",
+    "ci/camera-device-tree-artifacts/partners/d133oxb.json",
+    "ci/camera-device-tree-artifacts/partners/eac-5000.json",
+    "ci/camera-device-tree-artifacts/partners/j401.json",
+    "ci/camera-device-tree-artifacts/partners/jco-6000-orn-a.json",
+    "ci/camera-device-tree-artifacts/partners/tek-orin.json",
+    "ci/camera-device-tree-artifacts/partners/x6-orin.json",
+    "ci/camera-device-tree-artifacts/shared.json"
+  ]
+}

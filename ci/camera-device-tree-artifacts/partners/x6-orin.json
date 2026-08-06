@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/x6-orin",
+  "artifacts": [
+    {
+      "id": "x6-orin.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "x6-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "x6-orin.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "x6-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/jco-6000-orn-a",
+  "artifacts": [
+    {
+      "id": "jco-6000-orn-a.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-jco-6000-orn-a-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-jco-6000-orn-a-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "jco-6000-orn-a"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "jco-6000-orn-a.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-jco-6000-orn-a-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-jco-6000-orn-a-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "jco-6000-orn-a"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    }
+  ]
+}

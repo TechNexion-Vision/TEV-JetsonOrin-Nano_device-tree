@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/tek-orin",
+  "artifacts": [
+    {
+      "id": "tek-orin.vls-gm2.4cam",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-tek-orin-vls-gm2-4cam.dtbo",
+      "source": "overlay/tegra234-p3767-camera-tek-orin-vls-gm2-4cam.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "tek-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "4cam",
+      "lifecycle": "experimental",
+      "reason": "Partner platform is not selected by an installer build profile."
+    },
+    {
+      "id": "tek-orin.vls-gm2.8cam",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-tek-orin-vls-gm2-8cam.dtbo",
+      "source": "overlay/tegra234-p3767-camera-tek-orin-vls-gm2-8cam.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "tek-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "8cam",
+      "lifecycle": "experimental",
+      "reason": "Partner platform is not selected by an installer build profile."
+    },
+    {
+      "id": "tek-orin.vls3.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-tek-orin-vls3.dtbo",
+      "source": "overlay/tegra234-p3767-camera-tek-orin-vls3.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "tek-orin"
+      ],
+      "camera": "vls3",
+      "variant": "default",
+      "lifecycle": "experimental",
+      "reason": "Partner platform is not selected by an installer build profile."
+    }
+  ]
+}

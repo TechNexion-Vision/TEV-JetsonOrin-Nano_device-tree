@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/2nor0x",
+  "artifacts": [
+    {
+      "id": "2nor0x.base.dtb",
+      "type": "base-dtb",
+      "output": "tegra234-p3768-0000+p3767-0003-nv.dtb",
+      "source": "nv-platform/tegra234-p3768-0000+p3767-0003-nv.dts",
+      "makefile": "nv-platform/Makefile",
+      "makeVariable": "dtb-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "",
+      "variant": "base",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "2nor0x.tevs.dual",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-2nor0x-tevs-dual-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-2nor0x-tevs-dual-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "tevs",
+      "variant": "dual",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "2nor0x.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-2nor0x-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-2nor0x-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "2nor0x.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-2nor0x-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-2nor0x-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "2nor0x.vls-gm2.tunnel",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-2nor0x-vls-gm2-tunnel-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-2nor0x-vls-gm2-tunnel-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "2nor0x.vls-gm2.tunnel-fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-2nor0x-vls-gm2-tunnel-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-2nor0x-vls-gm2-tunnel-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "2nor0x"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel-fsync",
+      "lifecycle": "supported"
+    }
+  ]
+}
