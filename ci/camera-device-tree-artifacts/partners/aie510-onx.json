@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/aie510-onx",
+  "artifacts": [
+    {
+      "id": "aie510-onx.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-aie510-onx-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-aie510-onx-vls-gm2-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "aie510-onx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "aie510-onx.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-aie510-onx-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-aie510-onx-vls-gm2-fsync-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "aie510-onx"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "official/agx-orin",
+  "artifacts": [
+    {
+      "id": "agx-orin.base.p3701-0005-nv",
+      "type": "base-dtb",
+      "output": "tegra234-p3737-0000+p3701-0005-nv.dtb",
+      "source": "nv-platform/tegra234-p3737-0000+p3701-0005-nv.dts",
+      "makefile": "nv-platform/Makefile",
+      "makeVariable": "dtb-y",
+      "platforms": [
+        "agx-orin"
+      ],
+      "camera": "",
+      "variant": "base",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "agx-orin.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-vls-gm2-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "agx-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "agx-orin.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-vls-gm2-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "agx-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "agx-orin.vls-gm2.fsync-external",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-vls-gm2-fsync-external-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-vls-gm2-fsync-external-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "agx-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync-external",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "agx-orin.vls-gm2.tunnel",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-vls-gm2-tunnel-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-vls-gm2-tunnel-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "agx-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "agx-orin.vls-gm2.tunnel-fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-vls-gm2-tunnel-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-vls-gm2-tunnel-fsync-overlay.dts",
+      "makefile": "overlay/Makefile",
+      "makeVariable": "dtbo-y",
+      "platforms": [
+        "agx-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel-fsync",
+      "lifecycle": "supported"
+    }
+  ]
+}

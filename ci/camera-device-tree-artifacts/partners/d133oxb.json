@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/d133oxb",
+  "artifacts": [
+    {
+      "id": "d133oxb.base.dtb",
+      "type": "base-dtb",
+      "output": "tegra234-p3768-0000+p3767-0001-nv.dtb",
+      "source": "nv-platform/tegra234-p3768-0000+p3767-0001-nv.dts",
+      "makefile": "nv-platform/Makefile",
+      "makeVariable": "dtb-y",
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "",
+      "variant": "base",
+      "lifecycle": "supported"
+    },
+    {
+      "id": "d133oxb.tevs.dual",
+      "type": "camera-overlay",
+      "output": "tegra234-p3768-camera-d133oxb-tevs-dual-overlay.dtbo",
+      "source": "overlay/tegra234-p3768-camera-d133oxb-tevs-dual-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "tevs",
+      "variant": "dual",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "d133oxb.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3768-camera-d133oxb-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3768-camera-d133oxb-vls-gm2-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "d133oxb.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3768-camera-d133oxb-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3768-camera-d133oxb-vls-gm2-fsync-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "d133oxb.vls-gm2.tunnel",
+      "type": "camera-overlay",
+      "output": "tegra234-p3768-camera-d133oxb-vls-gm2-tunnel-overlay.dtbo",
+      "source": "overlay/tegra234-p3768-camera-d133oxb-vls-gm2-tunnel-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "d133oxb.vls-gm2.tunnel-fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3768-camera-d133oxb-vls-gm2-tunnel-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3768-camera-d133oxb-vls-gm2-tunnel-fsync-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "d133oxb"
+      ],
+      "camera": "vls-gm2",
+      "variant": "tunnel-fsync",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    }
+  ]
+}

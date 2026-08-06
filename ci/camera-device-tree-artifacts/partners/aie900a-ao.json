@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/aie900a-ao",
+  "artifacts": [
+    {
+      "id": "aie900a-ao.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-aie900a-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-aie900a-vls-gm2-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "aie900a-ao"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "aie900a-ao.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-aie900a-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-aie900a-vls-gm2-fsync-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "aie900a-ao"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/eac-5000",
+  "artifacts": [
+    {
+      "id": "eac-5000.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-eac5000-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-eac5000-vls-gm2-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "eac-5000"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "eac-5000.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3737-camera-eac5000-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3737-camera-eac5000-vls-gm2-fsync-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "eac-5000"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    }
+  ]
+}

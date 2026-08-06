@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "camera-device-tree-artifact-fragment",
+  "group": "partners/x6-orin",
+  "artifacts": [
+    {
+      "id": "x6-orin.vls-gm2.default",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "x6-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "default",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    },
+    {
+      "id": "x6-orin.vls-gm2.fsync",
+      "type": "camera-overlay",
+      "output": "tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-x6-orn-gmsl-vls-gm2-fsync-overlay.dts",
+      "makefile": "",
+      "makeVariable": null,
+      "platforms": [
+        "x6-orin"
+      ],
+      "camera": "vls-gm2",
+      "variant": "fsync",
+      "lifecycle": "sourceOnly",
+      "reason": "Camera source is not declared by a Makefile."
+    }
+  ]
+}
