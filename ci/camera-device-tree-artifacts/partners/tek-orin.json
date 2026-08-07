@@ -6,8 +6,8 @@
     {
       "id": "tek-orin.vls-gm2.4cam",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-tek-orin-vls-gm2-4cam.dtbo",
-      "source": "overlay/tegra234-p3767-camera-tek-orin-vls-gm2-4cam.dts",
+      "output": "tegra234-p3767-camera-tek-orin-vls-gm2-4cam-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-tek-orin-vls-gm2-4cam-overlay.dts",
       "makefile": "",
       "makeVariable": null,
       "platforms": [
@@ -16,13 +16,13 @@
       "camera": "vls-gm2",
       "variant": "4cam",
       "lifecycle": "sourceOnly",
-      "reason": "Camera source is not declared by a Makefile."
+      "reason": "DTS is provided for user builds but is not declared by a Makefile or shipped pre-built."
     },
     {
       "id": "tek-orin.vls-gm2.8cam",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-tek-orin-vls-gm2-8cam.dtbo",
-      "source": "overlay/tegra234-p3767-camera-tek-orin-vls-gm2-8cam.dts",
+      "output": "tegra234-p3767-camera-tek-orin-vls-gm2-8cam-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-tek-orin-vls-gm2-8cam-overlay.dts",
       "makefile": "",
       "makeVariable": null,
       "platforms": [
@@ -31,13 +31,13 @@
       "camera": "vls-gm2",
       "variant": "8cam",
       "lifecycle": "sourceOnly",
-      "reason": "Camera source is not declared by a Makefile."
+      "reason": "DTS is provided for user builds but is not declared by a Makefile or shipped pre-built."
     },
     {
       "id": "tek-orin.vls3.default",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-tek-orin-vls3.dtbo",
-      "source": "overlay/tegra234-p3767-camera-tek-orin-vls3.dts",
+      "output": "tegra234-p3767-camera-tek-orin-vls3-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-tek-orin-vls3-overlay.dts",
       "makefile": "",
       "makeVariable": null,
       "platforms": [
@@ -46,7 +46,7 @@
       "camera": "vls3",
       "variant": "default",
       "lifecycle": "sourceOnly",
-      "reason": "Camera source is not declared by a Makefile."
+      "reason": "DTS is provided for user builds but is not declared by a Makefile or shipped pre-built."
     }
   ]
 }

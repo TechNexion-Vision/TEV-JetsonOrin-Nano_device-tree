@@ -83,6 +83,22 @@ class DeviceTreeCatalogTests(unittest.TestCase):
 
         self.assertRegex(digest, r"^[0-9a-f]{64}$")
 
+    def test_source_only_partner_overlays_use_overlay_file_names(self) -> None:
+        partner_dir = REPO_ROOT / "ci/camera-device-tree-artifacts/partners"
+        source_only_overlays = [
+            artifact
+            for fragment in partner_dir.glob("*.json")
+            for artifact in json.loads(fragment.read_text(encoding="utf-8"))["artifacts"]
+            if artifact["type"] == "camera-overlay" and artifact["lifecycle"] == "sourceOnly"
+        ]
+
+        self.assertGreater(len(source_only_overlays), 0)
+        for artifact in source_only_overlays:
+            with self.subTest(artifact=artifact["id"]):
+                self.assertTrue(artifact["source"].endswith("-overlay.dts"))
+                self.assertTrue(artifact["output"].endswith("-overlay.dtbo"))
+                self.assertTrue((REPO_ROOT / artifact["source"]).is_file())
+
     def test_new_j401_source_without_makefile_or_catalog_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

@@ -6,8 +6,8 @@
     {
       "id": "orin-nano.tevs.dual",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-tevs-dual.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-tevs-dual.dts",
+      "output": "tegra234-p3767-camera-p3768-tevs-dual-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-tevs-dual-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -20,8 +20,8 @@
     {
       "id": "orin-nano.vlm-gm2.default",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vlm-gm2.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2.dts",
+      "output": "tegra234-p3767-camera-p3768-vlm-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -34,8 +34,8 @@
     {
       "id": "orin-nano.vlm-gm2.ext-io",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vlm-gm2-ext-io.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-ext-io.dts",
+      "output": "tegra234-p3767-camera-p3768-vlm-gm2-ext-io-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-ext-io-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -48,8 +48,8 @@
     {
       "id": "orin-nano.vlm-gm2.fsync",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vlm-gm2-fsync.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-fsync.dts",
+      "output": "tegra234-p3767-camera-p3768-vlm-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-fsync-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -62,8 +62,8 @@
     {
       "id": "orin-nano.vlm-gm2.fsync-external",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vlm-gm2-fsync-external.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-fsync-external.dts",
+      "output": "tegra234-p3767-camera-p3768-vlm-gm2-fsync-external-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-fsync-external-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -76,8 +76,8 @@
     {
       "id": "orin-nano.vlm-gm2.tunnel",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vlm-gm2-tunnel.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-tunnel.dts",
+      "output": "tegra234-p3767-camera-p3768-vlm-gm2-tunnel-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-tunnel-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -90,8 +90,8 @@
     {
       "id": "orin-nano.vlm-gm2.tunnel-fsync",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vlm-gm2-tunnel-fsync.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-tunnel-fsync.dts",
+      "output": "tegra234-p3767-camera-p3768-vlm-gm2-tunnel-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vlm-gm2-tunnel-fsync-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -104,8 +104,8 @@
     {
       "id": "orin-nano.vls-gm2.default",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vls-gm2.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2.dts",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -118,8 +118,8 @@
     {
       "id": "orin-nano.vls-gm2.fsync",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vls-gm2-fsync.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-fsync.dts",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-fsync-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -132,8 +132,8 @@
     {
       "id": "orin-nano.vls-gm2.fsync-external",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vls-gm2-fsync-external.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-fsync-external.dts",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-fsync-external-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-fsync-external-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -146,8 +146,8 @@
     {
       "id": "orin-nano.vls-gm2.tunnel",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vls-gm2-tunnel.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-tunnel.dts",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-tunnel-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-tunnel-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
@@ -160,8 +160,8 @@
     {
       "id": "orin-nano.vls-gm2.tunnel-fsync",
       "type": "camera-overlay",
-      "output": "tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync.dtbo",
-      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync.dts",
+      "output": "tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync-overlay.dtbo",
+      "source": "overlay/tegra234-p3767-camera-p3768-vls-gm2-tunnel-fsync-overlay.dts",
       "makefile": "overlay/Makefile",
       "makeVariable": "dtbo-y",
       "platforms": [
