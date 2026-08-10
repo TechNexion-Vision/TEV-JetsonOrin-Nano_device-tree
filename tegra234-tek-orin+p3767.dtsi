@@ -1,11 +1,17 @@
 // SPDX-License-Identifier: GPL-2.0
 #include <dt-bindings/pinctrl/pinctrl-tegra.h>
 
+#include <dt-bindings/input/linux-event-codes.h>
+#include <dt-bindings/input/gpio-keys.h>
+
+#include "tegra234-p3767.dtsi"
+
 / {
-	compatible = "nvidia,p3768-0000";
 
 	aliases {
 		serial0 = &tcu;
+		serial1 = &uarta;
+		serial2 = &uarte;
 	};
 
 	chosen {
@@ -13,6 +19,18 @@
 	};
 
 	bus@0 {
+		serial@3100000 {
+			compatible = "nvidia,tegra194-hsuart";
+			reset-names = "serial";
+			status = "okay";
+		};
+
+		serial@3140000 {
+			compatible = "nvidia,tegra194-hsuart";
+			reset-names = "serial";
+			status = "okay";
+		};
+
 		i2c@3160000 {
 			status = "okay";
 
@@ -298,6 +316,18 @@
 			phy-names = "p2u-0", "p2u-1", "p2u-2", "p2u-3";
 		};
 
+		pcie-ep@14160000 {/* C4 - End Point */
+			phys = <&p2u_hsio_4>, <&p2u_hsio_5>, <&p2u_hsio_6>,
+					<&p2u_hsio_7>;
+			phy-names = "p2u-0", "p2u-1", "p2u-2", "p2u-3";
+			reset-gpios = <&gpio
+					TEGRA234_MAIN_GPIO(L, 1)
+					GPIO_ACTIVE_LOW>;
+			nvidia,refclk-select-gpios = <&gpio_aon
+							TEGRA234_AON_GPIO(AA, 4)
+							GPIO_ACTIVE_HIGH>;
+		};
+
 		/* C7 - M.2 Key-M */
 		pcie@141e0000 {
 			status = "okay";
@@ -327,19 +357,13 @@
 			wakeup-event-action = <EV_ACT_ASSERTED>;
 			wakeup-source;
 		};
-
-		key-suspend {
-			label = "Suspend";
-			gpios = <&gpio TEGRA234_MAIN_GPIO(G, 2) GPIO_ACTIVE_LOW>;
-			linux,input-type = <EV_KEY>;
-			linux,code = <KEY_SLEEP>;
-		};
 	};
 
 	fan: pwm-fan {
 		compatible = "pwm-fan";
 		pwms = <&pwm3 0 45334>;
 		#cooling-cells = <2>;
+		cooling-levels = <0 88 187 255>;
 	};
 
 	reg_can0_stby: regulator-can0-stby {
@@ -381,5 +405,26 @@
 
 	serial {
 		status = "okay";
+	};
+
+	thermal-zones {
+		tj-thermal {
+			cooling-maps {
+				map-active-0 {
+					cooling-device = <&fan 0 1>;
+					trip = <&tj_trip_active0>;
+				};
+
+				map-active-1 {
+					cooling-device = <&fan 1 2>;
+					trip = <&tj_trip_active1>;
+				};
+
+				map-active-2 {
+					cooling-device = <&fan 2 3>;
+					trip = <&tj_trip_active2>;
+				};
+			};
+		};
 	};
 };
