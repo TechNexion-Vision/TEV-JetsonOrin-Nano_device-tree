@@ -1066,8 +1066,10 @@
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
-				maxim,gmsl-tx = <1>;
-				maxim,gmsl-tx-id = <0>;
+				maxim,gmsl-tx-a = <1>;
+				maxim,gmsl-tx-id-a = <0>;
+				maxim,gmsl-tx-b = <1>;
+				maxim,gmsl-tx-id-b = <0>;
 				input-enable;
 			};
 		};
@@ -1402,8 +1404,10 @@
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
-				maxim,gmsl-tx = <1>;
-				maxim,gmsl-tx-id = <0>;
+				maxim,gmsl-tx-a = <1>;
+				maxim,gmsl-tx-id-a = <0>;
+				maxim,gmsl-tx-b = <1>;
+				maxim,gmsl-tx-id-b = <0>;
 				input-enable;
 			};
 		};
@@ -1738,8 +1742,10 @@
 			mfp0_fsync {
 				pins = "mfp0";
 				function = "gpio";
-				maxim,gmsl-tx = <1>;
-				maxim,gmsl-tx-id = <0>;
+				maxim,gmsl-tx-a = <1>;
+				maxim,gmsl-tx-id-a = <0>;
+				maxim,gmsl-tx-b = <1>;
+				maxim,gmsl-tx-id-b = <0>;
 				input-enable;
 			};
 		};
